@@ -1,4 +1,13 @@
+@import '@angular/material/theming';
+@include mat-core();
 
+$custom-app-primary: mat-palette($mat-pink);
+$custom-app-accent: mat-palette($mat-yellow, 300);
+$custom-app-warn: mat-palette($mat-red);
+
+$custom-theme: mat-light-theme($custom-app-primary, $custom-app-accent, $custom-app-warn);
+
+@include angular-material-theme($custom-theme);
 
 html, body {
   height: 100%;

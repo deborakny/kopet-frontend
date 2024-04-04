@@ -1,0 +1,30 @@
+.header {
+  .header__toolbar {
+    padding: 1.5rem 1.5rem 10rem 1.5rem;
+    border-radius: 0 0 70px 70px;
+  }
+
+  .logo {
+    color: white;
+  }
+
+  .example-spacer {
+    flex: 1 1 auto;
+  }
+
+  @media screen and (min-width: 768px) {
+    .header__toolbar {
+      border-radius: 0;
+      padding: 2rem 8rem 10rem 8rem;
+    }
+
+    .header__botao-hamburguer{
+      display: none;
+    }
+
+    .logo {
+      font-size: 2.5rem;
+    }
+
+  }
+}
