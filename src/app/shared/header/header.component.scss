@@ -1,7 +1,6 @@
 .header {
   .header__toolbar {
-    padding: 1.5rem 1.5rem 10rem 1.5rem;
-    border-radius: 0 0 70px 70px;
+    padding: 1.5rem 1.5rem 6rem 1.5rem;
   }
 
   .logo {
@@ -13,11 +12,6 @@
   }
 
   @media screen and (min-width: 768px) {
-    .header__toolbar {
-      border-radius: 0;
-      padding: 2rem 8rem 10rem 8rem;
-    }
-
     .header__botao-hamburguer{
       display: none;
     }
