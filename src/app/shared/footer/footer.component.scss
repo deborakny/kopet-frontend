@@ -1,0 +1,13 @@
+.footer {
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  bottom: 0;
+  z-index: 1;
+}
+
+@media screen and (min-width: 845px) {
+  .footer {
+    display: none;
+  }
+}
