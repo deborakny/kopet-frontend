@@ -1,0 +1,31 @@
+.card__botao {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.card-header {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: .075rem;
+  max-width: 50%;
+}
+
+.header__endereco {
+  display: flex;
+}
+
+@media screen and (min-width: 845px) {
+  .card__botao {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .card-header {
+    max-width: 90%;
+  }
+
+  .endereco__dados {
+    font-size: 1rem;
+  }
+}

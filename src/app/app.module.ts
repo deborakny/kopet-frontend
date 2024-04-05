@@ -10,15 +10,18 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import { HomeComponent } from './pages/home/home.component';
-import {MatInputModule} from '@angular/material/input';
+import { MatInputModule } from '@angular/material/input';
+import {MatCardModule} from '@angular/material/card';
 import { ContainerComponent } from './shared/container/container.component';
+import { CardPetshopComponent } from './shared/card-petshop/card-petshop.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     HomeComponent,
-    ContainerComponent
+    ContainerComponent,
+    CardPetshopComponent
   ],
   imports: [
     BrowserModule,
@@ -27,7 +30,8 @@ import { ContainerComponent } from './shared/container/container.component';
     MatToolbarModule,
     MatIconModule,
     MatButtonModule,
-    MatInputModule
+    MatInputModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]

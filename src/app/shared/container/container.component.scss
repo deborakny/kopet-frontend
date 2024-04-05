@@ -1,5 +1,11 @@
 :host {
   display: block;
-  margin: 0 auto;
+  margin: 1rem auto;
   width: 90%;
+}
+
+@media screen and (min-width: 845px) {
+  :host {
+    width: 70%;
+  }
 }
