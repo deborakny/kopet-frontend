@@ -16,6 +16,7 @@ import { ContainerComponent } from './shared/container/container.component';
 import { CardPetshopComponent } from './shared/card-petshop/card-petshop.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { FormBuscaLojaComponent } from './shared/form-busca-loja/form-busca-loja.component';
+import { BannerComponent } from './shared/banner/banner.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { FormBuscaLojaComponent } from './shared/form-busca-loja/form-busca-loja
     ContainerComponent,
     CardPetshopComponent,
     FooterComponent,
-    FormBuscaLojaComponent
+    FormBuscaLojaComponent,
+    BannerComponent
   ],
   imports: [
     BrowserModule,
