@@ -10,11 +10,15 @@ $my-theme: mat.define-light-theme((
    primary: $my-primary,
    accent: $my-accent,
    warn: $my-warn,
- ),
- density: 0
+ )
 ));
 
 @include mat.all-component-themes($my-theme);
+
+:root {
+  --primary-color: #2196f3;
+  --accent-color: #fff176;
+}
 
 //$my-palette: mat.$indigo-palette;
 

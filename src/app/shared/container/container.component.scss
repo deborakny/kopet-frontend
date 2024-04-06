@@ -1,10 +1,12 @@
 :host {
   display: block;
-  margin: 1rem auto;
+  margin: 0 auto;
   width: 90%;
+  background-color: white;
+  border-radius: 15px;
 }
 
-@media screen and (min-width: 845px) {
+@media screen and (min-width: 769px) {
   :host {
     width: 70%;
   }

@@ -15,6 +15,7 @@ import {MatCardModule} from '@angular/material/card';
 import { ContainerComponent } from './shared/container/container.component';
 import { CardPetshopComponent } from './shared/card-petshop/card-petshop.component';
 import { FooterComponent } from './shared/footer/footer.component';
+import { FormBuscaLojaComponent } from './shared/form-busca-loja/form-busca-loja.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { FooterComponent } from './shared/footer/footer.component';
     HomeComponent,
     ContainerComponent,
     CardPetshopComponent,
-    FooterComponent
+    FooterComponent,
+    FormBuscaLojaComponent
   ],
   imports: [
     BrowserModule,

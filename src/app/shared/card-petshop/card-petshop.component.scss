@@ -1,3 +1,8 @@
+.card {
+  border: solid 1px var(--primary-color);
+  border-radius: 15px;
+}
+
 .card__botao {
   display: flex;
   justify-content: flex-end;
@@ -15,7 +20,7 @@
   display: flex;
 }
 
-@media screen and (min-width: 845px) {
+@media screen and (min-width: 769px) {
   .card__botao {
     display: flex;
     justify-content: flex-end;
