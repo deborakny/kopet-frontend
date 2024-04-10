@@ -18,6 +18,7 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { FormBuscaLojaComponent } from './shared/form-busca-loja/form-busca-loja.component';
 import { BannerComponent } from './shared/banner/banner.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ListaEstabelecimentosComponent } from './pages/home/lista-estabelecimentos/lista-estabelecimentos.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { HttpClientModule } from '@angular/common/http';
     CardPetshopComponent,
     FooterComponent,
     FormBuscaLojaComponent,
-    BannerComponent
+    BannerComponent,
+    ListaEstabelecimentosComponent
   ],
   imports: [
     BrowserModule,

@@ -1,13 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { Loja } from '../types/loja';
+import { Estabelecimento } from '../types/estabelecimento';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class LojaService {
+export class EstabelecimentoService {
 
   private apiUrl: string = environment.apiUrl;
 
@@ -15,8 +15,7 @@ export class LojaService {
     private http: HttpClient
   ) { }
 
-  listar(): Observable<Loja[]> {
-    return this.http.get<Loja[]>(`${this.apiUrl}/estabelecimentos`);
+  listar(): Observable<Estabelecimento[]>{
+    return this.http.get<Estabelecimento[]>(`${this.apiUrl}/estabelecimentos`);
   }
-
 }

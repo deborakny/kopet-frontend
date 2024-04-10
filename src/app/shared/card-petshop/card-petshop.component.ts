@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Endereco } from 'src/app/core/types/endereco';
+import { Estabelecimento } from 'src/app/core/types/estabelecimento';
 
 @Component({
   selector: 'app-card-petshop',
@@ -6,24 +8,24 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./card-petshop.component.scss'],
 })
 export class CardPetshopComponent implements OnInit {
-  nomeLoja: string = 'Pet Shop';
-
-  endereco = {
-    logradouro: 'Nome da Rua',
-    numero: '000',
-    complemento: '',
-    bairro: 'Nome do bairro',
-    cidade: 'Cidade',
-    estado: 'UF',
-  };
-
+  @Input() estabelecimento?: Estabelecimento;
   enderecoString: string = '';
 
   ngOnInit(): void {
-    if (this.endereco.complemento) {
-      this.enderecoString = `${this.endereco.logradouro}, ${this.endereco.numero}, ${this.endereco.complemento}, ${this.endereco.bairro}, ${this.endereco.cidade}, ${this.endereco.estado}`;
+    console.log(this.estabelecimento!.endereco?.cep)
+    if (this.estabelecimento!.endereco.complemento) {
+      this.enderecoString = `${this.estabelecimento!.endereco.logradouro},
+      ${this.estabelecimento!.endereco.numero},
+      ${this.estabelecimento!.endereco.complemento},
+      ${this.estabelecimento!.endereco.bairro},
+      ${this.estabelecimento!.endereco.cidade},
+      ${this.estabelecimento!.endereco.estado}`
     } else {
-      this.enderecoString = `${this.endereco.logradouro}, ${this.endereco.numero}, ${this.endereco.bairro}, ${this.endereco.cidade}, ${this.endereco.estado}`;
+      this.enderecoString = `${this.estabelecimento!.endereco.logradouro},
+      ${this.estabelecimento!.endereco.numero},
+      ${this.estabelecimento!.endereco.bairro},
+      ${this.estabelecimento!.endereco.cidade},
+      ${this.estabelecimento!.endereco.estado}`
     }
   }
 }

@@ -1,0 +1,12 @@
+.card-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: .75rem;
+}
+
+@media screen and (min-width: 769px) {
+  .card-wrapper {
+    padding: 0;
+  }
+}
