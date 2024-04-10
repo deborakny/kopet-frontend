@@ -17,6 +17,7 @@ import { CardPetshopComponent } from './shared/card-petshop/card-petshop.compone
 import { FooterComponent } from './shared/footer/footer.component';
 import { FormBuscaLojaComponent } from './shared/form-busca-loja/form-busca-loja.component';
 import { BannerComponent } from './shared/banner/banner.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { BannerComponent } from './shared/banner/banner.component';
     MatIconModule,
     MatButtonModule,
     MatInputModule,
-    MatCardModule
+    MatCardModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
