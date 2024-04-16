@@ -1,1 +1,31 @@
-<p>login works!</p>
+
+<app-banner></app-banner>
+<div class="login">
+  <app-container class="container">
+    <h2>Faça o seu login</h2>
+    <form class="form">
+      <div class="input-wrapper">
+        <mat-form-field class="form-field" subscriptSizing="dynamic" appearance="outline">
+          <mat-label>E-mail</mat-label>
+          <input type="email" matInput class="input">
+          <mat-error *ngIf="true">Errou</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="input-wrapper">
+        <mat-form-field class="form-field" subscriptSizing="dynamic" appearance="outline">
+          <mat-label>Senha</mat-label>
+          <input type="password" matInput class="input">
+        </mat-form-field>
+        <div class="alteracao-senha">
+          <a href="/login">Esqueci minha senha</a>
+        </div>
+      </div>
+      <button class="button-login" mat-flat-button color="primary">Entrar</button>
+    </form>
+  </app-container>
+  <div class="sem-conta">
+    <span class="span-sem-conta">Ainda não possui conta?</span>
+    <a href="/login" class="link-cadastrar">Cadastrar estabelecimento</a>
+    <a href="/login" class="link-cadastrar">Cadastrar-se como cliente</a>
+  </div>
+</div>
