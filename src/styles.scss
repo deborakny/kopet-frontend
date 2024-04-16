@@ -33,6 +33,11 @@ $my-theme: mat.define-light-theme((
 
 // @include angular-material-theme($custom-theme);
 
+* {
+  padding: 0;
+  margin: 0;
+}
+
 html, body {
   height: 100%;
 }
@@ -41,4 +46,5 @@ body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
+
 
