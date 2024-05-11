@@ -20,6 +20,7 @@ import { BannerComponent } from './shared/banner/banner.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ListaEstabelecimentosComponent } from './pages/home/lista-estabelecimentos/lista-estabelecimentos.component';
 import { LoginComponent } from './pages/login/login.component';
+import { EstabelecimentoPerfilComponent } from './pages/estabelecimento-perfil/estabelecimento-perfil.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { LoginComponent } from './pages/login/login.component';
     FormBuscaLojaComponent,
     BannerComponent,
     ListaEstabelecimentosComponent,
-    LoginComponent
+    LoginComponent,
+    EstabelecimentoPerfilComponent
   ],
   imports: [
     BrowserModule,
