@@ -22,3 +22,24 @@
     }
   }
 }
+
+.banner-sem-logo {
+  margin: 0;
+  mat-toolbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 3rem 0 8rem 0;
+    z-index: -1;
+    width: 100%;
+    border-radius: 0 0 100px 100px;
+  }
+
+  @media screen and (min-width: 769px) {
+    display: none;
+    mat-toolbar {
+     border-radius: 0;
+     padding: 3rem;
+    }
+  }
+}
