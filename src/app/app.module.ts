@@ -21,6 +21,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { ListaEstabelecimentosComponent } from './pages/home/lista-estabelecimentos/lista-estabelecimentos.component';
 import { LoginComponent } from './pages/login/login.component';
 import { EstabelecimentoPerfilComponent } from './pages/estabelecimento-perfil/estabelecimento-perfil.component';
+import { MatExpansionModule } from '@angular/material/expansion';
+import {MatDividerModule} from '@angular/material/divider';
 
 @NgModule({
   declarations: [
@@ -45,7 +47,9 @@ import { EstabelecimentoPerfilComponent } from './pages/estabelecimento-perfil/e
     MatButtonModule,
     MatInputModule,
     MatCardModule,
-    HttpClientModule
+    HttpClientModule,
+    MatExpansionModule,
+    MatDividerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
