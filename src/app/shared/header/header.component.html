@@ -1,14 +1,11 @@
 <header class="header">
   <mat-toolbar color="accent" class="header__toolbar">
-    <mat-toolbar-row class="logo-botoes">
-      <div class="logo">
-        <span class="logo">KoPet</span>
+    <mat-toolbar-row class="logo-botoes-desktop">
+      <div class="logo-desktop">
+        <span class="logo_nome-desktop">KoPet</span>
         <span class="example-spacer"></span>
       </div>
       <div class="toolbar__botoes">
-        <!-- <button mat-icon-button class="header__botao-hamburguer">
-          <mat-icon>menu</mat-icon>
-        </button> -->
         <div class="header__botao-desktop">
           <button mat-button class="botao-desktop__item">botão</button>
           <button mat-button class="botao-desktop__item">botão</button>
@@ -16,20 +13,14 @@
         </div>
       </div>
     </mat-toolbar-row>
-
-    <!-- <mat-toolbar-row class="toolbar__elementos-pesquisa">
-      <div class="input-group">
-        <input
-          matInput
-          #message
-          maxlength="256"
-          placeholder="Pesquisar loja"
-          class="toolbar__barra-pesquisa"
-        />
-        <button class="botao-busca">
-          <i class="icon-search"></i>
-        </button>
+    <mat-toolbar-row class="logo-botoes-mobile">
+      <div class="logo">
+        <span class="logo_nome">KoPet</span>
+        <span class="example-spacer"></span>
       </div>
-    </mat-toolbar-row> -->
+      <button class="botao-menu">
+        <i class="icon-menu-hamburger"></i>
+      </button>
+    </mat-toolbar-row>
   </mat-toolbar>
 </header>

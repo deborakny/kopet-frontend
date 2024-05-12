@@ -9,20 +9,37 @@
     //row-gap: 2rem;
   }
 
-  .logo-botoes {
+  .logo-botoes-mobile {
     display: flex;
     justify-content: space-between;
     width: 90%;
     padding: 0;
   }
 
+  .botao-menu {
+    border: none;
+    background: none;
+
+    :hover {
+      cursor: pointer;
+    }
+  }
+
+  .icon-menu-hamburger{
+    font-size: 1.75rem;
+  }
+
+  .logo-botoes-desktop {
+    display: none;
+  }
+
   .logo {
     color: white;
   }
 
-  // .example-spacer {
-  //   flex: 1 1 auto;
-  // }
+  .logo_nome {
+    font-size: 1.75rem;
+  }
 
   .header__botao-desktop {
     display: none;
@@ -33,12 +50,18 @@
     // .header__botao-hamburguer{
     //   display: none;
     // }
-
-    .logo {
-      font-size: 2.5rem;
+    .logo-botoes-mobile {
+      display: none;
     }
 
-    .logo-botoes {
+    .logo_nome-desktop {
+      font-size: 2.5rem;
+      color: white;
+    }
+
+    .logo-botoes-desktop {
+      display: flex;
+      justify-content: space-between;
       width: 90%;
       padding: 0;
     }
