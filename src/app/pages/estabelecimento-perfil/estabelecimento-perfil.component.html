@@ -1,48 +1,76 @@
 <app-header></app-header>
 <app-banner></app-banner>
-<app-container class="container">
-  <div class="content">
-    <div class="info nome">
-      <h1>{{ estabelecimento.nome }}</h1>
-      <mat-divider></mat-divider>
-    </div>
-    <div class="info endereco">
-      <h2>Endereço:</h2>
-      <span>{{ enderecoString }}</span>
-    </div>
-    <div class="info telefone">
-      <h2>Telefone:</h2>
-      <span>{{ estabelecimento.telefone }}</span>
-    </div>
-    <div class="info horario-mobile">
-      <mat-expansion-panel
-        (opened)="panelOpenState = true"
-        (closed)="panelOpenState = false"
-      >
-        <mat-expansion-panel-header>
-          <h2 class="titulo_horario-funcionamento">Horário de Funcionamento</h2>
-        </mat-expansion-panel-header>
+<div class="fullHeight">
+  <app-container class="container">
+    <div class="content">
+      <div class="info nome">
+        <h1>{{ estabelecimento.nome }}</h1>
+        <mat-divider></mat-divider>
+      </div>
+      <div class="info endereco">
+        <h2>Endereço:</h2>
+        <span>{{ enderecoString }}</span>
+      </div>
+      <div class="info telefone">
+        <h2>Telefone:</h2>
+        <span>{{ estabelecimento.telefone }}</span>
+      </div>
+      <div class="info horario-mobile">
+        <mat-expansion-panel
+          (opened)="panelOpenState = true"
+          (closed)="panelOpenState = false"
+        >
+          <mat-expansion-panel-header>
+            <h2 class="titulo_horario-funcionamento">
+              Horário de Funcionamento
+            </h2>
+          </mat-expansion-panel-header>
+          <ul
+            *ngFor="let horario of horariosFuncionamento"
+            class="lista-horario"
+          >
+            <li>
+              {{ horario.dia }}: {{ horario.horaInicio }} -
+              {{ horario.horaFim }}
+            </li>
+          </ul>
+        </mat-expansion-panel>
+      </div>
+      <div class="horario-desktop">
+        <h2>Horário de Funcionamento</h2>
         <ul *ngFor="let horario of horariosFuncionamento" class="lista-horario">
-          <li>{{ horario.dia }}: {{ horario.horaInicio }} - {{ horario.horaFim }}</li>
+          <li>
+            {{ horario.dia }}: {{ horario.horaInicio }} - {{ horario.horaFim }}
+          </li>
         </ul>
-      </mat-expansion-panel>
+      </div>
     </div>
-    <div class="horario-desktop">
-      <h2>Horário de Funcionamento</h2>
-      <ul *ngFor="let horario of horariosFuncionamento" class="lista-horario">
-        <li>{{ horario.dia }}: {{ horario.horaInicio }} - {{ horario.horaFim }}</li>
-      </ul>
-    </div>
-  </div>
-</app-container>
+  </app-container>
 
-<div class="divider">
-  <h1 class="divider__titulo">Serviços</h1>
-</div>
-<div class="info-servico-funcionario servico">
-  <div class="card-wrapper">
-    <app-card-servico></app-card-servico>
-    <app-card-servico></app-card-servico>
-    <app-card-servico></app-card-servico>
+  <div class="divider">
+    <h1 class="divider__titulo">Serviços</h1>
+  </div>
+  <div class="info-servico-funcionario servico">
+    <div class="card-wrapper card-wrapper-servico">
+      <app-card-servico></app-card-servico>
+      <app-card-servico></app-card-servico>
+      <app-card-servico></app-card-servico>
+    </div>
+  </div>
+  <div class="divider">
+    <h1 class="divider__titulo">Colaboradores</h1>
+  </div>
+  <div class="info-servico-funcionario servico">
+    <div class="card-wrapper card-wrapper-funcionario">
+      <app-card-funcionario></app-card-funcionario>
+      <app-card-funcionario></app-card-funcionario>
+      <app-card-funcionario></app-card-funcionario>
+    </div>
+  </div>
+  <div class="botao">
+    <button mat-flat-button color="primary" class="botao__agendar">
+      <h1>Agendar</h1>
+    </button>
   </div>
 </div>
+<app-footer class="footer"></app-footer>

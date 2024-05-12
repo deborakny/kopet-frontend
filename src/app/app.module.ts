@@ -26,6 +26,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import {MatDividerModule} from '@angular/material/divider';
 import { CardServicoComponent } from './shared/card-servico/card-servico.component';
 import { CardFuncionarioComponent } from './shared/card-funcionario/card-funcionario.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -55,6 +56,7 @@ import { CardFuncionarioComponent } from './shared/card-funcionario/card-funcion
     HttpClientModule,
     MatExpansionModule,
     MatDividerModule,
+    NgbModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

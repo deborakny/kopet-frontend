@@ -55,6 +55,8 @@ export class EstabelecimentoPerfilComponent implements OnInit {
 
   panelOpenState = false
 
+  images = [944, 1011, 984].map((n) => `https://picsum.photos/id/${n}/900/500`);
+
   ngOnInit(): void {
     // Object.entries(this.estabelecimento.endereco).forEach((key) =>{
     //   this.enderecoString+= `${this.estabelecimento.endereco[key as keyof Endereco]},`
