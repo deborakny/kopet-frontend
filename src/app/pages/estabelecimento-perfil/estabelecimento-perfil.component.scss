@@ -38,11 +38,25 @@ ul {
   display: none;
 }
 
+.divider {
+  background-color: var(--accent-color);
+  margin: 1rem 0;
+}
+
+.divider__titulo {
+  color: black;
+  font-size: .9rem;
+  font-weight: 600;
+  text-align: center;
+}
+
 @media screen and (min-width: 769px){
   .container {
     margin-top: 0;
     width: 100%;
     border-radius: 0;
+    border-bottom: 0px;
+    padding-bottom: 1rem;
   }
 
   .content {

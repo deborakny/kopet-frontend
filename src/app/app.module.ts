@@ -23,6 +23,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { EstabelecimentoPerfilComponent } from './pages/estabelecimento-perfil/estabelecimento-perfil.component';
 import { MatExpansionModule } from '@angular/material/expansion';
 import {MatDividerModule} from '@angular/material/divider';
+import { CardServicoComponent } from './shared/card-servico/card-servico.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import {MatDividerModule} from '@angular/material/divider';
     BannerComponent,
     ListaEstabelecimentosComponent,
     LoginComponent,
-    EstabelecimentoPerfilComponent
+    EstabelecimentoPerfilComponent,
+    CardServicoComponent
   ],
   imports: [
     BrowserModule,
