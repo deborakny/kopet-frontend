@@ -1,0 +1,33 @@
+.card {
+  border: solid 1px var(--primary-color);
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  mat-card-title {
+    text-align: center;
+  }
+
+  mat-divider{
+    width: 90%;
+    align-self: center;
+  }
+  h1 {
+    font-size: 1rem;
+    margin: 0;
+    font-weight: 600;
+  }
+
+  h2 {
+    font-size: 0.8rem;
+    text-align: center;
+    margin: 0;
+  }
+
+  .info_servico {
+    display: flex;
+    flex-direction: column;
+  }
+}

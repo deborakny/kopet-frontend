@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./card-servico.component.scss']
 })
 export class CardServicoComponent {
-
+  valor: string = '75,00'
 }

@@ -50,6 +50,17 @@ ul {
   text-align: center;
 }
 
+.info-servico-funcionario{
+  display: flex;
+  justify-content: center;
+}
+
+.card-wrapper {
+  display: flex;
+  gap: .5rem;
+  width: 90%;
+}
+
 @media screen and (min-width: 769px){
   .container {
     margin-top: 0;
@@ -93,6 +104,10 @@ ul {
     grid-column: 2;
     grid-row: 2;
     text-align: center;
+  }
+
+  .card-wrapper {
+    justify-content: space-between;
   }
 
 }

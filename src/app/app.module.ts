@@ -1,3 +1,4 @@
+import { SwiperModule } from 'swiper/types/shared';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -24,6 +25,7 @@ import { EstabelecimentoPerfilComponent } from './pages/estabelecimento-perfil/e
 import { MatExpansionModule } from '@angular/material/expansion';
 import {MatDividerModule} from '@angular/material/divider';
 import { CardServicoComponent } from './shared/card-servico/card-servico.component';
+import { CardFuncionarioComponent } from './shared/card-funcionario/card-funcionario.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,8 @@ import { CardServicoComponent } from './shared/card-servico/card-servico.compone
     ListaEstabelecimentosComponent,
     LoginComponent,
     EstabelecimentoPerfilComponent,
-    CardServicoComponent
+    CardServicoComponent,
+    CardFuncionarioComponent
   ],
   imports: [
     BrowserModule,
@@ -51,7 +54,7 @@ import { CardServicoComponent } from './shared/card-servico/card-servico.compone
     MatCardModule,
     HttpClientModule,
     MatExpansionModule,
-    MatDividerModule
+    MatDividerModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
