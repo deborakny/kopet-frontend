@@ -1,14 +1,21 @@
-.footer {
+footer {
   display: flex;
-  justify-content: center;
-  position: fixed;
-  bottom: 0;
-  z-index: 3;
   height: 56px;
-}
+  margin-top: 1rem;
 
-@media screen and (min-width: 769px) {
   .footer {
-    display: none;
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    z-index: 3;
+    bottom: 0;
+    // height: 56px;
   }
+
+  @media screen and (min-width: 769px) {
+    .footer {
+      display: none;
+    }
+  }
+
 }
