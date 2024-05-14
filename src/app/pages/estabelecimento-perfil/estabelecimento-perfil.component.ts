@@ -1,7 +1,5 @@
-import { Endereco } from 'src/app/core/types/endereco';
-import { Component, OnInit } from '@angular/core';
+import {  Component, OnInit } from '@angular/core';
 import { Estabelecimento } from 'src/app/core/types/estabelecimento';
-import { MatExpansionModule } from '@angular/material/expansion';
 
 @Component({
   selector: 'app-estabelecimento-perfil',
