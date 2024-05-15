@@ -20,18 +20,6 @@ $my-theme: mat.define-light-theme((
   --accent-color: #fff176;
 }
 
-//$my-palette: mat.$indigo-palette;
-
-// @import '@angular/material/theming';
-// @include mat-core();
-
-// $custom-app-primary: mat-palette($mat-blue);
-// $custom-app-accent: mat-palette($mat-yellow, 300);
-// $custom-app-warn: mat-palette($mat-red);
-
-// $custom-theme: mat-light-theme($custom-app-primary, $custom-app-accent, $custom-app-warn);
-
-// @include angular-material-theme($custom-theme);
 
 * {
   padding: 0;
@@ -47,10 +35,3 @@ html, body {
 body {
   margin: 0 auto;
 }
-
-
-
-
-
-/* Importing Bootstrap SCSS file. */
-// @import 'bootstrap/scss/bootstrap';

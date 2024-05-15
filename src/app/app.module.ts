@@ -27,6 +27,8 @@ import {MatDividerModule} from '@angular/material/divider';
 import { CardServicoComponent } from './shared/card-servico/card-servico.component';
 import { CardFuncionarioComponent } from './shared/card-funcionario/card-funcionario.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ChipComponent } from './shared/chip/chip.component';
+import { SelecionarPetComponent } from './pages/agendamento/selecionar-pet/selecionar-pet.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +44,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     LoginComponent,
     EstabelecimentoPerfilComponent,
     CardServicoComponent,
-    CardFuncionarioComponent
+    CardFuncionarioComponent,
+    ChipComponent,
+    SelecionarPetComponent
   ],
   imports: [
     BrowserModule,
