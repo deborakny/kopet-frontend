@@ -29,6 +29,8 @@ import { FormBuscaLojaComponent } from './shared/form-busca-loja/form-busca-loja
 import { HeaderComponent } from './shared/header/header.component';
 import { CardSelecionarComponent } from './shared/card-selecionar/card-selecionar.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { PrimaryButtonComponent } from './shared/primary-button/primary-button.component';
+import { BasicButtonComponent } from './shared/basic-button/basic-button.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +49,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CardFuncionarioComponent,
     SelecionarPetComponent,
     CardSelecionarComponent,
+    PrimaryButtonComponent,
+    BasicButtonComponent,
   ],
   imports: [
     BrowserModule,
