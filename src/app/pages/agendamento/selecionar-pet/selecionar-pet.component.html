@@ -1,2 +1,9 @@
-
-
+<div class="card-wrapper">
+  <app-card-selecionar
+    *ngFor="let pet of pets"
+    [obj]="pet"
+    radioGroup="pet-radio-group"
+    class="card"
+  >
+  </app-card-selecionar>
+</div>

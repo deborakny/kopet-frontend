@@ -6,5 +6,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./selecionar-pet.component.scss']
 })
 export class SelecionarPetComponent {
-
+  pets: object[] = [
+    {
+      nome: 'Lilica'
+    },
+    {
+      nome: 'Luna'
+    },
+  ];
 }

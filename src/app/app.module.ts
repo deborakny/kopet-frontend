@@ -28,6 +28,7 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { FormBuscaLojaComponent } from './shared/form-busca-loja/form-busca-loja.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { CardSelecionarComponent } from './shared/card-selecionar/card-selecionar.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,7 @@ import { CardSelecionarComponent } from './shared/card-selecionar/card-seleciona
     CardServicoComponent,
     CardFuncionarioComponent,
     SelecionarPetComponent,
-    CardSelecionarComponent
+    CardSelecionarComponent,
   ],
   imports: [
     BrowserModule,
@@ -61,7 +62,9 @@ import { CardSelecionarComponent } from './shared/card-selecionar/card-seleciona
     MatDividerModule,
     NgbModule,
     MatChipsModule,
-    MatRadioModule
+    MatRadioModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent],

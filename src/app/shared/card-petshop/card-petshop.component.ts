@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Endereco } from 'src/app/core/types/endereco';
 import { Estabelecimento } from 'src/app/core/types/estabelecimento';
 
 @Component({
@@ -7,6 +6,7 @@ import { Estabelecimento } from 'src/app/core/types/estabelecimento';
   templateUrl: './card-petshop.component.html',
   styleUrls: ['./card-petshop.component.scss'],
 })
+
 export class CardPetshopComponent implements OnInit {
   @Input() estabelecimento?: Estabelecimento;
   enderecoString: string = '';
