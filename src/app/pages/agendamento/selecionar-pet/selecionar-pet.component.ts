@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-selecionar-pet',
@@ -6,11 +7,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./selecionar-pet.component.scss']
 })
 export class SelecionarPetComponent {
-  pets: object[] = [
+  // formControl: FormControl = new FormControl();
+
+  pets: any[] = [
     {
+      id: 1,
       nome: 'Lilica'
     },
     {
+      id: 2,
       nome: 'Luna'
     },
   ];

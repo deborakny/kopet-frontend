@@ -51,9 +51,35 @@ export class EstabelecimentoPerfilComponent implements OnInit {
     },
   ];
 
+  servicos: any[] = [
+    {
+      nome: 'banho e tosa',
+      valor: '75,00'
+    },
+    {
+      nome: 'consulta veterinária',
+      valor: '80,00'
+    },
+    {
+      nome: 'banho e tosa',
+      valor: '75,00'
+    },
+    {
+      nome: 'consulta veterinária',
+      valor: '80,00'
+    },
+    {
+      nome: 'banho e tosa',
+      valor: '75,00'
+    },
+    {
+      nome: 'consulta veterinária',
+      valor: '80,00'
+    },
+  ]
+
   panelOpenState = false
 
-  images = [944, 1011, 984].map((n) => `https://picsum.photos/id/${n}/900/500`);
 
   ngOnInit(): void {
     // Object.entries(this.estabelecimento.endereco).forEach((key) =>{

@@ -8,4 +8,14 @@ import { Component, Input } from '@angular/core';
 export class CardSelecionarComponent {
   @Input() obj?: any;
   @Input() radioGroup!: string;
+
+  // @Input() objects: any[] = [];
+  // @Input() radioGroup!: string;
+  // @Input() formControl?: FormControl;
+
+  // selecionado?: number;
+
+  // toggleInput(id: number) {
+  //   this.formControl?.setValue(id);
+  // }
 }

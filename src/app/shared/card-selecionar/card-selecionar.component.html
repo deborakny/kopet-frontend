@@ -11,4 +11,23 @@
   </label>
 </div>
 
-
+<!--<app-container>
+  <div
+  class="radio-group"
+  *ngFor="let obj of objects"
+  [ngClass]="{'selecionado' : selecionado === obj.id}"
+  (click)="toggleInput(obj.id)"
+  >
+    <input
+    type="radio"
+    id="{{obj.nome}}"
+    value="{{obj.nome}}"
+    name="{{radioGroup}}"
+    class="radio-input"
+    [checked]="selecionado === obj.id"
+    >
+    <label for="{{obj.nome}}" class="radio-label">
+      {{obj.nome}}
+    </label>
+  </div>
+</app-container> -->

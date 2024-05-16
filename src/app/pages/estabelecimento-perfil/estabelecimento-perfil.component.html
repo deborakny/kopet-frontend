@@ -59,23 +59,8 @@
       pagination-clickable="true"
       space-between="10"
     >
-      <swiper-slide class="swiper__slide">
-        <app-card-servico class="card"></app-card-servico>
-      </swiper-slide>
-      <swiper-slide class="swiper__slide">
-        <app-card-servico class="card"></app-card-servico>
-      </swiper-slide>
-      <swiper-slide class="swiper__slide">
-        <app-card-servico class="card"></app-card-servico>
-      </swiper-slide>
-      <swiper-slide class="swiper__slide">
-        <app-card-servico class="card"></app-card-servico>
-      </swiper-slide>
-      <swiper-slide class="swiper__slide">
-        <app-card-servico class="card"></app-card-servico>
-      </swiper-slide>
-      <swiper-slide class="swiper__slide">
-        <app-card-servico class="card"></app-card-servico>
+      <swiper-slide class="swiper__slide" *ngFor="let item of servicos">
+        <app-card-servico class="card" [servico]="item"></app-card-servico>
       </swiper-slide>
     </swiper-container>
   </div>
