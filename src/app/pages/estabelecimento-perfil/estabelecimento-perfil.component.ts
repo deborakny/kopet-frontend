@@ -8,6 +8,7 @@ import { Estabelecimento } from 'src/app/core/types/estabelecimento';
 })
 
 export class EstabelecimentoPerfilComponent implements OnInit {
+  usuarioLogado: boolean = true;
   enderecoString: string = '';
   estabelecimento: Estabelecimento = {
     nome: 'Empresa Teste',

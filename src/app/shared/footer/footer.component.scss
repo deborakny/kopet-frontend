@@ -1,5 +1,4 @@
 footer {
-  display: flex;
   height: 56px;
   margin-top: 1rem;
 
@@ -10,7 +9,36 @@ footer {
     z-index: 3;
     bottom: 0;
     // height: 56px;
-  }
+
+ }
+
+ .icon-wrapper {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  gap: 1rem;
+ }
+
+ .icon-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .25rem;
+ }
+
+ .icon-home {
+  font-weight: 700;
+ }
+
+ .legenda {
+  font-size: 1rem;
+  margin: 0;
+  font-weight: 100;
+ }
+
+ .icon {
+   font-size: 1.5rem;
+ }
 
   @media screen and (min-width: 769px) {
     .footer {

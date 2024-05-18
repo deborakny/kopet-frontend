@@ -1,5 +1,14 @@
 <footer>
   <mat-toolbar color="accent" class="footer">
-    <a mat-button href="https://www.google.com/" target="_blank" color="primary">{{ botaoString }}</a>
+    <div class="icon-wrapper">
+      <div class="icon-item" routerLink="">
+        <i class="icon icon-home"></i>
+        <p class="legenda">Início</p>
+      </div>
+      <div class="icon-item" routerLink="/{{ url }}">
+        <i class="icon icon-{{ iconName }}"></i>
+        <p class="legenda">{{ legenda }}</p>
+      </div>
+    </div>
   </mat-toolbar>
 </footer>

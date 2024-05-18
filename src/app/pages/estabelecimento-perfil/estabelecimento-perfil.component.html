@@ -19,7 +19,7 @@
         (opened)="panelOpenState = true"
         (closed)="panelOpenState = false"
       >
-        <mat-expansion-panel-header>
+        <mat-expansion-panel-header class="panel-header-mobile">
           <h2 class="titulo_horario-funcionamento">Horário de Funcionamento</h2>
         </mat-expansion-panel-header>
         <ul *ngFor="let horario of horariosFuncionamento" class="lista-horario">
@@ -98,4 +98,4 @@
     </swiper-container>
   </div>
 </div>
-<app-footer class="footer"></app-footer>
+<app-footer class="footer" [usuarioLogado]="usuarioLogado"></app-footer>

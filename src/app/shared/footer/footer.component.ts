@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-footer',
@@ -7,15 +7,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FooterComponent implements OnInit {
 
-  botaoString: string = '';
-  usuarioLogado: boolean = false;
+  iconName: string = '';
+  legenda: string = '';
+  url: string = '';
+  @Input() usuarioLogado: boolean = false;
 
   ngOnInit(): void {
 
     if (this.usuarioLogado) {
-      this.botaoString = 'Agendamentos'
+      this.iconName = 'schedule'
+      this.legenda = 'Agendamentos'
     } else {
-      this.botaoString = 'Fazer Login'
+      this.iconName = 'login'
+      this.legenda = 'Entrar na Conta'
+      this.url = 'login'
     }
   }
 
