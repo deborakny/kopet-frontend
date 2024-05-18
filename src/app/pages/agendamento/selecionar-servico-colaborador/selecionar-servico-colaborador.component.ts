@@ -12,6 +12,7 @@ interface Food {
 })
 export class SelecionarServicoColaboradorComponent {
   label: string = "Selecione o serviço..."
+  usuarioLogado: boolean = true;
 
   servicos: any[] = [
     {

@@ -9,6 +9,8 @@ import { FormControl } from '@angular/forms';
 export class SelecionarPetComponent {
   // formControl: FormControl = new FormControl();
 
+  usuarioLogado: boolean = true;
+
   pets: any[] = [
     {
       id: 1,
