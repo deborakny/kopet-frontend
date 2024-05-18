@@ -32,6 +32,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PrimaryButtonComponent } from './shared/primary-button/primary-button.component';
 import { BasicButtonComponent } from './shared/basic-button/basic-button.component';
 import { SelecionarServicoColaboradorComponent } from './pages/agendamento/selecionar-servico-colaborador/selecionar-servico-colaborador.component';
+import { SelectDropdownComponent } from './shared/select-dropdown/select-dropdown.component';
+import {MatSelectModule} from '@angular/material/select';
+
 
 @NgModule({
   declarations: [
@@ -53,6 +56,7 @@ import { SelecionarServicoColaboradorComponent } from './pages/agendamento/selec
     PrimaryButtonComponent,
     BasicButtonComponent,
     SelecionarServicoColaboradorComponent,
+    SelectDropdownComponent,
   ],
   imports: [
     BrowserModule,
@@ -70,7 +74,8 @@ import { SelecionarServicoColaboradorComponent } from './pages/agendamento/selec
     MatChipsModule,
     MatRadioModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent],

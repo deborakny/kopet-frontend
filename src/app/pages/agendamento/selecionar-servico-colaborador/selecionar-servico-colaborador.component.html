@@ -1,19 +1,23 @@
 <app-header></app-header>
 <div class="content">
   <app-container class="container">
-    <h2 class="titulo">Selecione o serviço:</h2>
-    <p>Dropdown</p>
-    <h2 class="titulo">Selecione o colaborador:</h2>
-    <!-- Cards input radio de colaboradores -->
-    <!-- <div class="card-wrapper">
-      <app-card-selecionar
-        *ngFor="let pet of pets"
-        [obj]="pet"
-        radioGroup="pet-radio-group"
-        class="card"
-      >
-      </app-card-selecionar>
-    </div> -->
+    <app-select-dropdown
+    [selectLabel]="label"
+    class="select-dropdown"
+    [objs]="servicos"></app-select-dropdown>
+    <div class="colaborador">
+      <h2 class="titulo">Selecione o colaborador:</h2>
+      <!-- Cards input radio de colaboradores -->
+      <div class="card-wrapper">
+        <app-card-selecionar
+          *ngFor="let colaborador of colaboradores"
+          [obj]="colaborador"
+          radioGroup="colaborador-radio-group"
+          class="card"
+        >
+        </app-card-selecionar>
+      </div>
+    </div>
   </app-container>
   <div class="button_wrapper">
     <app-basic-button text="Voltar" class="button"></app-basic-button>
@@ -21,4 +25,6 @@
   </div>
 </div>
 <app-footer></app-footer>
+
+
 

@@ -2,7 +2,7 @@
 @include mat.core();
 
 $my-primary: mat.define-palette(mat.$blue-palette, 500);
-$my-accent: mat.define-palette(mat.$yellow-palette, 300);
+$my-accent: mat.define-palette(mat.$amber-palette, A200);
 $my-warn: mat.define-palette(mat.$red-palette);
 
 $my-theme: mat.define-light-theme((
@@ -17,7 +17,7 @@ $my-theme: mat.define-light-theme((
 
 :root {
   --primary-color: #2196f3;
-  --accent-color: #fff176;
+  --accent-color: #FFE082;
 }
 
 
