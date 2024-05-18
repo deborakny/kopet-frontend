@@ -4,6 +4,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
 import { EstabelecimentoPerfilComponent } from './pages/estabelecimento-perfil/estabelecimento-perfil.component';
 import { SelecionarPetComponent } from './pages/agendamento/selecionar-pet/selecionar-pet.component';
+import { SelecionarServicoColaboradorComponent } from './pages/agendamento/selecionar-servico-colaborador/selecionar-servico-colaborador.component';
 
 const routes: Routes = [
   {
@@ -19,8 +20,12 @@ const routes: Routes = [
     component: EstabelecimentoPerfilComponent
   },
   {
-    path: 'agendamento',
+    path: 'agendamento/selecionar-pet',
     component: SelecionarPetComponent
+  },
+  {
+    path: 'agendamento/selecionar-servico-colaborador',
+    component: SelecionarServicoColaboradorComponent
   }
 ];
 

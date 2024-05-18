@@ -1,0 +1,29 @@
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
+.container {
+  position: relative;
+  z-index: 2;
+  height: auto;
+  border-bottom: outset var(--primary-color) 3px;
+  padding: 1rem 0 1rem 0;
+
+}
+
+.titulo {
+  text-align: center;
+  font-weight: bolder;
+}
+
+.button_wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  gap: 1rem;
+}
+

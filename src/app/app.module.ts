@@ -31,6 +31,7 @@ import { CardSelecionarComponent } from './shared/card-selecionar/card-seleciona
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PrimaryButtonComponent } from './shared/primary-button/primary-button.component';
 import { BasicButtonComponent } from './shared/basic-button/basic-button.component';
+import { SelecionarServicoColaboradorComponent } from './pages/agendamento/selecionar-servico-colaborador/selecionar-servico-colaborador.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { BasicButtonComponent } from './shared/basic-button/basic-button.compone
     CardSelecionarComponent,
     PrimaryButtonComponent,
     BasicButtonComponent,
+    SelecionarServicoColaboradorComponent,
   ],
   imports: [
     BrowserModule,
