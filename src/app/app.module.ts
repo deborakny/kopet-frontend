@@ -34,7 +34,9 @@ import { BasicButtonComponent } from './shared/basic-button/basic-button.compone
 import { SelecionarServicoColaboradorComponent } from './pages/agendamento/selecionar-servico-colaborador/selecionar-servico-colaborador.component';
 import { SelectDropdownComponent } from './shared/select-dropdown/select-dropdown.component';
 import {MatSelectModule} from '@angular/material/select';
-
+import { CalendarioComponent } from './shared/calendario/calendario.component';
+import { SelecionarDataHoraComponent } from './pages/agendamento/selecionar-data-hora/selecionar-data-hora.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 
 @NgModule({
   declarations: [
@@ -57,6 +59,8 @@ import {MatSelectModule} from '@angular/material/select';
     BasicButtonComponent,
     SelecionarServicoColaboradorComponent,
     SelectDropdownComponent,
+    CalendarioComponent,
+    SelecionarDataHoraComponent,
   ],
   imports: [
     BrowserModule,
@@ -75,7 +79,8 @@ import {MatSelectModule} from '@angular/material/select';
     MatRadioModule,
     FormsModule,
     ReactiveFormsModule,
-    MatSelectModule
+    MatSelectModule,
+    MatDatepickerModule
   ],
   providers: [],
   bootstrap: [AppComponent],

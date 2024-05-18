@@ -1,0 +1,7 @@
+button.disabled{
+  background-color: lightgray;
+  pointer-events: none;
+  span {
+    color: gray;
+  }
+}

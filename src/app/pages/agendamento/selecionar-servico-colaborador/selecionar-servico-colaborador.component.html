@@ -2,10 +2,11 @@
 <div class="content">
   <app-container class="container">
     <app-select-dropdown
-    [selectLabel]="label"
-    class="select-dropdown"
-    [objs]="servicos"></app-select-dropdown>
-    <div class="colaborador">
+      [selectLabel]="label"
+      class="select-dropdown"
+      [objs]="servicos"
+    ></app-select-dropdown>
+    <div class="selecao">
       <h2 class="titulo">Selecione o colaborador:</h2>
       <!-- Cards input radio de colaboradores -->
       <div class="card-wrapper">
@@ -20,7 +21,11 @@
     </div>
   </app-container>
   <div class="button_wrapper">
-    <app-basic-button text="Voltar" class="button"></app-basic-button>
+    <app-basic-button
+      text="Voltar"
+      class="button"
+      routerLink="/agendamento/selecionar-pet"
+    ></app-basic-button>
     <app-primary-button text="Avançar" class="button"></app-primary-button>
   </div>
 </div>

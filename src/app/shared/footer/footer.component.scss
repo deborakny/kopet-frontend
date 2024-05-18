@@ -31,13 +31,14 @@ footer {
  }
 
  .legenda {
-  font-size: 1rem;
+  font-size: .8rem;
   margin: 0;
   font-weight: 100;
  }
 
  .icon {
    font-size: 1.5rem;
+   color: var(--primary-color);
  }
 
   @media screen and (min-width: 769px) {

@@ -1,0 +1,23 @@
+<app-header></app-header>
+<div class="content">
+  <app-container class="container">
+    <div class="selecao selecao-dia">
+      <h2 class="titulo">Selecione o dia:</h2>
+      <app-calendario class="calendario"></app-calendario>
+    </div>
+    <div class="selecao selecao-hora">
+      <h2 class="titulo">Selecione a hora:</h2>
+      <span>horas vai aqui</span>
+    </div>
+  </app-container>
+  <div class="button_wrapper">
+    <app-basic-button
+      text="Voltar"
+      class="button"
+      routerLink="/agendamento/selecionar-servico-colaborador"
+    ></app-basic-button>
+    <app-primary-button text="Agendar" class="button"></app-primary-button>
+  </div>
+</div>
+
+<app-footer [usuarioLogado]="usuarioLogado"></app-footer>

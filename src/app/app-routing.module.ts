@@ -5,6 +5,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { EstabelecimentoPerfilComponent } from './pages/estabelecimento-perfil/estabelecimento-perfil.component';
 import { SelecionarPetComponent } from './pages/agendamento/selecionar-pet/selecionar-pet.component';
 import { SelecionarServicoColaboradorComponent } from './pages/agendamento/selecionar-servico-colaborador/selecionar-servico-colaborador.component';
+import { SelecionarDataHoraComponent } from './pages/agendamento/selecionar-data-hora/selecionar-data-hora.component';
 
 const routes: Routes = [
   {
@@ -26,6 +27,10 @@ const routes: Routes = [
   {
     path: 'agendamento/selecionar-servico-colaborador',
     component: SelecionarServicoColaboradorComponent
+  },
+  {
+    path: 'agendamento/selecionar-data-hora',
+    component: SelecionarDataHoraComponent
   }
 ];
 
