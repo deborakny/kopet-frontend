@@ -1,5 +1,7 @@
 <mat-calendar
   [minDate]="minDate"
   [maxDate]="maxDate"
+  [(selected)]="selected"
   [dateClass]="dateClass.bind(this)"
+  (click)="onClick()"
 ></mat-calendar>

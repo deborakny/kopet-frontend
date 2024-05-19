@@ -37,6 +37,7 @@ import {MatSelectModule} from '@angular/material/select';
 import { CalendarioComponent } from './shared/calendario/calendario.component';
 import { SelecionarDataHoraComponent } from './pages/agendamento/selecionar-data-hora/selecionar-data-hora.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { ChipHoraComponent } from './shared/chip-hora/chip-hora.component';
 
 @NgModule({
   declarations: [
@@ -61,6 +62,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
     SelectDropdownComponent,
     CalendarioComponent,
     SelecionarDataHoraComponent,
+    ChipHoraComponent,
   ],
   imports: [
     BrowserModule,
