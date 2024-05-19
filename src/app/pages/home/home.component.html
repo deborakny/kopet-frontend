@@ -1,8 +1,11 @@
 <app-header></app-header>
-<app-form-busca-loja class="form-busca"></app-form-busca-loja>
+<app-form-busca-loja
+  class="form-busca"
+  [buscaControl]="buscaControl"
+></app-form-busca-loja>
 <app-container class="container">
   <div class="card-wrapper">
-    <app-lista-estabelecimentos></app-lista-estabelecimentos>
+    <app-lista-estabelecimentos [buscaControl]="buscaControl"></app-lista-estabelecimentos>
   </div>
 </app-container>
 <app-footer [usuarioLogado]="usuarioLogado"></app-footer>

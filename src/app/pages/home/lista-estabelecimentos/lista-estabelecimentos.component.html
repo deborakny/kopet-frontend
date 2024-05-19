@@ -1,6 +1,6 @@
-<div class="card-wrapper" [ngClass]="estabelecimentos.length > 0 ? 'card-wrapper' : 'preencher'">
+<div class="card-wrapper" [ngClass]="estabelecimentosFiltrados.length > 0 ? 'card-wrapper' : 'preencher'">
   <app-card-petshop
-    *ngFor="let item of estabelecimentos"
+    *ngFor="let item of estabelecimentosFiltrados"
     [estabelecimento]="item"
   >
   </app-card-petshop>
