@@ -3,16 +3,16 @@
 <app-container class="container">
   <div class="content">
     <div class="info nome">
-      <h1>{{ estabelecimento.nome }}</h1>
+      <h1>{{ estabelecimento?.nome }}</h1>
       <mat-divider></mat-divider>
     </div>
     <div class="info endereco">
       <h2>Endereço:</h2>
-      <span>{{ enderecoString }}</span>
+      <span class="endereco__texto">{{ enderecoString }}</span>
     </div>
     <div class="info telefone">
       <h2>Telefone:</h2>
-      <span>{{ estabelecimento.telefone }}</span>
+      <span>{{ estabelecimento?.telefone }}</span>
     </div>
     <div class="info horario-mobile">
       <mat-expansion-panel
@@ -22,9 +22,9 @@
         <mat-expansion-panel-header class="panel-header-mobile">
           <h2 class="titulo_horario-funcionamento">Horário de Funcionamento</h2>
         </mat-expansion-panel-header>
-        <ul *ngFor="let horario of estabelecimento.horariosFuncionamento" class="lista-horario">
+        <ul *ngFor="let horario of estabelecimento?.horariosFuncionamento" class="lista-horario">
           <li>
-            {{ horario.dia }}: {{ horario.horaInicial }} -
+            {{ getNomeDia(horario.dia) }}: {{ horario.horaInicial }} -
             {{ horario.horaFinal }}
           </li>
         </ul>
@@ -32,7 +32,7 @@
     </div>
     <div class="horario-desktop">
       <h2>Horário de Funcionamento</h2>
-      <ul *ngFor="let horario of estabelecimento.horariosFuncionamento" class="lista-horario">
+      <ul *ngFor="let horario of estabelecimento?.horariosFuncionamento" class="lista-horario">
         <li>
           {{ horario.dia }}: {{ horario.horaInicial }} - {{ horario.horaFinal }}
         </li>

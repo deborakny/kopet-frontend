@@ -43,7 +43,6 @@ export class ListaEstabelecimentosComponent implements OnInit {
   }
 
   filtrar(busca: string): any[] {
-    console.log(busca);
     if (busca === '') {
       return [];
     }

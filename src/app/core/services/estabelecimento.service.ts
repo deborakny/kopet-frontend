@@ -18,4 +18,8 @@ export class EstabelecimentoService {
   listar(): Observable<Estabelecimento[]>{
     return this.http.get<Estabelecimento[]>(`${this.apiUrl}/estabelecimentos`);
   }
+
+  getEstabelecimentoById(id: number): Observable<Estabelecimento> {
+    return this.http.get<Estabelecimento>(`${this.apiUrl}/estabelecimentos/${id}`);
+  }
 }

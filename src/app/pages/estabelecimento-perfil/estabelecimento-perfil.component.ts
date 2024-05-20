@@ -1,6 +1,8 @@
 import {  Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { EstabelecimentoService } from 'src/app/core/services/estabelecimento.service';
+import { DiaDaSemana } from 'src/app/core/types/enum/dia-da-semana.enum';
 import { Estabelecimento } from 'src/app/core/types/estabelecimento';
-import { HorarioFuncionamento } from 'src/app/core/types/horario-funcionamento';
 
 @Component({
   selector: 'app-estabelecimento-perfil',
@@ -11,48 +13,7 @@ import { HorarioFuncionamento } from 'src/app/core/types/horario-funcionamento';
 export class EstabelecimentoPerfilComponent implements OnInit {
   usuarioLogado: boolean = true;
   enderecoString: string = '';
-  estabelecimento: Estabelecimento = {
-    nome: 'Empresa Teste',
-    telefone: '3208-3268',
-    endereco: {
-      id: 1,
-      cep: '09999-900',
-      logradouro: 'Rua R',
-      bairro: 'Vila V',
-      numero: '325',
-      cidade: 'São Paulo',
-      estado: 'SP',
-    },
-    horariosFuncionamento: [
-      {
-        dia: 1,
-        horaInicial: '08:00',
-        horaFinal: '18:00',
-      },
-      {
-        dia: 2,
-        horaInicial: '08:00',
-        horaFinal: '18:00',
-      },
-      {
-        dia: 3,
-        horaInicial: '08:00',
-        horaFinal: '18:00',
-      },
-      {
-        dia: 4,
-        horaInicial: '08:00',
-        horaFinal: '18:00',
-      },
-      {
-        dia: 5,
-        horaInicial: '08:00',
-        horaFinal: '18:00',
-      },
-    ]
-  };
-
-
+  estabelecimento?: Estabelecimento;
 
   servicos: any[] = [
     {
@@ -83,26 +44,37 @@ export class EstabelecimentoPerfilComponent implements OnInit {
 
   panelOpenState = false
 
+  constructor(
+    private estabelecimentoService: EstabelecimentoService,
+    private route: ActivatedRoute
+  ){}
 
   ngOnInit(): void {
-    // Object.entries(this.estabelecimento.endereco).forEach((key) =>{
-    //   this.enderecoString+= `${this.estabelecimento.endereco[key as keyof Endereco]},`
-    // });
-    // Object.keys(this.estabelecimento.endereco) as Array<keyof typeof Endereco>
-    if (this.estabelecimento!.endereco.complemento) {
-      this.enderecoString = `${this.estabelecimento!.endereco.logradouro},
-      ${this.estabelecimento!.endereco.numero},
-      ${this.estabelecimento!.endereco.complemento},
-      ${this.estabelecimento!.endereco.bairro},
-      ${this.estabelecimento!.endereco.cidade},
-      ${this.estabelecimento!.endereco.estado}`
-    } else {
-      this.enderecoString = `${this.estabelecimento!.endereco.logradouro},
-      ${this.estabelecimento!.endereco.numero},
-      ${this.estabelecimento!.endereco.bairro},
-      ${this.estabelecimento!.endereco.cidade},
-      ${this.estabelecimento!.endereco.estado}`
-    }
+    const id = this.route.snapshot.paramMap.get('id');
+    this.estabelecimentoService.getEstabelecimentoById(parseInt(id!)).subscribe(
+      res => {
+        this.estabelecimento = res;
+        if (this.estabelecimento!.endereco.complemento) {
+          this.enderecoString = `${this.estabelecimento!.endereco.logradouro},
+          ${this.estabelecimento!.endereco.numero},
+          ${this.estabelecimento!.endereco.complemento},
+          ${this.estabelecimento!.endereco.bairro},
+          ${this.estabelecimento!.endereco.cidade},
+          ${this.estabelecimento!.endereco.estado}`
+        } else {
+          this.enderecoString = `${this.estabelecimento!.endereco.logradouro},
+          ${this.estabelecimento!.endereco.numero},
+          ${this.estabelecimento!.endereco.bairro},
+          ${this.estabelecimento!.endereco.cidade},
+          ${this.estabelecimento!.endereco.estado}`
+        }
+      }
+    )
+  }
+
+  getNomeDia(dia: number): string {
+    const nomeDia = DiaDaSemana[dia];
+    return nomeDia;
   }
 
 }
