@@ -5,6 +5,7 @@
   value="{{obj.id}}"
   name="{{radioGroup}}"
   class="radio-input"
+  [checked]="objControl.getRawValue() === obj.id"
   (click)="onClick(obj.id)"
   >
   <label for="{{obj.nome}}" class="radio-label">

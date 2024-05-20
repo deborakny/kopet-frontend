@@ -1,6 +1,6 @@
 <mat-form-field class="form-field">
   <mat-label class="label">{{ selectLabel }}</mat-label>
-  <mat-select class="select">
+  <mat-select class="select" [value]="selectControl.getRawValue()">
     <mat-option
       *ngFor="let item of objs"
       [value]="item.id"

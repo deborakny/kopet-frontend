@@ -16,6 +16,7 @@
     name="horas-disponiveis"
     class="input-item"
     (click)="onClick(item.hora)"
+    [checked]="horaControl.value === item.hora"
   />
   <label for="{{ item.hora }}" class="radio-label">
     {{ item.hora }}

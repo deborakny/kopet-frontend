@@ -7,6 +7,7 @@
         *ngIf="opcoesDisponibilidade.length > 0"
         class="calendario"
         [opcoes]="opcoesDisponibilidade"
+        [dataControl]="dataControl"
         (dataSelecionada)="onSelected($event)"
       ></app-calendario>
       <app-calendario *ngIf="opcoesDisponibilidade.length == 0" class="calendario" [opcoes]="opcoesDisponibilidade"></app-calendario>
@@ -22,7 +23,7 @@
       class="button"
       routerLink="/agendamento/selecionar-servico-colaborador"
     ></app-basic-button>
-    <app-primary-button text="Agendar" class="button"></app-primary-button>
+    <app-primary-button text="Agendar" class="button" (click)="onSubmitHandler()"></app-primary-button>
   </div>
 </div>
 

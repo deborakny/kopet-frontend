@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { MomentDateAdapter } from '@angular/material-moment-adapter';
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
 import * as moment from 'moment';
@@ -43,10 +44,13 @@ export class CalendarioComponent implements OnInit{
   maxDate: Date = new Date(this.minDate);
 
   @Input() opcoes: OpcaoDisponibilidade[] = [];
+  @Input() dataControl = new FormControl();
 
   @Output() dataSelecionada = new EventEmitter<Date | null>();
 
   ngOnInit(): void {
+    // console.log('oxee',moment(this.dataControl.getRawValue()).date())
+    // this.selected?.setDate(moment(this.dataControl.getRawValue(), 'DD/MM/YYYY').date())
     this.maxDate.setDate(this.minDate.getDate() + 30);
   }
 
