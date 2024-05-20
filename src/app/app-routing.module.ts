@@ -17,7 +17,7 @@ const routes: Routes = [
     component: LoginComponent
   },
   {
-    path: 'estabelecimento',
+    path: 'estabelecimento/:id',
     component: EstabelecimentoPerfilComponent
   },
   {
