@@ -22,19 +22,19 @@
         <mat-expansion-panel-header class="panel-header-mobile">
           <h2 class="titulo_horario-funcionamento">Horário de Funcionamento</h2>
         </mat-expansion-panel-header>
-        <ul *ngFor="let horario of horariosFuncionamento" class="lista-horario">
+        <ul *ngFor="let horario of estabelecimento.horariosFuncionamento" class="lista-horario">
           <li>
-            {{ horario.dia }}: {{ horario.horaInicio }} -
-            {{ horario.horaFim }}
+            {{ horario.dia }}: {{ horario.horaInicial }} -
+            {{ horario.horaFinal }}
           </li>
         </ul>
       </mat-expansion-panel>
     </div>
     <div class="horario-desktop">
       <h2>Horário de Funcionamento</h2>
-      <ul *ngFor="let horario of horariosFuncionamento" class="lista-horario">
+      <ul *ngFor="let horario of estabelecimento.horariosFuncionamento" class="lista-horario">
         <li>
-          {{ horario.dia }}: {{ horario.horaInicio }} - {{ horario.horaFim }}
+          {{ horario.dia }}: {{ horario.horaInicial }} - {{ horario.horaFinal }}
         </li>
       </ul>
     </div>

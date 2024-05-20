@@ -1,5 +1,6 @@
 import {  Component, OnInit } from '@angular/core';
 import { Estabelecimento } from 'src/app/core/types/estabelecimento';
+import { HorarioFuncionamento } from 'src/app/core/types/horario-funcionamento';
 
 @Component({
   selector: 'app-estabelecimento-perfil',
@@ -22,35 +23,36 @@ export class EstabelecimentoPerfilComponent implements OnInit {
       cidade: 'São Paulo',
       estado: 'SP',
     },
+    horariosFuncionamento: [
+      {
+        dia: 1,
+        horaInicial: '08:00',
+        horaFinal: '18:00',
+      },
+      {
+        dia: 2,
+        horaInicial: '08:00',
+        horaFinal: '18:00',
+      },
+      {
+        dia: 3,
+        horaInicial: '08:00',
+        horaFinal: '18:00',
+      },
+      {
+        dia: 4,
+        horaInicial: '08:00',
+        horaFinal: '18:00',
+      },
+      {
+        dia: 5,
+        horaInicial: '08:00',
+        horaFinal: '18:00',
+      },
+    ]
   };
 
-  horariosFuncionamento: any[] = [
-    {
-      dia: 'segunda-feira',
-      horaInicio: '08:00',
-      horaFim: '18:00',
-    },
-    {
-      dia: 'terça-feira',
-      horaInicio: '08:00',
-      horaFim: '18:00',
-    },
-    {
-      dia: 'quarta-feira',
-      horaInicio: '08:00',
-      horaFim: '18:00',
-    },
-    {
-      dia: 'quinta-feira',
-      horaInicio: '08:00',
-      horaFim: '18:00',
-    },
-    {
-      dia: 'sábado',
-      horaInicio: '08:00',
-      horaFim: '18:00',
-    },
-  ];
+
 
   servicos: any[] = [
     {
