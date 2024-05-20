@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormControl } from '@angular/forms';
 
 interface Food {
   value: string;
@@ -13,18 +14,20 @@ interface Food {
 export class SelecionarServicoColaboradorComponent {
   label: string = "Selecione o serviço..."
   usuarioLogado: boolean = true;
+  colaboradorControl = new FormControl();
+  servicoControl = new FormControl();
 
   servicos: any[] = [
     {
-      id: 1,
+      id: 19,
       nome: 'Banho e Tosa'
     },
     {
-      id: 2,
+      id: 20,
       nome: 'Tosa Higiênica'
     },
     {
-      id: 3,
+      id: 21,
       nome: 'Consulta Veterinária'
     },
   ];
@@ -43,7 +46,7 @@ export class SelecionarServicoColaboradorComponent {
       nome: 'Carolina'
     },
     {
-      id: 3,
+      id: 4,
       nome: 'Luiza'
     },
   ];

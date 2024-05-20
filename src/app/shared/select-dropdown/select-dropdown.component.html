@@ -3,7 +3,8 @@
   <mat-select class="select">
     <mat-option
       *ngFor="let item of objs"
-      [value]="item.id">{{item.nome}}
-    </mat-option>
+      [value]="item.id"
+      (click)="onSelected(item.id)"
+    >{{ item.nome }}</mat-option>
   </mat-select>
 </mat-form-field>

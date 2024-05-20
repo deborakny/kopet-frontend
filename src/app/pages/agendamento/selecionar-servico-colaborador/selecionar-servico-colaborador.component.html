@@ -5,6 +5,7 @@
       [selectLabel]="label"
       class="select-dropdown"
       [objs]="servicos"
+      [selectControl]="servicoControl"
     ></app-select-dropdown>
     <div class="selecao">
       <h2 class="titulo">Selecione o colaborador:</h2>
@@ -15,6 +16,7 @@
           [obj]="colaborador"
           radioGroup="colaborador-radio-group"
           class="card"
+          [objControl]="colaboradorControl"
         >
         </app-card-selecionar>
       </div>

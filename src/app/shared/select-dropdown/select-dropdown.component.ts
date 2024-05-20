@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { FormControl } from '@angular/forms';
 
 
 @Component({
@@ -9,4 +10,9 @@ import { Component, Input } from '@angular/core';
 export class SelectDropdownComponent {
   @Input() selectLabel: string = ''
   @Input() objs?: any[];
+  @Input() selectControl!: FormControl;
+
+  onSelected(id: number) {
+    this.selectControl.setValue(id)
+  }
 }

@@ -2,9 +2,10 @@
   <input
   type="radio"
   id="{{obj.nome}}"
-  value="{{obj.nome}}"
+  value="{{obj.id}}"
   name="{{radioGroup}}"
   class="radio-input"
+  (click)="onClick(obj.id)"
   >
   <label for="{{obj.nome}}" class="radio-label">
     {{obj.nome}}

@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-card-selecionar',
@@ -8,6 +9,7 @@ import { Component, Input } from '@angular/core';
 export class CardSelecionarComponent {
   @Input() obj?: any;
   @Input() radioGroup!: string;
+  @Input() objControl!: FormControl;
 
   // @Input() objects: any[] = [];
   // @Input() radioGroup!: string;
@@ -18,4 +20,8 @@ export class CardSelecionarComponent {
   // toggleInput(id: number) {
   //   this.formControl?.setValue(id);
   // }
+
+  onClick(id: number) {
+    this.objControl.setValue(id);
+  }
 }

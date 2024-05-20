@@ -10,14 +10,15 @@ export class SelecionarPetComponent {
   // formControl: FormControl = new FormControl();
 
   usuarioLogado: boolean = true;
+  petControl = new FormControl();
 
   pets: any[] = [
     {
-      id: 1,
+      id: 5,
       nome: 'Lilica'
     },
     {
-      id: 2,
+      id: 6,
       nome: 'Luna'
     },
   ];
