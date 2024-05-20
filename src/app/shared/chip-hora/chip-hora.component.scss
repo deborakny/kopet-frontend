@@ -1,0 +1,44 @@
+// .chip-listbox {
+//   display: flex;
+//   justify-content: center;
+// }
+
+// .chip-item {
+//   display: flex;
+//   flex-direction: column;
+//   flex-flow: wrap;
+//   align-items: center;
+//   gap: .5rem;
+//   padding: 0 3rem;
+// }
+
+// .chip-option {
+//   border: solid 2px var(--primary-color);
+// }
+
+.radio-label {
+  border: solid 1px var(--primary-color);
+  padding: .5rem 1rem;
+  border-radius: 1rem;
+}
+
+.horas-wrapper {
+  display: flex;
+  flex-flow: wrap;
+  justify-content: center;
+  width: 100%;
+  gap: 1rem;
+}
+
+.hora-card {
+  display: flex;
+}
+
+.input-item {
+  display: none;
+}
+
+.input-item:checked + .radio-label {
+  background-color: var(--primary-color);
+  color: white;
+}

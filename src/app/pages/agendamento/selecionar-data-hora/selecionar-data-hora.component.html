@@ -13,7 +13,7 @@
     </div>
     <div *ngIf="horasDisponiveis.length > 0" class="selecao selecao-hora">
       <h2 class="titulo">Selecione a hora:</h2>
-      <app-chip-hora [horasDisponiveis]="horasDisponiveis"></app-chip-hora>
+      <app-chip-hora [horaControl]="horaControl" class="chip-hora" [horasDisponiveis]="horasDisponiveis"></app-chip-hora>
     </div>
   </app-container>
   <div class="button_wrapper">

@@ -1,3 +1,50 @@
-<mat-chip-listbox aria-label="Selecao Hora">
-  <mat-chip-option *ngFor="let item of horasDisponiveis" [value]="item.hora">{{ item.hora }}</mat-chip-option>
-</mat-chip-listbox>
+<!-- <mat-chip-listbox aria-label="Selecao Hora" class="chip-listbox">
+  <mat-chip-option
+    *ngFor="let item of horasDisponiveis"
+    [value]="item.hora"
+    class="chip-option"
+    >{{ item.hora }}</mat-chip-option
+  >
+</mat-chip-listbox> -->
+
+<div class="horas-wrapper">
+  <div *ngFor="let item of horasDisponiveis" class="hora-card">
+    <input
+    type="radio"
+    id="{{ item.hora }}"
+    value="{{ item.hora }}"
+    name="horas-disponiveis"
+    class="input-item"
+    (click)="onClick(item.hora)"
+  />
+  <label for="{{ item.hora }}" class="radio-label">
+    {{ item.hora }}
+  </label>
+  </div>
+</div>
+
+
+<!-- <div class="horas-disponiveis">
+  <div *ngFor="let item of horasDisponiveis" class="input-content">
+    <input
+    type="radio"
+    id="{{item.hora}}"
+    value="{{item.hora}}"
+    name="horas-disponiveis"
+    class="input-item"
+    >
+    <label for="{{item.hora}}" class="radio-label">
+      {{item.hora}}
+    </label>
+  </div>
+</div> -->
+
+<!-- <mat-chip-listbox aria-label="Selecao Hora" class="chip-listbox">
+  <div class="chip-item">
+    <mat-chip-option
+      *ngFor="let item of horasDisponiveis"
+      [value]="item.hora"
+      class="chip-option"
+      >{{ item.hora }}</mat-chip-option>
+  </div>
+</mat-chip-listbox> -->

@@ -3,6 +3,7 @@ import { OpcaoDisponibilidadeService } from '../../../core/services/opcao-dispon
 import { Component, OnInit } from '@angular/core';
 import { HorarioDisponivel } from 'src/app/core/types/horario-disponivel';
 import * as moment from 'moment';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-selecionar-data-hora',
@@ -13,6 +14,7 @@ export class SelecionarDataHoraComponent implements OnInit{
   usuarioLogado: boolean = true;
   opcoesDisponibilidade: OpcaoDisponibilidade[] = [];
   horasDisponiveis: HorarioDisponivel[] = [];
+  horaControl = new FormControl();
 
   constructor(
     private opcaoDisponibilidadeService: OpcaoDisponibilidadeService
@@ -37,5 +39,6 @@ export class SelecionarDataHoraComponent implements OnInit{
 
   onSelected(dataSelecionada: Date | null) {
     this.atualizarHorario(dataSelecionada);
+    // dataform=dataSelecionada
   }
 }
