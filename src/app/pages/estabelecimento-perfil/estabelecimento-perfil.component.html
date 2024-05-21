@@ -39,7 +39,7 @@
       </ul>
     </div>
     <div class="botao">
-      <button mat-flat-button color="primary" class="botao__agendar">
+      <button mat-flat-button color="primary" class="botao__agendar" (click)="agendar()">
         <h1>Agendar</h1>
       </button>
     </div>
@@ -59,8 +59,8 @@
       pagination-clickable="true"
       space-between="10"
     >
-      <swiper-slide class="swiper__slide" *ngFor="let item of servicos">
-        <app-card-servico class="card" [servico]="item"></app-card-servico>
+      <swiper-slide class="swiper__slide" *ngFor="let servico of servicos">
+        <app-card-servico class="card" [servico]="servico"></app-card-servico>
       </swiper-slide>
     </swiper-container>
   </div>
@@ -77,23 +77,8 @@
       pagination-clickable="true"
       space-between="10"
     >
-      <swiper-slide class="swiper__slide">
-        <app-card-funcionario class="card"></app-card-funcionario>
-      </swiper-slide>
-      <swiper-slide class="swiper__slide">
-        <app-card-funcionario class="card"></app-card-funcionario>
-      </swiper-slide>
-      <swiper-slide class="swiper__slide">
-        <app-card-funcionario class="card"></app-card-funcionario>
-      </swiper-slide>
-      <swiper-slide class="swiper__slide">
-        <app-card-funcionario class="card"></app-card-funcionario>
-      </swiper-slide>
-      <swiper-slide class="swiper__slide">
-        <app-card-funcionario class="card"></app-card-funcionario>
-      </swiper-slide>
-      <swiper-slide class="swiper__slide">
-        <app-card-funcionario class="card"></app-card-funcionario>
+      <swiper-slide class="swiper__slide" *ngFor="let funcionario of funcionarios">
+        <app-card-funcionario class="card" [funcionario]="funcionario"></app-card-funcionario>
       </swiper-slide>
     </swiper-container>
   </div>

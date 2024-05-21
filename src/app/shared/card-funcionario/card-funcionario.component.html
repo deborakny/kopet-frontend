@@ -1,11 +1,11 @@
 <mat-card class="card">
   <mat-card-header>
     <mat-card-title>
-      <h1>Luisa Fernandes</h1>
+      <h1>{{ funcionario.nome }}</h1>
     </mat-card-title>
   </mat-card-header>
   <mat-divider></mat-divider>
-  <mat-card-content class="info_funcionario">
-    <span>Banhista</span>
+  <mat-card-content class="info_funcionario" *ngFor="let servico of funcionario.servicos">
+    <span class="servico__texto">{{ servico.nome }}</span>
   </mat-card-content>
 </mat-card>
