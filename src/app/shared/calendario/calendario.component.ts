@@ -49,8 +49,6 @@ export class CalendarioComponent implements OnInit{
   @Output() dataSelecionada = new EventEmitter<Date | null>();
 
   ngOnInit(): void {
-    // console.log('oxee',moment(this.dataControl.getRawValue()).date())
-    // this.selected?.setDate(moment(this.dataControl.getRawValue(), 'DD/MM/YYYY').date())
     this.maxDate.setDate(this.minDate.getDate() + 30);
   }
 

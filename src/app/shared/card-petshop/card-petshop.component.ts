@@ -12,7 +12,6 @@ export class CardPetshopComponent implements OnInit {
   enderecoString: string = '';
 
   ngOnInit(): void {
-    console.log(this.estabelecimento!.endereco?.cep)
     if (this.estabelecimento!.endereco.complemento) {
       this.enderecoString = `${this.estabelecimento!.endereco.logradouro},
       ${this.estabelecimento!.endereco.numero},
