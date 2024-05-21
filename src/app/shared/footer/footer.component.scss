@@ -24,6 +24,9 @@ footer {
   flex-direction: column;
   align-items: center;
   gap: .25rem;
+  :hover {
+    cursor: pointer;
+  }
  }
 
  .icon-home {
