@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { ContaService } from 'src/app/core/services/conta.service';
 import { FormAgendamentoService } from 'src/app/core/services/form-agendamento.service';
 
 @Component({
@@ -16,11 +18,16 @@ export class SelecionarPetComponent implements OnInit{
 
   constructor(
     private formAgendamentoService: FormAgendamentoService,
-    private router: Router
+    private router: Router,
+    private contaService: ContaService,
+    private snackbar: MatSnackBar
   ) { }
 
   ngOnInit(): void {
     this.petControl = this.formAgendamentoService.getControl('petId');
+
+    const clienteId = this.contaService.getId();
+    this.formAgendamentoService.setControlNumber('clienteId', clienteId!)
   }
 
   pets: any[] = [
@@ -39,7 +46,14 @@ export class SelecionarPetComponent implements OnInit{
       this.router.navigate(['agendamento/selecionar-servico-colaborador'])
     }
     else {
-      console.log('selecione um pet')
+
+      this.snackbar.open('Selecione um pet', '',
+                {
+                  horizontalPosition: "center",
+                  verticalPosition: "bottom",
+                  duration: 3000,
+                  panelClass: ['custom-snackbar']
+                });
     }
   }
 }

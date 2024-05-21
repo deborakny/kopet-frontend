@@ -54,7 +54,6 @@ export class SelecionarDataHoraComponent implements OnInit{
 
   onSubmitHandler() {
     const formAgendamentoGroup = this.formAgendamentoService.getForm();
-    this.formAgendamentoService.setControlNumber('clienteId', 2)
     if (formAgendamentoGroup?.valid) {
       const agendamento = formAgendamentoGroup.getRawValue() as Agendamento;
       this.agendamentoService.criar(agendamento).subscribe(

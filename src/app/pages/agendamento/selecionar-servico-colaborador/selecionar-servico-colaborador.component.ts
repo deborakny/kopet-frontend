@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { FormAgendamentoService } from 'src/app/core/services/form-agendamento.service';
 
@@ -21,7 +22,8 @@ export class SelecionarServicoColaboradorComponent implements OnInit{
 
   constructor(
     private formAgendamentoService: FormAgendamentoService,
-    private router: Router
+    private router: Router,
+    private snackbar: MatSnackBar
   ){}
 
   ngOnInit(): void {
@@ -69,7 +71,14 @@ export class SelecionarServicoColaboradorComponent implements OnInit{
     if (this.colaboradorControl.valid && this.servicoControl.valid) {
       this.router.navigate(['agendamento/selecionar-data-hora'])
     } else {
-      console.log('selecione tudo')
+
+      this.snackbar.open('Selecione as opções', '',
+                {
+                  horizontalPosition: "center",
+                  verticalPosition: "bottom",
+                  duration: 3000,
+                  panelClass: ['custom-snackbar']
+                });
     }
   }
 
