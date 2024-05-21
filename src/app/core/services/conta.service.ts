@@ -39,6 +39,10 @@ export class ContaService {
     return this.contaSubject.asObservable();
   }
 
+  getId() {
+    return this.contaSubject.getValue()?.id;
+  }
+
   logOut() {
     this.contaSubject.next(null);
   }
