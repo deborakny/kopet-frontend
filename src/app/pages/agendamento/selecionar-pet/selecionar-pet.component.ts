@@ -4,6 +4,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { ContaService } from 'src/app/core/services/conta.service';
 import { FormAgendamentoService } from 'src/app/core/services/form-agendamento.service';
+import { PetService } from 'src/app/core/services/pet.service';
+import { Pet } from 'src/app/core/types/pet';
 
 @Component({
   selector: 'app-selecionar-pet',
@@ -15,12 +17,14 @@ export class SelecionarPetComponent implements OnInit{
 
   usuarioLogado: boolean = true;
   petControl = new FormControl();
+  pets?: Pet[];
 
   constructor(
     private formAgendamentoService: FormAgendamentoService,
     private router: Router,
     private contaService: ContaService,
-    private snackbar: MatSnackBar
+    private snackbar: MatSnackBar,
+    private petService: PetService
   ) { }
 
   ngOnInit(): void {
@@ -28,18 +32,17 @@ export class SelecionarPetComponent implements OnInit{
 
     const clienteId = this.contaService.getId();
     this.formAgendamentoService.setControlNumber('clienteId', clienteId!)
+
+    this.getPets(clienteId!);
   }
 
-  pets: any[] = [
-    {
-      id: 8,
-      nome: 'Lilica'
-    },
-    {
-      id: 13,
-      nome: 'Luna'
-    },
-  ];
+  getPets(clienteId: number) {
+    this.petService.getPetsByCliente(clienteId).subscribe(
+      res => {
+        this.pets = res
+      }
+    )
+  }
 
   onClick() {
     if (this.petControl.valid) {
