@@ -19,4 +19,8 @@ export class FuncionarioService {
     return this.http.get<Funcionario[]>(`${this.apiUrl}/funcionarios/estabelecimento/${idEstabelecimento}`);
   }
 
+  getFuncionariosByServico(idServico: number): Observable<Funcionario[]> {
+    return this.http.get<Funcionario[]>(`${this.apiUrl}/funcionarios/servico/${idServico}`);
+  }
+
 }
