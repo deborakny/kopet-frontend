@@ -3,6 +3,10 @@ import { FormControl } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { FormAgendamentoService } from 'src/app/core/services/form-agendamento.service';
+import { FuncionarioService } from 'src/app/core/services/funcionario.service';
+import { ServicoService } from 'src/app/core/services/servico.service';
+import { Funcionario } from 'src/app/core/types/funcionario';
+import { Servico } from 'src/app/core/types/servico';
 
 interface Food {
   value: string;
@@ -20,52 +24,44 @@ export class SelecionarServicoColaboradorComponent implements OnInit{
   colaboradorControl = new FormControl();
   servicoControl = new FormControl();
 
+  servicos: Servico[] = [];
+  funcionarios: Funcionario[] = [];
+
+  selectedValue?: string;
+
   constructor(
     private formAgendamentoService: FormAgendamentoService,
     private router: Router,
-    private snackbar: MatSnackBar
+    private snackbar: MatSnackBar,
+    private servicoService: ServicoService,
+    private funcionarioService: FuncionarioService
   ){}
 
   ngOnInit(): void {
+    const estabelecimentoId = this.formAgendamentoService.getControl('estabelecimentoId').value
     this.servicoControl = this.formAgendamentoService.getControl('servicoId');
     this.colaboradorControl = this.formAgendamentoService.getControl('funcionarioId');
+
+    this.getServicos(parseInt(estabelecimentoId));
   }
 
-  servicos: any[] = [
-    {
-      id: 5,
-      nome: 'Banho e Tosa'
-    },
-    {
-      id: 6,
-      nome: 'Tosa Higiênica'
-    },
-    {
-      id: 7,
-      nome: 'Consulta Veterinária'
-    },
-  ];
+  getServicos(id: number) {
+    this.servicoService.getServicosByEstabelecimento(id).subscribe(
+      res => {
+        this.servicos = res.filter(servico => {
+          return servico.funcionarios!.length > 0
+        });
+      }
+    )
+  }
 
-  colaboradores: any[] = [
-    {
-      id: 6,
-      nome: 'José'
-    },
-    {
-      id: 2,
-      nome: 'Gabriel'
-    },
-    {
-      id: 3,
-      nome: 'Carolina'
-    },
-    {
-      id: 4,
-      nome: 'Luiza'
-    },
-  ];
-
-  selectedValue?: string;
+  getFuncionarios(id: number) {
+    this.funcionarioService.getFuncionariosByServico(id).subscribe(
+      res => {
+        this.funcionarios = res
+      }
+    )
+  }
 
   onClick() {
     if (this.colaboradorControl.valid && this.servicoControl.valid) {

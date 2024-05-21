@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
 
 
@@ -11,8 +11,10 @@ export class SelectDropdownComponent {
   @Input() selectLabel: string = ''
   @Input() objs?: any[];
   @Input() selectControl!: FormControl;
+  @Output() selecionado = new EventEmitter()
 
   onSelected(id: number) {
     this.selectControl.setValue(id)
+    this.selecionado.emit();
   }
 }

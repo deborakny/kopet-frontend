@@ -2,18 +2,22 @@
 <div class="content">
   <app-container class="container">
     <app-select-dropdown
+      *ngIf="servicos.length > 0"
       [selectLabel]="label"
       class="select-dropdown"
       [objs]="servicos"
       [selectControl]="servicoControl"
+      (selecionado)="getFuncionarios(servicoControl.value)"
     ></app-select-dropdown>
     <div class="selecao">
-      <h2 class="titulo">Selecione o colaborador:</h2>
+      <h2 class="titulo" *ngIf="funcionarios!.length > 0">
+        Selecione o colaborador:
+      </h2>
       <!-- Cards input radio de colaboradores -->
       <div class="card-wrapper">
         <app-card-selecionar
-          *ngFor="let colaborador of colaboradores"
-          [obj]="colaborador"
+          *ngFor="let funcionario of funcionarios"
+          [obj]="funcionario"
           radioGroup="colaborador-radio-group"
           class="card"
           [objControl]="colaboradorControl"
@@ -28,10 +32,11 @@
       class="button"
       routerLink="/agendamento/selecionar-pet"
     ></app-basic-button>
-    <app-primary-button text="Avançar" class="button" (click)="onClick()"></app-primary-button>
+    <app-primary-button
+      text="Avançar"
+      class="button"
+      (click)="onClick()"
+    ></app-primary-button>
   </div>
 </div>
 <app-footer [usuarioLogado]="usuarioLogado"></app-footer>
-
-
-
