@@ -7,6 +7,8 @@ import { FormControl } from '@angular/forms';
 import { FormAgendamentoService } from 'src/app/core/services/form-agendamento.service';
 import { Agendamento } from 'src/app/core/types/agendamento';
 import { AgendamentoService } from 'src/app/core/services/agendamento.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-selecionar-data-hora',
@@ -23,7 +25,9 @@ export class SelecionarDataHoraComponent implements OnInit{
   constructor(
     private opcaoDisponibilidadeService: OpcaoDisponibilidadeService,
     private formAgendamentoService: FormAgendamentoService,
-    private agendamentoService: AgendamentoService
+    private agendamentoService: AgendamentoService,
+    private snackbar: MatSnackBar,
+    private router: Router
   ){}
 
   ngOnInit(): void {
@@ -59,10 +63,15 @@ export class SelecionarDataHoraComponent implements OnInit{
       this.agendamentoService.criar(agendamento).subscribe(
         {
           next: (value) => {
-            console.log(value)
+            this.snackbar.open('Agendamento realizado com sucesso', '', {
+              horizontalPosition: "center", verticalPosition: "bottom", duration: 3000
+            });
+            this.router.navigate(['/'])
           },
           error: (e) => {
-            console.log(e)
+            this.snackbar.open('Não foi possível realizar o agendamento', '', {
+              horizontalPosition: "center", verticalPosition: "bottom", duration: 3000
+             });
           }
         }
       )
