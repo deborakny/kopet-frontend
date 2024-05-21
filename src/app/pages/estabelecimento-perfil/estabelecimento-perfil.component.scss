@@ -30,8 +30,8 @@ h1, h2 {
 .endereco {
   display: flex;
   flex-direction: column;
-  flex-flow: wrap;
-  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
   max-width: 90%;
 }
 

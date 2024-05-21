@@ -6,6 +6,7 @@ import { EstabelecimentoPerfilComponent } from './pages/estabelecimento-perfil/e
 import { SelecionarPetComponent } from './pages/agendamento/selecionar-pet/selecionar-pet.component';
 import { SelecionarServicoColaboradorComponent } from './pages/agendamento/selecionar-servico-colaborador/selecionar-servico-colaborador.component';
 import { SelecionarDataHoraComponent } from './pages/agendamento/selecionar-data-hora/selecionar-data-hora.component';
+import { authGuard } from './core/guards/auth.guard';
 
 const routes: Routes = [
   {
@@ -22,7 +23,8 @@ const routes: Routes = [
   },
   {
     path: 'agendamento/selecionar-pet',
-    component: SelecionarPetComponent
+    component: SelecionarPetComponent,
+    canActivate: [authGuard]
   },
   {
     path: 'agendamento/selecionar-servico-colaborador',
