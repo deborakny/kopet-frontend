@@ -39,3 +39,7 @@ body {
 .custom-snackbar {
   background-color: green;
 }
+
+.mat-input-element:focus {
+  outline: none; /* Remove a borda preta sólida quando o input está em foco */
+}
