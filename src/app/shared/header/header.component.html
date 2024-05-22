@@ -6,10 +6,10 @@
         <span class="example-spacer"></span>
       </div>
       <div class="toolbar__botoes">
-        <div class="header__botao-desktop">
-          <button mat-button class="botao-desktop__item">botão</button>
-          <button mat-button class="botao-desktop__item">botão</button>
-          <button mat-button class="botao-desktop__item">botão</button>
+        <div class="header__botao-desktop" *ngIf="!logado, else usuarioLogado">
+          <button mat-button class="botao-desktop__item botao_cadastro">Cadastrar-se como cliente</button>
+          <button mat-button class="botao-desktop__item botao_cadastro">Cadastrar estabelecimento</button>
+          <button mat-button class="botao-desktop__item botao_login" routerLink="login">Log In</button>
         </div>
       </div>
     </mat-toolbar-row>
@@ -19,9 +19,13 @@
         <span class="logo_nome">KoPet</span>
         <span class="example-spacer"></span>
       </div>
-      <button class="botao-menu">
+      <button class="botao-menu" *ngIf="!logado, else usuarioLogado">
         <i class="icon-menu-hamburger"></i>
       </button>
     </mat-toolbar-row>
   </mat-toolbar>
+
+  <ng-template #usuarioLogado>
+    <button class="icon-user"></button>
+  </ng-template>
 </header>
