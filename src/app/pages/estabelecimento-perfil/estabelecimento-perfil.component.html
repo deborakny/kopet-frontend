@@ -12,7 +12,7 @@
     </div>
     <div class="info telefone">
       <h2>Telefone:</h2>
-      <span>{{ estabelecimento?.telefone }}</span>
+      <span>{{ estabelecimento!.telefone | telefone }}</span>
     </div>
     <div class="info horario-mobile">
       <mat-expansion-panel
@@ -54,6 +54,7 @@
     <swiper-container
       navigation="false"
       class="swiper-wrapper"
+      mousewheel="true"
       [slidesPerView]="3"
       pagination="true"
       pagination-clickable="true"
@@ -73,6 +74,7 @@
       navigation="false"
       class="swiper-wrapper"
       [slidesPerView]="3"
+      mousewheel="true"
       pagination="true"
       pagination-clickable="true"
       space-between="10"

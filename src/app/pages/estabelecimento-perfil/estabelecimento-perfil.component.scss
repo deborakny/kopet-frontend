@@ -1,4 +1,3 @@
-
 .container {
   position: relative;
   margin-top: -11rem;
@@ -25,6 +24,8 @@ h1, h2 {
   display: flex;
   flex-direction: column;
   align-items: center;
+  flex-wrap: wrap;
+  max-width: 90%;
 }
 
 .endereco {
@@ -165,6 +166,10 @@ ul {
     margin-bottom: 1rem;
     padding: 1rem;
     width: 25%;
+  }
+
+  .swiper__slide {
+    padding: 0 3.5rem;
   }
 }
 

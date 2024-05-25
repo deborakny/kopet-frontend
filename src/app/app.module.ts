@@ -40,6 +40,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { ChipHoraComponent } from './shared/chip-hora/chip-hora.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { TelefonePipe } from './core/pipes/telefone.pipe';
 
 @NgModule({
   declarations: [
@@ -65,6 +66,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     CalendarioComponent,
     SelecionarDataHoraComponent,
     ChipHoraComponent,
+    TelefonePipe,
   ],
   imports: [
     BrowserModule,
