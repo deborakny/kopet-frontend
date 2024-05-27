@@ -12,7 +12,7 @@ export const authGuard = () => {
     return true;
   }
   const snackbarRef = snackbar.open('Faça log in para agendar', 'Log in', {
-    horizontalPosition: "center", verticalPosition: "bottom", duration: 5000
+    horizontalPosition: "center", verticalPosition: "bottom",
    });
   snackbarRef.onAction().subscribe(() => {
     router.navigate(['login']);

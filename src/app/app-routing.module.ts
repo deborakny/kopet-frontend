@@ -28,11 +28,13 @@ const routes: Routes = [
   },
   {
     path: 'agendamento/selecionar-servico-colaborador',
-    component: SelecionarServicoColaboradorComponent
+    component: SelecionarServicoColaboradorComponent,
+    canActivate: [authGuard]
   },
   {
     path: 'agendamento/selecionar-data-hora',
-    component: SelecionarDataHoraComponent
+    component: SelecionarDataHoraComponent,
+    canActivate: [authGuard]
   }
 ];
 

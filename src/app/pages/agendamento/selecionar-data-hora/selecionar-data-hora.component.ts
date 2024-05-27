@@ -35,7 +35,10 @@ export class SelecionarDataHoraComponent implements OnInit{
 
     this.dataControl = this.formAgendamentoService.getControl('dia');
 
-    this.opcaoDisponibilidadeService.listar(5, 6).subscribe(res => {
+    const idServico = this.formAgendamentoService.getControl('servicoId').value;
+    const idFuncionario = this.formAgendamentoService.getControl('funcionarioId').value;
+
+    this.opcaoDisponibilidadeService.listar(idServico, idFuncionario).subscribe(res => {
       this.opcoesDisponibilidade = res
       this.atualizarHorario(moment().toDate())
     });

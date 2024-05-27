@@ -3,12 +3,12 @@ import { Injectable } from '@angular/core';
 import { Observable, tap } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { AuthResponse } from '../types/payload';
-import { ContaService } from './conta.service';
+import { ContaService } from '../services/conta.service';
 
 @Injectable({
   providedIn: 'root',
 })
-export class AutenticacaoService {
+export class AutenticacaoInterceptor {
   private readonly apiUrl: string = environment.apiUrl;
 
   constructor(

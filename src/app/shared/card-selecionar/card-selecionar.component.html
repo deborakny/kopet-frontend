@@ -9,7 +9,7 @@
   (click)="onClick(obj.id)"
   >
   <label for="{{obj.nome}}" class="radio-label">
-    {{obj.nome}}
+    {{obj.nome}} {{obj.sobrenome ? obj.sobrenome : ''}}
   </label>
 </div>
 

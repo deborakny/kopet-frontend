@@ -1,8 +1,8 @@
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
-import { AutenticacaoService } from 'src/app/core/services/autenticacao.service';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { AutenticacaoInterceptor } from 'src/app/core/interceptors/autenticacao.interceptor';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private autenticacaoService: AutenticacaoService,
+    private autenticacaoInterceptor: AutenticacaoInterceptor,
     private router: Router,
     private snackbar: MatSnackBar
   ) {}
@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.valid) {
       const email = this.loginForm.value.email;
       const senha = this.loginForm.value.senha;
-      this.autenticacaoService.autenticar(email, senha).subscribe({
+      this.autenticacaoInterceptor.autenticar(email, senha).subscribe({
         next: (res) => {
           this.snackbar.open('Usuário logado', '', {
             horizontalPosition: 'center',
