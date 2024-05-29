@@ -6,10 +6,20 @@
         <span class="example-spacer"></span>
       </div>
       <div class="toolbar__botoes">
-        <div class="header__botao-desktop" *ngIf="!logado, else usuarioLogado">
-          <button mat-button class="botao-desktop__item botao_cadastro">Cadastrar-se como cliente</button>
-          <button mat-button class="botao-desktop__item botao_cadastro">Cadastrar estabelecimento</button>
-          <button mat-button class="botao-desktop__item botao_login" routerLink="login">Log In</button>
+        <div class="header__botao-desktop" *ngIf="!logado; else usuarioLogado">
+          <button mat-button class="botao-desktop__item botao_cadastro">
+            Cadastrar-se como cliente
+          </button>
+          <button mat-button class="botao-desktop__item botao_cadastro">
+            Cadastrar estabelecimento
+          </button>
+          <button
+            mat-button
+            class="botao-desktop__item botao_login"
+            routerLink="login"
+          >
+            Log In
+          </button>
         </div>
       </div>
     </mat-toolbar-row>
@@ -19,13 +29,36 @@
         <span class="logo_nome">KoPet</span>
         <span class="example-spacer"></span>
       </div>
-      <button class="botao-menu" *ngIf="!logado, else usuarioLogado">
+      <button class="botao-menu" *ngIf="logado; else usuarioLogado">
         <i class="icon-menu-hamburger"></i>
       </button>
     </mat-toolbar-row>
   </mat-toolbar>
 
   <ng-template #usuarioLogado>
-    <button class="icon-user"></button>
+    <!-- <button mat-button [matMenuTriggerFor]="perfilMenu" class="mat-button" class="icon-user"></button>
+    <mat-menu #perfilMenu="matMenu" xPosition="before">
+      <button mat-menu-item class="menu-item">Perfil</button>
+      <button mat-menu-item>Pets</button>
+      <button mat-menu-item>Sair</button>
+    </mat-menu> -->
+    <!-- <button class="icon-user"></button> -->
+    <button mat-button [matMenuTriggerFor]="perfilMenu" aria-label="icon-button with a menu">
+      <i class="icon-user"></i>
+    </button>
+    <mat-menu #perfilMenu="matMenu" xPosition="before">
+      <button mat-menu-item class="menu-item">
+        <mat-icon class="icon-user"></mat-icon>
+        <span>Perfil</span>
+      </button>
+      <button mat-menu-item class="menu-item">
+        <mat-icon class="icon-paw"></mat-icon>
+        <span>Pets</span>
+      </button>
+      <button mat-menu-item class="menu-item">
+        <mat-icon class="icon-log-out"></mat-icon>
+        <span>Sair</span>
+      </button>
+    </mat-menu>
   </ng-template>
 </header>

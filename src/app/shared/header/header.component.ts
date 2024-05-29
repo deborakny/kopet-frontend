@@ -17,6 +17,8 @@ export class HeaderComponent implements OnInit{
   ngOnInit(): void {
     if (this.contaService.logado()) {
       this.logado = true;
+      const clienteId = this.contaService.getId();
+      console.log(clienteId)
     } else {
       this.logado = false
     }

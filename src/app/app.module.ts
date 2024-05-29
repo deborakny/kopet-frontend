@@ -42,6 +42,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { TelefonePipe } from './core/pipes/telefone.pipe';
 import { CriarContaClienteComponent } from './pages/cliente/criar-conta-cliente/criar-conta-cliente.component';
+import {MatMenuModule} from '@angular/material/menu';
+
 
 @NgModule({
   declarations: [
@@ -90,7 +92,8 @@ import { CriarContaClienteComponent } from './pages/cliente/criar-conta-cliente/
     MatSelectModule,
     MatDatepickerModule,
     MatFormFieldModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent],

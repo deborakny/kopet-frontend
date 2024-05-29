@@ -29,6 +29,22 @@
     font-size: 1.75rem;
   }
 
+  .mdc-button{
+    size: 1rem;
+    min-width: 0;
+    min-height: 0;
+    padding: 0;
+    border-radius: 100%;
+  }
+
+  .menu-item__titulo {
+    margin: 0;
+  }
+
+  .item__icon {
+    size: 1rem;
+  }
+
   .icon-user {
     font-size: 1rem;
     color: white;
@@ -36,6 +52,10 @@
     border-radius: 50%;
     background-color: var(--primary-color);
     border: none;
+  }
+
+  .icon-paw {
+    background: pink;
   }
 
   .logo-botoes-desktop {
