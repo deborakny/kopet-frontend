@@ -41,6 +41,7 @@ import { ChipHoraComponent } from './shared/chip-hora/chip-hora.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { TelefonePipe } from './core/pipes/telefone.pipe';
+import { CriarContaClienteComponent } from './pages/cliente/criar-conta-cliente/criar-conta-cliente.component';
 
 @NgModule({
   declarations: [
@@ -67,6 +68,7 @@ import { TelefonePipe } from './core/pipes/telefone.pipe';
     SelecionarDataHoraComponent,
     ChipHoraComponent,
     TelefonePipe,
+    CriarContaClienteComponent,
   ],
   imports: [
     BrowserModule,

@@ -7,6 +7,7 @@ import { SelecionarPetComponent } from './pages/agendamento/selecionar-pet/selec
 import { SelecionarServicoColaboradorComponent } from './pages/agendamento/selecionar-servico-colaborador/selecionar-servico-colaborador.component';
 import { SelecionarDataHoraComponent } from './pages/agendamento/selecionar-data-hora/selecionar-data-hora.component';
 import { authGuard } from './core/guards/auth.guard';
+import { CriarContaClienteComponent } from './pages/cliente/criar-conta-cliente/criar-conta-cliente.component';
 
 const routes: Routes = [
   {
@@ -35,6 +36,10 @@ const routes: Routes = [
     path: 'agendamento/selecionar-data-hora',
     component: SelecionarDataHoraComponent,
     canActivate: [authGuard]
+  },
+  {
+    path: 'cadastrar/conta-cliente',
+    component: CriarContaClienteComponent
   }
 ];
 
