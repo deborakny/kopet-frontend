@@ -104,10 +104,14 @@
     .botao_cadastro {
       background-color: var(--primary-color);
       color: white;
+      border-radius: .5rem;
+      padding: .5rem;
     }
 
     .botao_login {
       color: var(--primary-color);
+      border-radius: .5rem;
+      padding: .5rem;
     }
 
     .content {

@@ -9,6 +9,7 @@ import { ContaService } from 'src/app/core/services/conta.service';
 export class HeaderComponent implements OnInit{
 
   logado: boolean = false;
+  tipoCliente: boolean = false;
 
   constructor(
     private contaService: ContaService
@@ -19,6 +20,11 @@ export class HeaderComponent implements OnInit{
       this.logado = true;
       const clienteId = this.contaService.getId();
       console.log(clienteId)
+      if (this.contaService.getTipoEstabelecimento()) {
+        this.tipoCliente = false
+      } else {
+        this.tipoCliente = true
+      }
     } else {
       this.logado = false
     }

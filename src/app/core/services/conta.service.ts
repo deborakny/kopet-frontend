@@ -43,6 +43,10 @@ export class ContaService {
     return this.contaSubject.getValue()?.id;
   }
 
+  getTipoEstabelecimento() {
+    return this.contaSubject.getValue()?.tipoEstabelecimento;
+  }
+
   logOut() {
     this.contaSubject.next(null);
   }

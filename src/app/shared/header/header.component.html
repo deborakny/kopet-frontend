@@ -1,12 +1,14 @@
 <header class="header">
   <mat-toolbar color="accent" class="header__toolbar">
+    <!-- Versão Desktop -->
     <mat-toolbar-row class="logo-botoes-desktop">
       <div class="logo-desktop">
         <span class="logo_nome-desktop">KoPet</span>
         <span class="example-spacer"></span>
       </div>
       <div class="toolbar__botoes">
-        <div class="header__botao-desktop" *ngIf="!logado; else usuarioLogado">
+        <!-- Usuário não logado -->
+        <div class="header__botao-desktop" *ngIf="!logado">
           <button mat-button class="botao-desktop__item botao_cadastro">
             Cadastrar-se como cliente
           </button>
@@ -21,44 +23,88 @@
             Log In
           </button>
         </div>
+        <!-- Usuário logado e tipo cliente -->
+          <!-- Botão de agendamentos -->
+          <!-- Botão de Perfil -->
+            <!-- Perfil -->
+            <!-- Pets -->
+            <!-- Sair -->
+        <!-- Usuário logado e tipo estabelecimento -->
+        <!-- Botão de agendamentos -->
+          <!-- Botão de Perfil -->
+            <!-- Perfil -->
+            <!-- Serviços -->
+            <!-- Funcionários -->
+            <!-- Sair -->
       </div>
     </mat-toolbar-row>
 
+    <!-- Versão Mobile -->
     <mat-toolbar-row class="logo-botoes-mobile">
       <div class="logo">
         <span class="logo_nome">KoPet</span>
         <span class="example-spacer"></span>
       </div>
-      <button class="botao-menu" *ngIf="logado; else usuarioLogado">
-        <i class="icon-menu-hamburger"></i>
+      <!-- Usuário não logado -->
+      <button class="botao-menu" *ngIf="!logado">
+        <button mat-button [matMenuTriggerFor]="menu" aria-label="icon-button with a menu">
+          <i class="icon-menu-hamburger"></i>
+        </button>
+        <mat-menu #menu="matMenu" xPosition="before">
+          <button mat-menu-item class="menu-item">
+            <span>Cadastrar-se como cliente</span>
+          </button>
+          <button mat-menu-item class="menu-item">
+            <span>Cadastrar estabelecimento</span>
+          </button>
+        </mat-menu>
+      </button>
+
+      <!-- Usuário logado e do tipo Cliente -->
+      <button class="botao-menu" *ngIf="logado && tipoCliente">
+        <button mat-button [matMenuTriggerFor]="perfilMenu" aria-label="icon-button with a menu">
+          <i class="icon-user"></i>
+        </button>
+        <mat-menu #perfilMenu="matMenu" xPosition="before">
+          <button mat-menu-item class="menu-item">
+            <mat-icon class="icon-user"></mat-icon>
+            <span>Perfil</span>
+          </button>
+          <button mat-menu-item class="menu-item">
+            <mat-icon class="icon-paw"></mat-icon>
+            <span>Pets</span>
+          </button>
+          <button mat-menu-item class="menu-item">
+            <mat-icon class="icon-log-out"></mat-icon>
+            <span>Sair</span>
+          </button>
+        </mat-menu>
+      </button>
+
+      <!-- Usuário logado e do tipo estabelecimento -->
+      <button class="botao-menu" *ngIf="logado && !tipoCliente">
+        <button mat-button [matMenuTriggerFor]="perfilMenu" aria-label="icon-button with a menu">
+          <i class="icon-user"></i>
+        </button>
+        <mat-menu #perfilMenu="matMenu" xPosition="before">
+          <button mat-menu-item class="menu-item">
+            <mat-icon class="icon-user"></mat-icon>
+            <span>Perfil</span>
+          </button>
+          <button mat-menu-item class="menu-item">
+            <mat-icon class="icon-paw"></mat-icon>
+            <span>Serviços</span>
+          </button>
+          <button mat-menu-item class="menu-item">
+            <mat-icon class="icon-log-out"></mat-icon>
+            <span>Funcionários</span>
+          </button>
+          <button mat-menu-item class="menu-item">
+            <mat-icon class="icon-log-out"></mat-icon>
+            <span>Sair</span>
+          </button>
+        </mat-menu>
       </button>
     </mat-toolbar-row>
   </mat-toolbar>
-
-  <ng-template #usuarioLogado>
-    <!-- <button mat-button [matMenuTriggerFor]="perfilMenu" class="mat-button" class="icon-user"></button>
-    <mat-menu #perfilMenu="matMenu" xPosition="before">
-      <button mat-menu-item class="menu-item">Perfil</button>
-      <button mat-menu-item>Pets</button>
-      <button mat-menu-item>Sair</button>
-    </mat-menu> -->
-    <!-- <button class="icon-user"></button> -->
-    <button mat-button [matMenuTriggerFor]="perfilMenu" aria-label="icon-button with a menu">
-      <i class="icon-user"></i>
-    </button>
-    <mat-menu #perfilMenu="matMenu" xPosition="before">
-      <button mat-menu-item class="menu-item">
-        <mat-icon class="icon-user"></mat-icon>
-        <span>Perfil</span>
-      </button>
-      <button mat-menu-item class="menu-item">
-        <mat-icon class="icon-paw"></mat-icon>
-        <span>Pets</span>
-      </button>
-      <button mat-menu-item class="menu-item">
-        <mat-icon class="icon-log-out"></mat-icon>
-        <span>Sair</span>
-      </button>
-    </mat-menu>
-  </ng-template>
 </header>
