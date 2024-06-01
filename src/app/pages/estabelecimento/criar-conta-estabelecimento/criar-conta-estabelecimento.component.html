@@ -1,0 +1,55 @@
+<app-banner [logo]='true'></app-banner>
+<div class="cadastro-estabelecimento">
+  <app-container class="container">
+    <div class="content">
+      <h2 class="titulo">Cadastrar conta</h2>
+      <form class="form">
+        <div class="input-wrapper">
+          <label for="nome" class="label">Nome fantasia</label>
+          <mat-form-field class="form-field" subscriptSizing="dynamic" appearance="outline">
+            <input type="text" matInput class="input" id="nome">
+            <!-- <mat-error *ngIf="loginForm.get('email')?.errors?.['required']">Campo obrigatório</mat-error> -->
+          </mat-form-field>
+        </div>
+        <div class="input-wrapper">
+          <label for="sobrenome" class="label">CNPJ</label>
+          <mat-form-field class="form-field" subscriptSizing="dynamic" appearance="outline" formControlName="sobrenome">
+            <input type="text" matInput class="input" id="sobrenome">
+            <!-- <mat-error *ngIf="loginForm.get('email')?.errors?.['required']">Campo obrigatório</mat-error> -->
+          </mat-form-field>
+        </div>
+        <div class="input-wrapper">
+          <label for="telefone" class="label">Telefone</label>
+          <mat-form-field class="form-field" subscriptSizing="dynamic" appearance="outline">
+            <input type="text" matInput class="input" id="telefone">
+            <!-- <mat-error *ngIf="loginForm.get('email')?.errors?.['required']">Campo obrigatório</mat-error> -->
+          </mat-form-field>
+        </div>
+        <div class="form-conta">
+          <div class="input-wrapper">
+            <label for="email" class="label">E-mail</label>
+            <mat-form-field class="form-field" subscriptSizing="dynamic" appearance="outline">
+              <input type="email" matInput class="input" id="email">
+              <!-- <mat-error *ngIf="loginForm.get('email')?.errors?.['required']">Campo obrigatório</mat-error> -->
+            </mat-form-field>
+          </div>
+          <div class="input-wrapper">
+            <label for="senha" class="label">Senha</label>
+            <mat-form-field class="form-field" subscriptSizing="dynamic" appearance="outline">
+              <input type="password" matInput class="input" id="senha">
+              <!-- <mat-error *ngIf="loginForm.get('email')?.errors?.['required']">Campo obrigatório</mat-error> -->
+            </mat-form-field>
+          </div>
+        </div>
+      </form>
+    </div>
+  </app-container>
+  <div class="button_wrapper">
+    <app-basic-button
+      text="Cancelar"
+      class="button"
+      routerLink=""
+    ></app-basic-button>
+    <app-primary-button text="Cadastrar" class="button"></app-primary-button>
+  </div>
+</div>

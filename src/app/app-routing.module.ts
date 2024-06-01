@@ -8,7 +8,7 @@ import { SelecionarServicoColaboradorComponent } from './pages/agendamento/selec
 import { SelecionarDataHoraComponent } from './pages/agendamento/selecionar-data-hora/selecionar-data-hora.component';
 import { authGuard } from './core/guards/auth.guard';
 import { CriarContaClienteComponent } from './pages/cliente/criar-conta-cliente/criar-conta-cliente.component';
-import { CriarContaEstabelecimentoComponent } from './estabelecimento/criar-conta-estabelecimento/criar-conta-estabelecimento.component';
+import { CriarContaEstabelecimentoComponent } from './pages/estabelecimento/criar-conta-estabelecimento/criar-conta-estabelecimento.component';
 
 const routes: Routes = [
   {
