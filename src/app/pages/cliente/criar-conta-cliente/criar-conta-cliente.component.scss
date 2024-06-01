@@ -22,6 +22,9 @@
 
 .titulo {
   margin: 0;
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
 }
 
 .form {
@@ -55,4 +58,22 @@
   flex-direction: column;
   width: 90%;
   gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+@media screen and (min-width: 769px){
+  .container {
+    margin-top: 0;
+    width: 40%;
+  }
+
+  .button_wrapper {
+    flex-direction: row;
+    justify-content: space-between;
+    width: 40%;
+  }
+
+  .button {
+    width: 45%;
+  }
 }

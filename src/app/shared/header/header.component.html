@@ -9,7 +9,7 @@
       <div class="toolbar__botoes">
         <!-- Usuário não logado -->
         <div class="header__botao-desktop" *ngIf="!logado">
-          <button mat-button class="botao-desktop__item botao_cadastro">
+          <button mat-button class="botao-desktop__item botao_cadastro" routerLink="cadastrar/conta-cliente">
             Cadastrar-se como cliente
           </button>
           <button mat-button class="botao-desktop__item botao_cadastro">
@@ -51,7 +51,7 @@
           <i class="icon-menu-hamburger"></i>
         </button>
         <mat-menu #menu="matMenu" xPosition="before">
-          <button mat-menu-item class="menu-item">
+          <button mat-menu-item class="menu-item" routerLink="cadastrar/conta-cliente">
             <span>Cadastrar-se como cliente</span>
           </button>
           <button mat-menu-item class="menu-item">
