@@ -43,6 +43,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { TelefonePipe } from './core/pipes/telefone.pipe';
 import { CriarContaClienteComponent } from './pages/cliente/criar-conta-cliente/criar-conta-cliente.component';
 import {MatMenuModule} from '@angular/material/menu';
+import { CriarContaEstabelecimentoComponent } from './estabelecimento/criar-conta-estabelecimento/criar-conta-estabelecimento.component';
 
 
 @NgModule({
@@ -71,6 +72,7 @@ import {MatMenuModule} from '@angular/material/menu';
     ChipHoraComponent,
     TelefonePipe,
     CriarContaClienteComponent,
+    CriarContaEstabelecimentoComponent,
   ],
   imports: [
     BrowserModule,
