@@ -15,6 +15,10 @@ export class EstabelecimentoService {
     private http: HttpClient
   ) { }
 
+  criar(estabelecimento: Estabelecimento): Observable<Estabelecimento> {
+    return this.http.post<Estabelecimento>(`${this.apiUrl}/estabelecimentos`, estabelecimento);
+  }
+
   listar(): Observable<Estabelecimento[]>{
     return this.http.get<Estabelecimento[]>(`${this.apiUrl}/estabelecimentos`);
   }
