@@ -9,6 +9,7 @@ import { SelecionarDataHoraComponent } from './pages/agendamento/selecionar-data
 import { authGuard } from './core/guards/auth.guard';
 import { CriarContaClienteComponent } from './pages/cliente/criar-conta-cliente/criar-conta-cliente.component';
 import { CriarContaEstabelecimentoComponent } from './pages/estabelecimento/criar-conta-estabelecimento/criar-conta-estabelecimento.component';
+import { CriarEnderecoEstabelecimentoComponent } from './pages/estabelecimento/criar-endereco-estabelecimento/criar-endereco-estabelecimento.component';
 
 const routes: Routes = [
   {
@@ -45,7 +46,11 @@ const routes: Routes = [
   {
     path: 'cadastrar/conta-estabelecimento',
     component: CriarContaEstabelecimentoComponent
-  }
+  },
+  {
+    path: 'cadastrar/conta-estabelecimento/endereco',
+    component: CriarEnderecoEstabelecimentoComponent
+  },
 ];
 
 @NgModule({
