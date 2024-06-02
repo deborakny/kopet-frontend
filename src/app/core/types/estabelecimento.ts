@@ -1,3 +1,4 @@
+import { Conta } from "./conta";
 import { Endereco } from "./endereco";
 import { Funcionario } from "./funcionario";
 import { HorarioFuncionamento } from "./horario-funcionamento";
@@ -9,6 +10,7 @@ export interface Estabelecimento {
   cnpj: string;
   telefone: string;
   endereco: Endereco;
+  conta: Conta;
   horariosFuncionamento: HorarioFuncionamento[];
   funcionarios?: Funcionario[];
   servicos?: Servico[];
