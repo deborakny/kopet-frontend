@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { EstabelecimentoService } from './estabelecimento.service';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +9,10 @@ export class FormEstabelecimentoService {
 
   formGroup!: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(
+    private fb: FormBuilder,
+    private estabelecimentoService: EstabelecimentoService
+  ) {
     this.formGroup = this.fb.group({
       nome: ['', Validators.required],
       cnpj: ['', Validators.required],
@@ -34,7 +38,18 @@ export class FormEstabelecimentoService {
     return this.formGroup.get(controlName) as FormControl;
   }
 
-  getForm(): FormGroup | null {
+  getFormGroup(): FormGroup {
     return this.formGroup;
+  }
+
+  submitForm() {
+    return this.estabelecimentoService.criar(this.formGroup.value).subscribe({
+      next: (value) => {
+        console.log('sucesso')
+      },
+      error: (e) => {
+        console.log('erro')
+      }
+    })
   }
 }
