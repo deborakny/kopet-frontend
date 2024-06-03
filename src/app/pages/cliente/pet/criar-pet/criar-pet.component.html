@@ -1,1 +1,80 @@
-<p>criar-pet works!</p>
+<div class="header-banner">
+  <app-header></app-header>
+  <app-banner [logo]='false' class="banner"></app-banner>
+</div>
+<div class="cadastro-pet">
+  <app-container class="container">
+    <h2 class="titulo">Cadastrar Pet</h2>
+    <form class="form">
+      <div class="input-wrapper">
+        <label for="nome" class="label">Nome</label>
+        <mat-form-field class="form-field" subscriptSizing="dynamic" appearance="outline">
+          <input type="text" matInput class="input" id="nome">
+          <!-- <mat-error *ngIf="loginForm.get('email')?.errors?.['required']">Campo obrigatório</mat-error> -->
+        </mat-form-field>
+      </div>
+      <div class="input-wrapper">
+        <label for="especie" class="label">Espécie</label>
+        <mat-form-field class="form-field" subscriptSizing="dynamic" appearance="outline">
+          <input type="text" matInput class="input" id="especie">
+          <!-- <mat-error *ngIf="loginForm.get('email')?.errors?.['required']">Campo obrigatório</mat-error> -->
+          <mat-hint class="hint">Ex.: cão, gato...</mat-hint>
+        </mat-form-field>
+      </div>
+      <div class="input-wrapper">
+        <label for="raca" class="label">Raça</label>
+        <mat-form-field class="form-field" subscriptSizing="dynamic" appearance="outline">
+          <input type="text" matInput class="input" id="raca">
+          <!-- <mat-error *ngIf="loginForm.get('email')?.errors?.['required']">Campo obrigatório</mat-error> -->
+        </mat-form-field>
+      </div>
+      <div class="input-wrapper">
+        <label for="sexo">Sexo</label>
+        <mat-form-field class="form-field">
+          <mat-label class="label">Selecione...</mat-label>
+          <mat-select class="select" id="sexo">
+            <mat-option
+              value="F"
+            >Fêmea</mat-option>
+            <mat-option
+              value="M"
+            >Macho</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="input-wrapper">
+        <label for="portes">Porte</label>
+        <mat-form-field class="form-field">
+          <mat-label class="label">Selecione...</mat-label>
+          <mat-select class="select" id="portes">
+            <mat-option
+              value="P"
+            >Pequeno</mat-option>
+            <mat-option
+              value="M"
+            >Médio</mat-option>
+            <mat-option
+              value="G"
+            >Grande</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="input-wrapper">
+        <label for="dadosAdicionais" class="label">Dados adicionais</label>
+        <mat-form-field class="form-field" subscriptSizing="dynamic" appearance="outline">
+          <input type="text" matInput class="input dados-adicionais" id="dadosAdicionais">
+          <!-- <mat-error *ngIf="loginForm.get('email')?.errors?.['required']">Campo obrigatório</mat-error> -->
+        </mat-form-field>
+      </div>
+    </form>
+  </app-container>
+  <div class="button_wrapper">
+    <app-basic-button
+      text="Cancelar"
+      class="button"
+      routerLink=""
+    ></app-basic-button>
+    <app-primary-button text="Cadastrar" class="button"></app-primary-button>
+  </div>
+</div>
+<app-footer></app-footer>
