@@ -11,6 +11,7 @@ import { CriarContaClienteComponent } from './pages/cliente/criar-conta-cliente/
 import { CriarContaEstabelecimentoComponent } from './pages/estabelecimento/criar-conta-estabelecimento/criar-conta-estabelecimento.component';
 import { CriarEnderecoEstabelecimentoComponent } from './pages/estabelecimento/criar-endereco-estabelecimento/criar-endereco-estabelecimento.component';
 import { CriarHorarioFuncionamentoComponent } from './pages/estabelecimento/criar-horario-funcionamento/criar-horario-funcionamento.component';
+import { ListarPetsComponent } from './pages/cliente/pet/listar-pets/listar-pets.component';
 
 const routes: Routes = [
   {
@@ -55,6 +56,10 @@ const routes: Routes = [
   {
     path: 'cadastrar/conta-estabelecimento/horarios-funcionamento',
     component: CriarHorarioFuncionamentoComponent
+  },
+  {
+    path: 'perfil/listar-pets',
+    component: ListarPetsComponent
   },
 ];
 

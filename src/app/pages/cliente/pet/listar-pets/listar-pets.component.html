@@ -1,1 +1,16 @@
-<p>listar-pets works!</p>
+<div class="header-banner">
+  <app-header></app-header>
+  <app-banner [logo]='false' class="banner"></app-banner>
+</div>
+<app-container class="container">
+  <div class="titulo-botao">
+    <h2 class="titulo">Pets</h2>
+    <app-primary-button text="Cadastrar pet" class="button"></app-primary-button>
+  </div>
+  <div class="card-wrapper">
+    <app-card-pet></app-card-pet>
+  </div>
+</app-container>
+<app-footer></app-footer>
+
+
