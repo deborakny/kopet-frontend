@@ -46,6 +46,8 @@ import {MatMenuModule} from '@angular/material/menu';
 import { CriarContaEstabelecimentoComponent } from './pages/estabelecimento/criar-conta-estabelecimento/criar-conta-estabelecimento.component';
 import { CriarEnderecoEstabelecimentoComponent } from './pages/estabelecimento/criar-endereco-estabelecimento/criar-endereco-estabelecimento.component';
 import { CriarHorarioFuncionamentoComponent } from './pages/estabelecimento/criar-horario-funcionamento/criar-horario-funcionamento.component';
+import { ListarPetsComponent } from './pages/cliente/pet/listar-pets/listar-pets.component';
+import { CardPetComponent } from './shared/card-pet/card-pet.component';
 
 
 @NgModule({
@@ -77,6 +79,8 @@ import { CriarHorarioFuncionamentoComponent } from './pages/estabelecimento/cria
     CriarContaEstabelecimentoComponent,
     CriarEnderecoEstabelecimentoComponent,
     CriarHorarioFuncionamentoComponent,
+    ListarPetsComponent,
+    CardPetComponent,
   ],
   imports: [
     BrowserModule,
