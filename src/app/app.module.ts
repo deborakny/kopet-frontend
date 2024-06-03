@@ -45,6 +45,7 @@ import { CriarContaClienteComponent } from './pages/cliente/criar-conta-cliente/
 import {MatMenuModule} from '@angular/material/menu';
 import { CriarContaEstabelecimentoComponent } from './pages/estabelecimento/criar-conta-estabelecimento/criar-conta-estabelecimento.component';
 import { CriarEnderecoEstabelecimentoComponent } from './pages/estabelecimento/criar-endereco-estabelecimento/criar-endereco-estabelecimento.component';
+import { CriarHorarioFuncionamentoComponent } from './pages/estabelecimento/criar-horario-funcionamento/criar-horario-funcionamento.component';
 
 
 @NgModule({
@@ -75,6 +76,7 @@ import { CriarEnderecoEstabelecimentoComponent } from './pages/estabelecimento/c
     CriarContaClienteComponent,
     CriarContaEstabelecimentoComponent,
     CriarEnderecoEstabelecimentoComponent,
+    CriarHorarioFuncionamentoComponent,
   ],
   imports: [
     BrowserModule,
