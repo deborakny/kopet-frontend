@@ -8,7 +8,10 @@
     <app-primary-button text="Cadastrar pet" class="button" routerLink="/perfil/cadastrar-pet"></app-primary-button>
   </div>
   <div class="card-wrapper">
-    <app-card-pet></app-card-pet>
+    <app-card-pet
+      *ngFor="let pet of pets"
+      [pet]="pet"
+    ></app-card-pet>
   </div>
 </app-container>
 <app-footer></app-footer>

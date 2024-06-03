@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Pet } from 'src/app/core/types/pet';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-card-pet',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./card-pet.component.scss']
 })
 export class CardPetComponent {
-
+  @Input() pet: any;
 }
