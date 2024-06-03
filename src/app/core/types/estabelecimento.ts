@@ -11,7 +11,7 @@ export interface Estabelecimento {
   telefone: string;
   endereco: Endereco;
   conta: Conta;
-  horariosFuncionamento: HorarioFuncionamento[];
+  horariosFuncionamento?: HorarioFuncionamento[];
   funcionarios?: Funcionario[];
   servicos?: Servico[];
 }

@@ -3,55 +3,57 @@
   <app-container class="container">
     <div class="content">
       <h2 class="titulo">Endereço</h2>
-      <form class="form">
-        <div class="input-wrapper">
-          <label for="cep" class="label">CEP</label>
-          <mat-form-field class="form-field" subscriptSizing="dynamic" appearance="outline">
-            <input type="text" matInput class="input" id="cep">
-            <!-- <mat-error *ngIf="loginForm.get('email')?.errors?.['required']">Campo obrigatório</mat-error> -->
-          </mat-form-field>
-        </div>
-        <div class="input-wrapper">
-          <label for="logradouro" class="label">Logradouro</label>
-          <mat-form-field class="form-field" subscriptSizing="dynamic" appearance="outline">
-            <input type="text" matInput class="input" id="logradouro">
-            <!-- <mat-error *ngIf="loginForm.get('email')?.errors?.['required']">Campo obrigatório</mat-error> -->
-          </mat-form-field>
-        </div>
-        <div class="input-wrapper">
-          <label for="numero" class="label">Numero</label>
-          <mat-form-field class="form-field" subscriptSizing="dynamic" appearance="outline">
-            <input type="text" matInput class="input" id="numero">
-            <!-- <mat-error *ngIf="loginForm.get('email')?.errors?.['required']">Campo obrigatório</mat-error> -->
-          </mat-form-field>
-        </div>
-        <div class="input-wrapper">
-          <label for="complemento" class="label">Complemento</label>
-          <mat-form-field class="form-field" subscriptSizing="dynamic" appearance="outline">
-            <input type="text" matInput class="input" id="complemento">
-            <!-- <mat-error *ngIf="loginForm.get('email')?.errors?.['required']">Campo obrigatório</mat-error> -->
-          </mat-form-field>
-        </div>
-        <div class="input-wrapper">
-          <label for="bairro" class="label">Bairro</label>
-          <mat-form-field class="form-field" subscriptSizing="dynamic" appearance="outline">
-            <input type="text" matInput class="input" id="bairro">
-            <!-- <mat-error *ngIf="loginForm.get('email')?.errors?.['required']">Campo obrigatório</mat-error> -->
-          </mat-form-field>
-        </div>
-        <div class="input-wrapper">
-          <label for="cidade" class="label">Cidade</label>
-          <mat-form-field class="form-field" subscriptSizing="dynamic" appearance="outline">
-            <input type="text" matInput class="input" id="cidade">
-            <!-- <mat-error *ngIf="loginForm.get('email')?.errors?.['required']">Campo obrigatório</mat-error> -->
-          </mat-form-field>
-        </div>
-        <div class="input-wrapper">
-          <label for="estado" class="label">Estado</label>
-          <mat-form-field class="form-field" subscriptSizing="dynamic" appearance="outline">
-            <input type="text" matInput class="input" id="estado">
-            <!-- <mat-error *ngIf="loginForm.get('email')?.errors?.['required']">Campo obrigatório</mat-error> -->
-          </mat-form-field>
+      <form class="form" [formGroup]="formGroup">
+        <div formGroupName="endereco" class="form-endereco">
+          <div class="input-wrapper">
+            <label for="cep" class="label">CEP</label>
+            <mat-form-field class="form-field" subscriptSizing="dynamic" appearance="outline">
+              <input type="text" matInput class="input" id="cep" formControlName="cep">
+              <!-- <mat-error *ngIf="loginForm.get('email')?.errors?.['required']">Campo obrigatório</mat-error> -->
+            </mat-form-field>
+          </div>
+          <div class="input-wrapper">
+            <label for="logradouro" class="label">Logradouro</label>
+            <mat-form-field class="form-field" subscriptSizing="dynamic" appearance="outline">
+              <input type="text" matInput class="input" id="logradouro" formControlName="logradouro">
+              <!-- <mat-error *ngIf="loginForm.get('email')?.errors?.['required']">Campo obrigatório</mat-error> -->
+            </mat-form-field>
+          </div>
+          <div class="input-wrapper">
+            <label for="numero" class="label">Numero</label>
+            <mat-form-field class="form-field" subscriptSizing="dynamic" appearance="outline">
+              <input type="text" matInput class="input" id="numero" formControlName="numero">
+              <!-- <mat-error *ngIf="loginForm.get('email')?.errors?.['required']">Campo obrigatório</mat-error> -->
+            </mat-form-field>
+          </div>
+          <div class="input-wrapper">
+            <label for="complemento" class="label">Complemento</label>
+            <mat-form-field class="form-field" subscriptSizing="dynamic" appearance="outline">
+              <input type="text" matInput class="input" id="complemento" formControlName="complemento">
+              <!-- <mat-error *ngIf="loginForm.get('email')?.errors?.['required']">Campo obrigatório</mat-error> -->
+            </mat-form-field>
+          </div>
+          <div class="input-wrapper">
+            <label for="bairro" class="label">Bairro</label>
+            <mat-form-field class="form-field" subscriptSizing="dynamic" appearance="outline">
+              <input type="text" matInput class="input" id="bairro" formControlName="bairro">
+              <!-- <mat-error *ngIf="loginForm.get('email')?.errors?.['required']">Campo obrigatório</mat-error> -->
+            </mat-form-field>
+          </div>
+          <div class="input-wrapper">
+            <label for="cidade" class="label">Cidade</label>
+            <mat-form-field class="form-field" subscriptSizing="dynamic" appearance="outline">
+              <input type="text" matInput class="input" id="cidade" formControlName="cidade">
+              <!-- <mat-error *ngIf="loginForm.get('email')?.errors?.['required']">Campo obrigatório</mat-error> -->
+            </mat-form-field>
+          </div>
+          <div class="input-wrapper">
+            <label for="estado" class="label">Estado</label>
+            <mat-form-field class="form-field" subscriptSizing="dynamic" appearance="outline">
+              <input type="text" matInput class="input" id="estado" formControlName="estado">
+              <!-- <mat-error *ngIf="loginForm.get('email')?.errors?.['required']">Campo obrigatório</mat-error> -->
+            </mat-form-field>
+          </div>
         </div>
       </form>
     </div>
@@ -62,6 +64,6 @@
       class="button"
       routerLink=""
     ></app-basic-button>
-    <app-primary-button text="Cadastrar" class="button"></app-primary-button>
+    <app-primary-button text="Cadastrar" class="button" (click)="onSubmit()"></app-primary-button>
   </div>
 </div>

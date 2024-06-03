@@ -30,7 +30,8 @@ export class FormEstabelecimentoService {
         bairro: ['', Validators.required],
         cidade: ['', Validators.required],
         estado: ['', Validators.required],
-      })
+      }),
+      horariosFuncionamento: [[]]
     });
   }
 
@@ -43,6 +44,7 @@ export class FormEstabelecimentoService {
   }
 
   submitForm() {
+    console.log(this.formGroup.value)
     return this.estabelecimentoService.criar(this.formGroup.value).subscribe({
       next: (value) => {
         console.log('sucesso')
