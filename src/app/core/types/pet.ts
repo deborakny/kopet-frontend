@@ -1,3 +1,4 @@
+import { Cliente } from './cliente';
 export interface Pet {
   id?: number;
   nome: string;
@@ -6,4 +7,5 @@ export interface Pet {
   sexo: string;
   porte: string;
   dadosAdicionais: string;
+  cliente: Cliente;
 }
