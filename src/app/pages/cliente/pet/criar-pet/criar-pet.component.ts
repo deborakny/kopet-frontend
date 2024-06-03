@@ -21,8 +21,7 @@ export class CriarPetComponent implements OnInit{
   ) { }
 
   ngOnInit(): void {
-    //const clienteId = this.contaService.getId();
-    const clienteId = 26
+    const clienteId = this.contaService.getId();
     this.formGroup = this.fb.group({
       nome: ['', Validators.required],
       especie: ['', Validators.required],

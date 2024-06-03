@@ -20,9 +20,8 @@ export class ListarPetsComponent implements OnInit{
   ) { }
 
   ngOnInit(): void {
-    // const clienteId = this.contaService.getId();
-    const clienteId = 26;
-    this.getPets(clienteId);
+    const clienteId = this.contaService.getId();
+    this.getPets(clienteId!);
   }
 
   getPets(clienteId: number) {
