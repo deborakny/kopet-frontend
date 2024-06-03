@@ -37,10 +37,6 @@
     border-radius: 100%;
   }
 
-  .menu-item__titulo {
-    margin: 0;
-  }
-
   .item__icon {
     size: 1rem;
   }
@@ -54,8 +50,13 @@
     border: none;
   }
 
-  .icon-paw {
-    background: pink;
+  .icon-shop {
+    font-size: 1rem;
+    color: white;
+    padding: .5rem;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+    border: none;
   }
 
   .logo-botoes-desktop {
@@ -126,6 +127,15 @@
       background-color: var(--primary-color);
       border: none;
 
+    }
+
+    .icon-shop {
+      font-size: 1.5rem;
+      color: white;
+      padding: .6rem;
+      border-radius: 50%;
+      background-color: var(--primary-color);
+      border: none;
     }
 
     .icon-user:hover{

@@ -84,19 +84,19 @@
       <!-- Usuário logado e do tipo estabelecimento -->
       <button class="botao-menu" *ngIf="logado && !tipoCliente">
         <button mat-button [matMenuTriggerFor]="perfilMenu" aria-label="icon-button with a menu">
-          <i class="icon-user"></i>
+          <i class="icon-shop"></i>
         </button>
         <mat-menu #perfilMenu="matMenu" xPosition="before">
           <button mat-menu-item class="menu-item">
-            <mat-icon class="icon-user"></mat-icon>
+            <mat-icon class="icon-shop"></mat-icon>
             <span>Perfil</span>
           </button>
           <button mat-menu-item class="menu-item">
-            <mat-icon class="icon-paw"></mat-icon>
+            <mat-icon class="icon-briefcase"></mat-icon>
             <span>Serviços</span>
           </button>
           <button mat-menu-item class="menu-item">
-            <mat-icon class="icon-log-out"></mat-icon>
+            <mat-icon class="icon-users"></mat-icon>
             <span>Funcionários</span>
           </button>
           <button mat-menu-item class="menu-item">
