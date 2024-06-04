@@ -49,6 +49,7 @@ import { CriarHorarioFuncionamentoComponent } from './pages/estabelecimento/cria
 import { ListarPetsComponent } from './pages/cliente/pet/listar-pets/listar-pets.component';
 import { CardPetComponent } from './shared/card-pet/card-pet.component';
 import { CriarPetComponent } from './pages/cliente/pet/criar-pet/criar-pet.component';
+import { PerfilContaEstabelecimentoComponent } from './pages/estabelecimento/perfil-conta-estabelecimento/perfil-conta-estabelecimento.component';
 
 
 @NgModule({
@@ -83,6 +84,7 @@ import { CriarPetComponent } from './pages/cliente/pet/criar-pet/criar-pet.compo
     ListarPetsComponent,
     CardPetComponent,
     CriarPetComponent,
+    PerfilContaEstabelecimentoComponent,
   ],
   imports: [
     BrowserModule,

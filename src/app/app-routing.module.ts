@@ -13,6 +13,7 @@ import { CriarEnderecoEstabelecimentoComponent } from './pages/estabelecimento/c
 import { CriarHorarioFuncionamentoComponent } from './pages/estabelecimento/criar-horario-funcionamento/criar-horario-funcionamento.component';
 import { ListarPetsComponent } from './pages/cliente/pet/listar-pets/listar-pets.component';
 import { CriarPetComponent } from './pages/cliente/pet/criar-pet/criar-pet.component';
+import { PerfilContaEstabelecimentoComponent } from './pages/estabelecimento/perfil-conta-estabelecimento/perfil-conta-estabelecimento.component';
 
 const routes: Routes = [
   {
@@ -65,6 +66,10 @@ const routes: Routes = [
   {
     path: 'perfil/cadastrar-pet',
     component: CriarPetComponent
+  },
+  {
+    path: 'perfil-estabelecimento',
+    component: PerfilContaEstabelecimentoComponent
   },
 ];
 
