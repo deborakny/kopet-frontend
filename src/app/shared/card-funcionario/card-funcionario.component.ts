@@ -1,10 +1,22 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { ContaService } from 'src/app/core/services/conta.service';
 
 @Component({
   selector: 'app-card-funcionario',
   templateUrl: './card-funcionario.component.html',
   styleUrls: ['./card-funcionario.component.scss']
 })
-export class CardFuncionarioComponent {
+export class CardFuncionarioComponent implements OnInit{
   @Input() funcionario?: any;
+
+  estabelecimentoLogado?: boolean;
+
+  constructor(
+    private contaService: ContaService
+  ) { }
+
+
+  ngOnInit(): void {
+    this.estabelecimentoLogado = this.contaService.logado();
+  }
 }

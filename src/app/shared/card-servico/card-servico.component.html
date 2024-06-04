@@ -1,5 +1,5 @@
 <mat-card class="card">
-  <mat-card-header>
+  <mat-card-header class="mat-card-header">
     <mat-card-title>
       <h1>{{ servico.nome }}</h1>
     </mat-card-title>
@@ -9,4 +9,15 @@
     <h2>Valor:</h2>
     <span class="valor__texto">{{ valorString }}</span>
   </mat-card-content>
+
+  <div class="button-wrapper" *ngIf="estabelecimentoLogado">
+    <button class="button-icon">
+      <i class="icon-edit icon"></i>
+      <span class="btn-texto">Editar</span>
+    </button>
+    <button class="button-icon">
+      <i class="icon-trash-can icon"></i>
+      <span class="btn-texto">Excluir</span>
+    </button>
+  </div>
 </mat-card>

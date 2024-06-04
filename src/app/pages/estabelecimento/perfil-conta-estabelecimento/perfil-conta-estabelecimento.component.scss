@@ -96,4 +96,21 @@ ul {
   width: 85%;
 }
 
+.info-servico-funcionario{
+  display: flex;
+  justify-content: center;
+}
+
+.swiper-wrapper {
+  width: 95%;
+  padding: .5rem;
+  .swiper__slide {
+    margin-bottom: 2.5rem;
+  }
+}
+
+.texto-template {
+  text-align: center;
+}
+
 

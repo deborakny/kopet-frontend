@@ -6,19 +6,19 @@
 <app-container class="container">
   <div class="content">
     <div class="info nome">
-      <h1 class="titulo">Pet Shop</h1>
+      <h1 class="titulo">{{ estabelecimento?.nome }}</h1>
       <mat-divider></mat-divider>
     </div>
 
 
     <div class="info endereco">
       <h2 class="titulo">Endereço:</h2>
-      <span class="endereco__texto">Aqui vai o endereço</span>
+      <span class="endereco__texto">{{ enderecoString }}</span>
     </div>
 
     <div class="info telefone">
       <h2 class="titulo">Telefone:</h2>
-      <span>Aqui vai o telefone</span>
+      <span>{{ estabelecimento!.telefone | telefone }}</span>
     </div>
 
     <div class="info horario-mobile">
@@ -29,18 +29,19 @@
         <mat-expansion-panel-header class="panel-header-mobile">
           <h2 class="titulo titulo-horario-funcionamento">Horário de Funcionamento</h2>
         </mat-expansion-panel-header>
-        <ul class="lista-horario">
+        <ul *ngFor="let horario of estabelecimento?.horariosFuncionamento" class="lista-horario">
           <li>
-            Aqui vai a lista de horários
+            {{ getNomeDia(horario.dia) }}: {{ horario.horaInicial }} -
+            {{ horario.horaFinal }}
           </li>
         </ul>
       </mat-expansion-panel>
     </div>
     <div class="horario-desktop">
       <h2>Horário de Funcionamento</h2>
-      <ul class="lista-horario">
+      <ul *ngFor="let horario of estabelecimento?.horariosFuncionamento" class="lista-horario">
         <li>
-          Aqui vai a lista de horarios
+          {{ horario.dia }}: {{ horario.horaInicial }} - {{ horario.horaFinal }}
         </li>
       </ul>
     </div>
@@ -59,9 +60,7 @@
       <app-primary-button text="Adicionar Serviço" class="botao-adicionar__item"></app-primary-button>
     </div>
   </div>
-
-  <p>Lista de serviços</p>
-  <!-- <div class="info-servico-funcionario servico">
+  <div class="info-servico-funcionario servico" *ngIf="servicos!.length > 0; else semServico">
     <swiper-container
       navigation="false"
       class="swiper-wrapper"
@@ -71,11 +70,11 @@
       pagination-clickable="true"
       space-between="10"
     >
-      <swiper-slide class="swiper__slide">
-        <app-card-servico></app-card-servico>
+      <swiper-slide class="swiper__slide" *ngFor="let servico of servicos">
+        <app-card-servico class="card" [servico]="servico"></app-card-servico>
       </swiper-slide>
     </swiper-container>
-  </div> -->
+  </div>
 
   <div class="divider">
     <h1 class="divider__titulo">Colaboradores</h1>
@@ -86,9 +85,7 @@
       <app-primary-button text="Adicionar Colaborador" class="botao-adicionar__item"></app-primary-button>
     </div>
   </div>
-
-  <p>Lista de funcionários</p>
-  <!-- <div class="info-servico-funcionario servico">
+  <div class="info-servico-funcionario servico" *ngIf="funcionarios!.length > 0; else semColaborador">
     <swiper-container
       navigation="false"
       class="swiper-wrapper"
@@ -102,7 +99,20 @@
         <app-card-funcionario class="card" [funcionario]="funcionario"></app-card-funcionario>
       </swiper-slide>
     </swiper-container>
-  </div> -->
+  </div>
 </div>
+
+<ng-template #semServico>
+  <div class="ff-inter sem-pensamentos">
+      <p class="texto-template">Ainda não há serviços cadastrados!</p>
+  </div>
+</ng-template>
+
+<ng-template #semColaborador>
+  <div class="ff-inter sem-pensamentos">
+      <p class="texto-template">Ainda não há colaboradores cadastrados!</p>
+  </div>
+</ng-template>
+
 <app-footer class="footer" [usuarioLogado]="usuarioLogado"></app-footer>
 
