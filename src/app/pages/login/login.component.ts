@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AutenticacaoInterceptor } from 'src/app/core/interceptors/autenticacao.interceptor';
+import { ContaService } from 'src/app/core/services/conta.service';
 
 @Component({
   selector: 'app-login',
@@ -11,12 +12,14 @@ import { AutenticacaoInterceptor } from 'src/app/core/interceptors/autenticacao.
 })
 export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
+  contaTipoEstabelecimento?: boolean;
 
   constructor(
     private fb: FormBuilder,
     private autenticacaoInterceptor: AutenticacaoInterceptor,
     private router: Router,
-    private snackbar: MatSnackBar
+    private snackbar: MatSnackBar,
+    private contaService: ContaService
   ) {}
 
   ngOnInit(): void {
@@ -38,7 +41,13 @@ export class LoginComponent implements OnInit {
             duration: 3000,
             panelClass: ['custom-snackbar'],
           });
-          this.router.navigate(['/']);
+          this.contaTipoEstabelecimento = this.contaService.getTipoEstabelecimento()
+          if (this.contaTipoEstabelecimento) {
+            this.router.navigate(['perfil-estabelecimento'])
+          } else {
+            this.router.navigate(['/']);
+          }
+
         },
         error: (e) => {
           console.log(e);
