@@ -23,4 +23,8 @@ export class FuncionarioService {
     return this.http.get<Funcionario[]>(`${this.apiUrl}/funcionarios/servico/${idServico}`);
   }
 
+  criar(funcionario: Funcionario): Observable<Funcionario> {
+    return this.http.post<Funcionario>(`${this.apiUrl}/funcionarios`, funcionario);
+  }
+
 }

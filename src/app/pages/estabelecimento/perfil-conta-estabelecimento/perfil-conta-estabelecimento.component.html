@@ -85,7 +85,11 @@
 
   <div class="button-wrapper">
     <div class="botao-adicionar">
-      <app-primary-button text="Adicionar Colaborador" class="botao-adicionar__item"></app-primary-button>
+      <app-primary-button
+      text="Adicionar Colaborador"
+      class="botao-adicionar__item"
+      routerLink="/perfil-estabelecimento/{{ estabelecimento?.id }}/cadastrar-funcionario"
+      ></app-primary-button>
     </div>
   </div>
   <div class="info-servico-funcionario servico" *ngIf="funcionarios!.length > 0; else semColaborador">

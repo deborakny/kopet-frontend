@@ -6,11 +6,11 @@
 <div class="cadastro-funcionario">
   <app-container class="container">
     <h2 class="titulo">Cadastrar Funcionário</h2>
-    <form class="form">
+    <form class="form" [formGroup]="formGroup">
       <div class="input-wrapper">
         <label for="nome" class="label">Nome</label>
         <mat-form-field class="form-field" subscriptSizing="dynamic" appearance="outline">
-          <input type="text" matInput class="input" id="nome">
+          <input type="text" matInput class="input" id="nome" formControlName="nome">
           <!-- <mat-error *ngIf="loginForm.get('email')?.errors?.['required']">Campo obrigatório</mat-error> -->
         </mat-form-field>
       </div>
@@ -18,7 +18,7 @@
       <div class="input-wrapper">
         <label for="sobrenome" class="label">Sobrenome</label>
         <mat-form-field class="form-field" subscriptSizing="dynamic" appearance="outline">
-          <input type="text" matInput class="input" id="sobrenome">
+          <input type="text" matInput class="input" id="sobrenome" formControlName="sobrenome">
           <!-- <mat-error *ngIf="loginForm.get('email')?.errors?.['required']">Campo obrigatório</mat-error> -->
         </mat-form-field>
       </div>
@@ -26,7 +26,7 @@
       <div class="input-wrapper">
         <label for="cpf" class="label">CPF</label>
         <mat-form-field class="form-field" subscriptSizing="dynamic" appearance="outline">
-          <input type="text" matInput class="input" id="cpf">
+          <input type="text" matInput class="input" id="cpf" formControlName="cpf">
           <!-- <mat-error *ngIf="loginForm.get('email')?.errors?.['required']">Campo obrigatório</mat-error> -->
         </mat-form-field>
       </div>
@@ -34,7 +34,7 @@
       <div class="input-wrapper">
         <label for="email" class="label">E-mail</label>
         <mat-form-field class="form-field" subscriptSizing="dynamic" appearance="outline">
-          <input type="email" matInput class="input" id="email">
+          <input type="email" matInput class="input" id="email" formControlName="email">
           <!-- <mat-error *ngIf="loginForm.get('email')?.errors?.['required']">Campo obrigatório</mat-error> -->
         </mat-form-field>
       </div>
@@ -42,7 +42,7 @@
       <div class="input-wrapper">
         <label for="telefone" class="label">Telefone</label>
         <mat-form-field class="form-field" subscriptSizing="dynamic" appearance="outline">
-          <input type="text" matInput class="input" id="telefone">
+          <input type="text" matInput class="input" id="telefone" formControlName="telefone">
           <!-- <mat-error *ngIf="loginForm.get('email')?.errors?.['required']">Campo obrigatório</mat-error> -->
         </mat-form-field>
       </div>
@@ -52,7 +52,7 @@
         <label for="servicos" class="label">Serviço(s)</label>
         <mat-form-field>
           <mat-label>Selecione os serviços</mat-label>
-          <mat-select multiple id="servicos">
+          <mat-select multiple id="servicos" (selectionChange)="onServicoChange($event)">
             <mat-option *ngFor="let servico of servicosList" [value]="servico.id">{{servico.nome}}</mat-option>
           </mat-select>
         </mat-form-field>
@@ -61,7 +61,7 @@
       <div class="input-wrapper">
         <label for="informacoesAdicionais" class="label">Informacoes Adicionais</label>
         <mat-form-field class="form-field" subscriptSizing="dynamic" appearance="outline">
-          <input type="text" matInput class="input" id="informacoesAdicionais">
+          <input type="text" matInput class="input" id="informacoesAdicionais" formControlName="informacoesAdicionais">
           <!-- <mat-error *ngIf="loginForm.get('email')?.errors?.['required']">Campo obrigatório</mat-error> -->
         </mat-form-field>
       </div>
@@ -76,7 +76,7 @@
       class="button"
       routerLink=""
     ></app-basic-button>
-    <app-primary-button text="Cadastrar" class="button"></app-primary-button>
+    <app-primary-button text="Cadastrar" class="button" (click)="onSubmitHandler()"></app-primary-button>
   </div>
 </div>
 <app-footer [usuarioLogado]="usuarioLogado"></app-footer>
