@@ -50,6 +50,7 @@ import { ListarPetsComponent } from './pages/cliente/pet/listar-pets/listar-pets
 import { CardPetComponent } from './shared/card-pet/card-pet.component';
 import { CriarPetComponent } from './pages/cliente/pet/criar-pet/criar-pet.component';
 import { PerfilContaEstabelecimentoComponent } from './pages/estabelecimento/perfil-conta-estabelecimento/perfil-conta-estabelecimento.component';
+import { CriarServicoComponent } from './pages/estabelecimento/servico/criar-servico/criar-servico.component';
 
 
 @NgModule({
@@ -85,6 +86,7 @@ import { PerfilContaEstabelecimentoComponent } from './pages/estabelecimento/per
     CardPetComponent,
     CriarPetComponent,
     PerfilContaEstabelecimentoComponent,
+    CriarServicoComponent,
   ],
   imports: [
     BrowserModule,

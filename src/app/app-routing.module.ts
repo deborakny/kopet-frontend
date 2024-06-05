@@ -14,6 +14,7 @@ import { CriarHorarioFuncionamentoComponent } from './pages/estabelecimento/cria
 import { ListarPetsComponent } from './pages/cliente/pet/listar-pets/listar-pets.component';
 import { CriarPetComponent } from './pages/cliente/pet/criar-pet/criar-pet.component';
 import { PerfilContaEstabelecimentoComponent } from './pages/estabelecimento/perfil-conta-estabelecimento/perfil-conta-estabelecimento.component';
+import { CriarServicoComponent } from './pages/estabelecimento/servico/criar-servico/criar-servico.component';
 
 const routes: Routes = [
   {
@@ -70,6 +71,10 @@ const routes: Routes = [
   {
     path: 'perfil-estabelecimento/:nome/:id',
     component: PerfilContaEstabelecimentoComponent
+  },
+  {
+    path: 'perfil-estabelecimento/:nome/:id/cadastrar-servico',
+    component: CriarServicoComponent
   },
 ];
 
