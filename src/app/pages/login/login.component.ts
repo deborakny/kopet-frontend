@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AutenticacaoInterceptor } from 'src/app/core/interceptors/autenticacao.interceptor';
 import { ContaService } from 'src/app/core/services/conta.service';
+import { EstabelecimentoService } from 'src/app/core/services/estabelecimento.service';
+import { Estabelecimento } from 'src/app/core/types/estabelecimento';
 
 @Component({
   selector: 'app-login',
@@ -13,10 +15,13 @@ import { ContaService } from 'src/app/core/services/conta.service';
 export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
   contaTipoEstabelecimento?: boolean;
+  contaId?: number;
+  estabelecimento?: Estabelecimento;
 
   constructor(
     private fb: FormBuilder,
     private autenticacaoInterceptor: AutenticacaoInterceptor,
+    private estabelecimentoService: EstabelecimentoService,
     private router: Router,
     private snackbar: MatSnackBar,
     private contaService: ContaService
@@ -43,7 +48,8 @@ export class LoginComponent implements OnInit {
           });
           this.contaTipoEstabelecimento = this.contaService.getTipoEstabelecimento()
           if (this.contaTipoEstabelecimento) {
-            this.router.navigate(['perfil-estabelecimento'])
+            this.contaId = this.contaService.getId()
+            this.getEstabelecimento(this.contaId!)
           } else {
             this.router.navigate(['/']);
           }
@@ -68,5 +74,14 @@ export class LoginComponent implements OnInit {
         panelClass: ['custom-snackbar'],
       });
     }
+  }
+
+  getEstabelecimento(id: number) {
+    this.estabelecimentoService.getEstabelecimentoById(id).subscribe(
+      res => {
+        this.estabelecimento = res;
+        this.router.navigate([`perfil-estabelecimento/${this.estabelecimento?.nome}/${this.estabelecimento.id}`])
+      }
+    )
   }
 }

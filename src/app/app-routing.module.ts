@@ -68,7 +68,7 @@ const routes: Routes = [
     component: CriarPetComponent
   },
   {
-    path: 'perfil-estabelecimento',
+    path: 'perfil-estabelecimento/:nome/:id',
     component: PerfilContaEstabelecimentoComponent
   },
 ];
