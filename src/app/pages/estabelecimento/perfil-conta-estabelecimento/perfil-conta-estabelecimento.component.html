@@ -41,7 +41,7 @@
       <h2>Horário de Funcionamento</h2>
       <ul *ngFor="let horario of estabelecimento?.horariosFuncionamento" class="lista-horario">
         <li>
-          {{ horario.dia }}: {{ horario.horaInicial }} - {{ horario.horaFinal }}
+          {{ getNomeDia(horario.dia) }}: {{ horario.horaInicial }} - {{ horario.horaFinal }}
         </li>
       </ul>
     </div>
