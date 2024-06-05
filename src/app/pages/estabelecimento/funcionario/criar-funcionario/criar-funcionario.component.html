@@ -52,8 +52,8 @@
         <label for="servicos" class="label">Serviço(s)</label>
         <mat-form-field>
           <mat-label>Selecione os serviços</mat-label>
-          <mat-select [formControl]="servicos" multiple id="servicos">
-            <mat-option *ngFor="let servico of servicosList" [value]="servico">{{servico}}</mat-option>
+          <mat-select multiple id="servicos">
+            <mat-option *ngFor="let servico of servicosList" [value]="servico.id">{{servico.nome}}</mat-option>
           </mat-select>
         </mat-form-field>
       </div>
