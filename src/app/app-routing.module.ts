@@ -69,11 +69,11 @@ const routes: Routes = [
     component: CriarPetComponent
   },
   {
-    path: 'perfil-estabelecimento/:nome/:id',
+    path: 'perfil-estabelecimento/:id',
     component: PerfilContaEstabelecimentoComponent
   },
   {
-    path: 'perfil-estabelecimento/:nome/:id/cadastrar-servico',
+    path: 'perfil-estabelecimento/:id/cadastrar-servico',
     component: CriarServicoComponent
   },
 ];

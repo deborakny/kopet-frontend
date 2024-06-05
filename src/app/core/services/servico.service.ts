@@ -18,4 +18,8 @@ export class ServicoService {
   getServicosByEstabelecimento(idEstabelecimento: number): Observable<Servico[]> {
     return this.http.get<Servico[]>(`${this.apiUrl}/servicos/estabelecimento/${idEstabelecimento}`)
   }
+
+  criar(servico: Servico): Observable<Servico> {
+    return this.http.post<Servico>(`${this.apiUrl}/servicos`, servico);
+  }
 }

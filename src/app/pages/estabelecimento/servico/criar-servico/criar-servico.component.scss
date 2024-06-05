@@ -24,6 +24,7 @@
 
 .titulo {
   margin: 0;
+  padding-bottom: 1rem;
 }
 
 .form {
@@ -53,4 +54,21 @@
   width: 90%;
   gap: .75rem;
   margin-bottom: .5rem;
+}
+
+@media screen and (min-width: 769px){
+  .container {
+    margin-top: 0;
+    width: 40%;
+  }
+
+  .button_wrapper {
+    width: 40%;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .button {
+    width: 45%;
+  }
 }

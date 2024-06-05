@@ -80,7 +80,7 @@ export class LoginComponent implements OnInit {
     this.estabelecimentoService.getEstabelecimentoById(id).subscribe(
       res => {
         this.estabelecimento = res;
-        this.router.navigate([`perfil-estabelecimento/${this.estabelecimento?.nome}/${this.estabelecimento.id}`])
+        this.router.navigate([`perfil-estabelecimento/${this.estabelecimento.id}`])
       }
     )
   }

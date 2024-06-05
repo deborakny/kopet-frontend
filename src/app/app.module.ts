@@ -51,6 +51,7 @@ import { CardPetComponent } from './shared/card-pet/card-pet.component';
 import { CriarPetComponent } from './pages/cliente/pet/criar-pet/criar-pet.component';
 import { PerfilContaEstabelecimentoComponent } from './pages/estabelecimento/perfil-conta-estabelecimento/perfil-conta-estabelecimento.component';
 import { CriarServicoComponent } from './pages/estabelecimento/servico/criar-servico/criar-servico.component';
+import { CurrencyPipe } from './core/pipes/currency.pipe';
 
 
 @NgModule({
@@ -87,6 +88,7 @@ import { CriarServicoComponent } from './pages/estabelecimento/servico/criar-ser
     CriarPetComponent,
     PerfilContaEstabelecimentoComponent,
     CriarServicoComponent,
+    CurrencyPipe,
   ],
   imports: [
     BrowserModule,

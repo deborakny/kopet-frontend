@@ -46,7 +46,7 @@
       </ul>
     </div>
 
-    <app-primary-button text="Editar" class="button"></app-primary-button>
+    <app-primary-button text="Editar" class="button button__editar"></app-primary-button>
   </div>
 </app-container>
 
@@ -59,7 +59,7 @@
     <div class="botao-adicionar">
       <app-primary-button text="Adicionar Serviço"
       class="botao-adicionar__item"
-      routerLink="/perfil-estabelecimento/{{ estabelecimento?.nome }}/{{ estabelecimento?.id }}/cadastrar-servico"
+      routerLink="/perfil-estabelecimento/{{ estabelecimento?.id }}/cadastrar-servico"
       ></app-primary-button>
     </div>
   </div>

@@ -4,26 +4,26 @@
 </div>
 <div class="cadastro-servico">
   <app-container class="container">
-    <h2 class="titulo">Cadastrar Funcionário</h2>
-    <form class="form">
+    <h2 class="titulo">Cadastrar Serviço</h2>
+    <form class="form" [formGroup]="formGroup">
       <div class="input-wrapper">
         <label for="nome" class="label">Nome do serviço</label>
         <mat-form-field class="form-field" subscriptSizing="dynamic" appearance="outline">
-          <input type="text" matInput class="input" id="nome">
+          <input type="text" matInput class="input" id="nome" formControlName="nome">
           <!-- <mat-error *ngIf="loginForm.get('email')?.errors?.['required']">Campo obrigatório</mat-error> -->
         </mat-form-field>
       </div>
       <div class="input-wrapper">
         <label for="valor" class="label">Valor</label>
         <mat-form-field class="form-field" subscriptSizing="dynamic" appearance="outline">
-          <input type="text" matInput class="input" id="valor">
+          <input type="number" matInput class="input" id="valor" formControlName="valor">
           <!-- <mat-error *ngIf="loginForm.get('email')?.errors?.['required']">Campo obrigatório</mat-error> -->
         </mat-form-field>
       </div>
       <div class="input-wrapper">
         <label for="duracao" class="label">Duração</label>
         <mat-form-field class="form-field" subscriptSizing="dynamic" appearance="outline">
-          <input type="number" matInput class="input" id="duracao">
+          <input type="number" matInput class="input" id="duracao" formControlName="duracao">
           <!-- <mat-error *ngIf="loginForm.get('email')?.errors?.['required']">Campo obrigatório</mat-error> -->
           <mat-hint class="hint">(Em minutos)</mat-hint>
         </mat-form-field>
@@ -31,7 +31,7 @@
       <div class="input-wrapper">
         <label for="informacoesAdicionais" class="label">Informações Adicionais</label>
         <mat-form-field class="form-field" subscriptSizing="dynamic" appearance="outline">
-          <input type="text" matInput class="input informacoes-adicionais" id="informacoesAdicionais">
+          <input type="text" matInput class="input informacoes-adicionais" id="informacoesAdicionais" formControlName="informacoesAdicionais">
           <!-- <mat-error *ngIf="loginForm.get('email')?.errors?.['required']">Campo obrigatório</mat-error> -->
         </mat-form-field>
       </div>
@@ -43,7 +43,7 @@
       class="button"
       routerLink=""
     ></app-basic-button>
-    <app-primary-button text="Cadastrar" class="button"></app-primary-button>
+    <app-primary-button text="Cadastrar" class="button" (click)="onSubmitHandler()"></app-primary-button>
   </div>
 </div>
 <app-footer [usuarioLogado]="usuarioLogado"></app-footer>
