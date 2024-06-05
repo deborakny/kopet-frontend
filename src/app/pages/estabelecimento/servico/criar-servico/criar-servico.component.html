@@ -1,1 +1,49 @@
-<p>criar-servico works!</p>
+<div class="header-banner">
+  <app-header></app-header>
+  <app-banner [logo]='false' class="banner"></app-banner>
+</div>
+<div class="cadastro-servico">
+  <app-container class="container">
+    <h2 class="titulo">Cadastrar Funcionário</h2>
+    <form class="form">
+      <div class="input-wrapper">
+        <label for="nome" class="label">Nome do serviço</label>
+        <mat-form-field class="form-field" subscriptSizing="dynamic" appearance="outline">
+          <input type="text" matInput class="input" id="nome">
+          <!-- <mat-error *ngIf="loginForm.get('email')?.errors?.['required']">Campo obrigatório</mat-error> -->
+        </mat-form-field>
+      </div>
+      <div class="input-wrapper">
+        <label for="valor" class="label">Valor</label>
+        <mat-form-field class="form-field" subscriptSizing="dynamic" appearance="outline">
+          <input type="text" matInput class="input" id="valor">
+          <!-- <mat-error *ngIf="loginForm.get('email')?.errors?.['required']">Campo obrigatório</mat-error> -->
+        </mat-form-field>
+      </div>
+      <div class="input-wrapper">
+        <label for="duracao" class="label">Duração</label>
+        <mat-form-field class="form-field" subscriptSizing="dynamic" appearance="outline">
+          <input type="number" matInput class="input" id="duracao">
+          <!-- <mat-error *ngIf="loginForm.get('email')?.errors?.['required']">Campo obrigatório</mat-error> -->
+          <mat-hint class="hint">(Em minutos)</mat-hint>
+        </mat-form-field>
+      </div>
+      <div class="input-wrapper">
+        <label for="informacoesAdicionais" class="label">Informações Adicionais</label>
+        <mat-form-field class="form-field" subscriptSizing="dynamic" appearance="outline">
+          <input type="text" matInput class="input informacoes-adicionais" id="informacoesAdicionais">
+          <!-- <mat-error *ngIf="loginForm.get('email')?.errors?.['required']">Campo obrigatório</mat-error> -->
+        </mat-form-field>
+      </div>
+    </form>
+  </app-container>
+  <div class="button_wrapper">
+    <app-basic-button
+      text="Cancelar"
+      class="button"
+      routerLink=""
+    ></app-basic-button>
+    <app-primary-button text="Cadastrar" class="button"></app-primary-button>
+  </div>
+</div>
+<app-footer [usuarioLogado]="usuarioLogado"></app-footer>

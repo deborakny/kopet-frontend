@@ -34,7 +34,7 @@ export class PerfilContaEstabelecimentoComponent implements OnInit {
   ngOnInit(): void {
     this.usuarioLogado = this.contaService.logado();
     //const estabelecimentoId = this.contaService.getId();
-    const estabelecimentoId = 24;
+    const estabelecimentoId = 31;
     this.getEstabelecimento(estabelecimentoId!);
     this.getServicos(estabelecimentoId!);
     this.getFuncionarios(estabelecimentoId!);
