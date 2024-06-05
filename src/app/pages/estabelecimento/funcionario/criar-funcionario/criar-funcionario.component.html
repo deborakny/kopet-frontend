@@ -1,1 +1,82 @@
-<p>criar-funcionario works!</p>
+<div class="header-banner">
+  <app-header></app-header>
+  <app-banner [logo]='false' class="banner"></app-banner>
+</div>
+
+<div class="cadastro-funcionario">
+  <app-container class="container">
+    <h2 class="titulo">Cadastrar Funcionário</h2>
+    <form class="form">
+      <div class="input-wrapper">
+        <label for="nome" class="label">Nome</label>
+        <mat-form-field class="form-field" subscriptSizing="dynamic" appearance="outline">
+          <input type="text" matInput class="input" id="nome">
+          <!-- <mat-error *ngIf="loginForm.get('email')?.errors?.['required']">Campo obrigatório</mat-error> -->
+        </mat-form-field>
+      </div>
+
+      <div class="input-wrapper">
+        <label for="sobrenome" class="label">Sobrenome</label>
+        <mat-form-field class="form-field" subscriptSizing="dynamic" appearance="outline">
+          <input type="text" matInput class="input" id="sobrenome">
+          <!-- <mat-error *ngIf="loginForm.get('email')?.errors?.['required']">Campo obrigatório</mat-error> -->
+        </mat-form-field>
+      </div>
+
+      <div class="input-wrapper">
+        <label for="cpf" class="label">CPF</label>
+        <mat-form-field class="form-field" subscriptSizing="dynamic" appearance="outline">
+          <input type="text" matInput class="input" id="cpf">
+          <!-- <mat-error *ngIf="loginForm.get('email')?.errors?.['required']">Campo obrigatório</mat-error> -->
+        </mat-form-field>
+      </div>
+
+      <div class="input-wrapper">
+        <label for="email" class="label">E-mail</label>
+        <mat-form-field class="form-field" subscriptSizing="dynamic" appearance="outline">
+          <input type="email" matInput class="input" id="email">
+          <!-- <mat-error *ngIf="loginForm.get('email')?.errors?.['required']">Campo obrigatório</mat-error> -->
+        </mat-form-field>
+      </div>
+
+      <div class="input-wrapper">
+        <label for="telefone" class="label">Telefone</label>
+        <mat-form-field class="form-field" subscriptSizing="dynamic" appearance="outline">
+          <input type="text" matInput class="input" id="telefone">
+          <!-- <mat-error *ngIf="loginForm.get('email')?.errors?.['required']">Campo obrigatório</mat-error> -->
+        </mat-form-field>
+      </div>
+
+      <!-- Aqui vai os servicos -->
+      <div class="input-wrapper">
+        <label for="servicos" class="label">Serviço(s)</label>
+        <mat-form-field>
+          <mat-label>Selecione os serviços</mat-label>
+          <mat-select [formControl]="servicos" multiple id="servicos">
+            <mat-option *ngFor="let servico of servicosList" [value]="servico">{{servico}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="input-wrapper">
+        <label for="informacoesAdicionais" class="label">Informacoes Adicionais</label>
+        <mat-form-field class="form-field" subscriptSizing="dynamic" appearance="outline">
+          <input type="text" matInput class="input" id="informacoesAdicionais">
+          <!-- <mat-error *ngIf="loginForm.get('email')?.errors?.['required']">Campo obrigatório</mat-error> -->
+        </mat-form-field>
+      </div>
+
+
+    </form>
+  </app-container>
+
+  <div class="button_wrapper">
+    <app-basic-button
+      text="Cancelar"
+      class="button"
+      routerLink=""
+    ></app-basic-button>
+    <app-primary-button text="Cadastrar" class="button"></app-primary-button>
+  </div>
+</div>
+<app-footer [usuarioLogado]="usuarioLogado"></app-footer>

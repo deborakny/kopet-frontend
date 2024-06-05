@@ -1,3 +1,4 @@
+import { Estabelecimento } from "./estabelecimento";
 import { Servico } from "./servico";
 
 export interface Funcionario {
@@ -8,5 +9,6 @@ export interface Funcionario {
   email: string;
   telefone: string;
   informacoesAdicionais: string;
-  servicos?: Servico[];
+  estabelecimento: Estabelecimento;
+  servicos: Servico[];
 }
