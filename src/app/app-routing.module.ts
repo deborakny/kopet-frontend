@@ -16,6 +16,7 @@ import { CriarPetComponent } from './pages/cliente/pet/criar-pet/criar-pet.compo
 import { PerfilContaEstabelecimentoComponent } from './pages/estabelecimento/perfil-conta-estabelecimento/perfil-conta-estabelecimento.component';
 import { CriarServicoComponent } from './pages/estabelecimento/servico/criar-servico/criar-servico.component';
 import { CriarFuncionarioComponent } from './pages/estabelecimento/funcionario/criar-funcionario/criar-funcionario.component';
+import { ListarAgendamentoComponent } from './pages/agendamento/listar-agendamento/listar-agendamento.component';
 
 const routes: Routes = [
   {
@@ -80,6 +81,10 @@ const routes: Routes = [
   {
     path: 'perfil-estabelecimento/:id/cadastrar-funcionario',
     component: CriarFuncionarioComponent
+  },
+  {
+    path: 'perfil/:id/lista-agendamentos',
+    component: ListarAgendamentoComponent
   },
 ];
 
