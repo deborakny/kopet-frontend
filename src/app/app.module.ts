@@ -53,6 +53,7 @@ import { PerfilContaEstabelecimentoComponent } from './pages/estabelecimento/per
 import { CriarServicoComponent } from './pages/estabelecimento/servico/criar-servico/criar-servico.component';
 import { CurrencyPipe } from './core/pipes/currency.pipe';
 import { CriarFuncionarioComponent } from './pages/estabelecimento/funcionario/criar-funcionario/criar-funcionario.component';
+import { ListarAgendamentoComponent } from './pages/agendamento/listar-agendamento/listar-agendamento.component';
 
 
 @NgModule({
@@ -91,6 +92,7 @@ import { CriarFuncionarioComponent } from './pages/estabelecimento/funcionario/c
     CriarServicoComponent,
     CurrencyPipe,
     CriarFuncionarioComponent,
+    ListarAgendamentoComponent,
   ],
   imports: [
     BrowserModule,

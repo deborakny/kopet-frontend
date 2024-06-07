@@ -7,4 +7,5 @@ export interface Agendamento {
   petId: number;
   dia: string;
   hora: string;
+  status?: string;
 }
