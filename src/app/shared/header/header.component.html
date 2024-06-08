@@ -29,23 +29,23 @@
           <button mat-button [matMenuTriggerFor]="menu" aria-label="icon-button with a menu" class="btn-logado-desktop">
             <div class="botao-menu-logado-desktop">
               <i class="icon-iconmonstr-user-circle-thin"></i>
-              <span>Olá, {{ cliente?.nome }}</span>
+              <span>Olá, {{ cliente!.nome }}</span>
             </div>
           </button>
           <mat-menu #menu="matMenu" xPosition="after">
-            <button mat-menu-item class="menu-item" routerLink="cadastrar/conta-cliente">
+            <button mat-menu-item class="menu-item" routerLink="/perfil-cliente/{{ cliente!.id }}">
               <mat-icon class="icon-user"></mat-icon>
               <span>Perfil</span>
             </button>
-            <button mat-menu-item class="menu-item" routerLink="cadastrar/conta-estabelecimento">
+            <button mat-menu-item class="menu-item">
               <mat-icon class="icon-schedule"></mat-icon>
               <span>Agendamentos</span>
             </button>
-            <button mat-menu-item class="menu-item" routerLink="perfil/{{ cliente?.id}}/listar-pets">
+            <button mat-menu-item class="menu-item" routerLink="perfil/{{ cliente!.id}}/listar-pets">
               <mat-icon class="icon-paw"></mat-icon>
               <span>Pets</span>
             </button>
-            <button mat-menu-item class="menu-item" routerLink="cadastrar/conta-estabelecimento">
+            <button mat-menu-item class="menu-item">
               <mat-icon class="icon-log-out"></mat-icon>
               <span>Sair</span>
             </button>
@@ -89,11 +89,11 @@
           <i class="icon-user"></i>
         </button>
         <mat-menu #perfilMenu="matMenu" xPosition="before">
-          <button mat-menu-item class="menu-item">
+          <button mat-menu-item class="menu-item" routerLink="/perfil-cliente/{{ cliente!.id }}">
             <mat-icon class="icon-user"></mat-icon>
             <span>Perfil</span>
           </button>
-          <button mat-menu-item class="menu-item" routerLink="perfil/{{ cliente?.id}}/listar-pets">
+          <button mat-menu-item class="menu-item" routerLink="perfil/{{ cliente!.id}}/listar-pets">
             <mat-icon class="icon-paw"></mat-icon>
             <span>Pets</span>
           </button>
