@@ -1,0 +1,97 @@
+.header-banner {
+  background-color: var(--accent-color);
+  border-radius: 0 0 100px 100px;
+}
+
+.perfil-cliente {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.container {
+  position: relative;
+  margin-top: -11rem;
+  z-index: 2;
+  height: 100%;
+  padding: 1.5rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-bottom: outset var(--primary-color) 3px;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.dados {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  gap: .75rem;
+}
+
+.dados__item {
+  font-size: 1rem;
+}
+
+.titulo {
+  margin: 0;
+  padding: 0;
+}
+
+.button {
+  width: 80%;
+}
+
+.opcoes {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  width: 90%;
+}
+
+.opcoes__botao {
+  width: 100%;
+  padding: 1.25rem 0;
+  border-radius: 15px;
+  font-size: 1rem;
+  background-color: var(--accent-color);
+  border: solid 1px var(--primary-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.icon-paw {
+  font-size: 1.5rem;
+}
+
+.icon-schedule {
+  font-size: 1.5rem;
+}
+
+@media screen and (min-width: 769px){
+  .container {
+    margin-top: 0;
+    width: 40%;
+    margin-bottom: 2.5rem;
+  }
+
+  .opcoes__botao {
+    width: 45%;
+  }
+
+  .opcoes__botao:hover {
+    cursor: pointer;
+  }
+}

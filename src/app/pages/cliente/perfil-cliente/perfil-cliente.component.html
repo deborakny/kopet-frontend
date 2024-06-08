@@ -1,1 +1,30 @@
-<p>perfil-cliente works!</p>
+<div class="header-banner">
+  <app-header></app-header>
+  <app-banner [logo]='false' class="banner"></app-banner>
+</div>
+
+<div class="perfil-cliente">
+  <app-container class="container">
+    <div class="info">
+      <div class="nome">
+        <h2 class="titulo">Nome do Cliente</h2>
+      </div>
+      <div class="dados">
+        <span class="dados__item">Telefone: </span>
+        <span class="dados__item">E-mail: </span>
+      </div>
+      <app-primary-button text="Editar" class="button"></app-primary-button>
+    </div>
+  </app-container>
+  <div class="opcoes">
+    <button class="opcoes__botao" routerLink="">
+      <i class="icon-paw"></i>
+      Pets
+    </button>
+    <button class="opcoes__botao">
+      <i class="icon-schedule"></i>
+      Agendamentos
+    </button>
+  </div>
+</div>
+<app-footer></app-footer>
