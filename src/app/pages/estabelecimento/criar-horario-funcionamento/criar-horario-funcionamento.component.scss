@@ -1,0 +1,93 @@
+.horario-funcionamento {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.container {
+  position: relative;
+  margin-top: -11rem;
+  z-index: 2;
+  height: auto;
+  border-bottom: outset var(--primary-color) 3px;
+  padding-bottom: 2rem;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+.titulo {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.form {
+  width: 100%;
+}
+
+.dias-horas {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.lista-dias {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.dia-hora-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.horas {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.button_wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+@media screen and (min-width: 769px){
+  .container {
+    margin-top: 0;
+    width: 40%;
+  }
+
+  .button_wrapper {
+    flex-direction: row;
+    justify-content: space-between;
+    width: 40%;
+  }
+
+  .button {
+    width: 45%;
+  }
+
+  .horas {
+    flex-direction: row;
+    gap: 1rem;
+  }
+
+  .checkbox-title {
+    width: 100%;
+    text-align: start;
+  }
+}

@@ -56,7 +56,7 @@ import { CriarFuncionarioComponent } from './pages/estabelecimento/funcionario/c
 import { ListarAgendamentoComponent } from './pages/agendamento/listar-agendamento/listar-agendamento.component';
 import { CardAgendamentoComponent } from './shared/card-agendamento/card-agendamento.component';
 import { PerfilClienteComponent } from './pages/cliente/perfil-cliente/perfil-cliente.component';
-
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 @NgModule({
   declarations: [
@@ -119,7 +119,8 @@ import { PerfilClienteComponent } from './pages/cliente/perfil-cliente/perfil-cl
     MatDatepickerModule,
     MatFormFieldModule,
     MatSnackBarModule,
-    MatMenuModule
+    MatMenuModule,
+    MatCheckboxModule
   ],
   providers: [],
   bootstrap: [AppComponent],
