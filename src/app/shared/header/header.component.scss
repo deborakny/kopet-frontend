@@ -89,6 +89,7 @@
     .logo-botoes-desktop {
       display: flex;
       justify-content: space-between;
+      align-items:center;
       width: 90%;
       padding: 0;
     }
@@ -140,6 +141,24 @@
 
     .icon-user:hover{
       cursor: pointer;
+    }
+
+    .icon-iconmonstr-user-circle-thin {
+      font-size: 2rem;
+    }
+
+    .btn-logado-desktop {
+      border-radius: 0;
+    }
+
+    .botao-menu-logado-desktop {
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+    }
+
+    .mat-menu-desktop {
+      background-color: var(--primary-color);
     }
 
   }

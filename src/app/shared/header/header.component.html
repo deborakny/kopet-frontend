@@ -24,11 +24,34 @@
           </button>
         </div>
         <!-- Usuário logado e tipo cliente -->
-          <!-- Botão de agendamentos -->
+        <div *ngIf="logado && tipoCliente" class="botao-logado-desktop">
           <!-- Botão de Perfil -->
-            <!-- Perfil -->
-            <!-- Pets -->
-            <!-- Sair -->
+          <button mat-button [matMenuTriggerFor]="menu" aria-label="icon-button with a menu" class="btn-logado-desktop">
+            <div class="botao-menu-logado-desktop">
+              <i class="icon-iconmonstr-user-circle-thin"></i>
+              <span>Olá, {{ cliente?.nome }}</span>
+            </div>
+          </button>
+          <mat-menu #menu="matMenu" xPosition="after">
+            <button mat-menu-item class="menu-item" routerLink="cadastrar/conta-cliente">
+              <mat-icon class="icon-user"></mat-icon>
+              <span>Perfil</span>
+            </button>
+            <button mat-menu-item class="menu-item" routerLink="cadastrar/conta-estabelecimento">
+              <mat-icon class="icon-schedule"></mat-icon>
+              <span>Agendamentos</span>
+            </button>
+            <button mat-menu-item class="menu-item" routerLink="perfil/{{ cliente?.id}}/listar-pets">
+              <mat-icon class="icon-paw"></mat-icon>
+              <span>Pets</span>
+            </button>
+            <button mat-menu-item class="menu-item" routerLink="cadastrar/conta-estabelecimento">
+              <mat-icon class="icon-log-out"></mat-icon>
+              <span>Sair</span>
+            </button>
+          </mat-menu>
+        </div>
+
         <!-- Usuário logado e tipo estabelecimento -->
         <!-- Botão de agendamentos -->
           <!-- Botão de Perfil -->
@@ -70,7 +93,7 @@
             <mat-icon class="icon-user"></mat-icon>
             <span>Perfil</span>
           </button>
-          <button mat-menu-item class="menu-item" routerLink="/perfil/listar-pets">
+          <button mat-menu-item class="menu-item" routerLink="perfil/{{ cliente?.id}}/listar-pets">
             <mat-icon class="icon-paw"></mat-icon>
             <span>Pets</span>
           </button>

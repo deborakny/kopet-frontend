@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { ClienteService } from 'src/app/core/services/cliente.service';
 import { ContaService } from 'src/app/core/services/conta.service';
+import { Cliente } from 'src/app/core/types/cliente';
 
 @Component({
   selector: 'app-header',
@@ -10,23 +12,34 @@ export class HeaderComponent implements OnInit{
 
   logado: boolean = false;
   tipoCliente: boolean = false;
+  cliente?: Cliente;
 
   constructor(
-    private contaService: ContaService
+    private contaService: ContaService,
+    private clienteService: ClienteService
   ) {}
 
   ngOnInit(): void {
     if (this.contaService.logado()) {
       this.logado = true;
-      const clienteId = this.contaService.getId();
-      console.log(clienteId)
+      const contaId = this.contaService.getId();
+      console.log(contaId)
       if (this.contaService.getTipoEstabelecimento()) {
         this.tipoCliente = false
       } else {
-        this.tipoCliente = true
+        this.tipoCliente = true;
+        this.getCliente(contaId!);
       }
     } else {
       this.logado = false
     }
+  }
+
+  getCliente(id: number) {
+    this.clienteService.getCliente(id).subscribe(
+      res => {
+        this.cliente = res
+      }
+    )
   }
 }

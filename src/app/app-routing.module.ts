@@ -63,7 +63,7 @@ const routes: Routes = [
     component: CriarHorarioFuncionamentoComponent
   },
   {
-    path: 'perfil/listar-pets',
+    path: 'perfil/:id/listar-pets',
     component: ListarPetsComponent
   },
   {
