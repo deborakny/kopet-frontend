@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-card-agendamento',
@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./card-agendamento.component.scss']
 })
 export class CardAgendamentoComponent {
-
+  @Input() agendamento: any;
+  @Input() tipoEstabelecimento!: boolean;
 }

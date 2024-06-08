@@ -1,1 +1,17 @@
-<app-card-agendamento></app-card-agendamento>
+<div class="header-banner">
+  <app-header></app-header>
+  <app-banner [logo]='false' class="banner"></app-banner>
+</div>
+<app-container class="container">
+  <h2 class="titulo">Agendamentos</h2>
+  <div class="card-wrapper">
+    <app-card-agendamento
+      *ngFor="let agendamento of agendamentos"
+      [agendamento]="agendamento"
+      [tipoEstabelecimento]="tipoEstabelecimento"
+    >
+    </app-card-agendamento>
+  </div>
+</app-container>
+<app-footer [usuarioLogado]="usuarioLogado"></app-footer>
+

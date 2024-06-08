@@ -11,7 +11,8 @@ import { Pet } from 'src/app/core/types/pet';
 })
 export class ListarPetsComponent implements OnInit{
 
-  pets: Pet[]=[];
+  pets: Pet[] = [];
+  usuarioLogado?: boolean;
 
   constructor(
     private router: Router,
@@ -21,6 +22,7 @@ export class ListarPetsComponent implements OnInit{
 
   ngOnInit(): void {
     const clienteId = this.contaService.getId();
+    this.usuarioLogado = this.contaService.logado();
     this.getPets(clienteId!);
   }
 
