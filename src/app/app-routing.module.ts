@@ -17,6 +17,7 @@ import { PerfilContaEstabelecimentoComponent } from './pages/estabelecimento/per
 import { CriarServicoComponent } from './pages/estabelecimento/servico/criar-servico/criar-servico.component';
 import { CriarFuncionarioComponent } from './pages/estabelecimento/funcionario/criar-funcionario/criar-funcionario.component';
 import { ListarAgendamentoComponent } from './pages/agendamento/listar-agendamento/listar-agendamento.component';
+import { PerfilClienteComponent } from './pages/cliente/perfil-cliente/perfil-cliente.component';
 
 const routes: Routes = [
   {
@@ -85,6 +86,10 @@ const routes: Routes = [
   {
     path: 'perfil/:id/lista-agendamentos',
     component: ListarAgendamentoComponent
+  },
+  {
+    path: 'perfil-cliente/:id',
+    component: PerfilClienteComponent
   },
 ];
 

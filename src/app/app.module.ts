@@ -55,6 +55,7 @@ import { CurrencyPipe } from './core/pipes/currency.pipe';
 import { CriarFuncionarioComponent } from './pages/estabelecimento/funcionario/criar-funcionario/criar-funcionario.component';
 import { ListarAgendamentoComponent } from './pages/agendamento/listar-agendamento/listar-agendamento.component';
 import { CardAgendamentoComponent } from './shared/card-agendamento/card-agendamento.component';
+import { PerfilClienteComponent } from './pages/cliente/perfil-cliente/perfil-cliente.component';
 
 
 @NgModule({
@@ -95,6 +96,7 @@ import { CardAgendamentoComponent } from './shared/card-agendamento/card-agendam
     CriarFuncionarioComponent,
     ListarAgendamentoComponent,
     CardAgendamentoComponent,
+    PerfilClienteComponent,
   ],
   imports: [
     BrowserModule,
