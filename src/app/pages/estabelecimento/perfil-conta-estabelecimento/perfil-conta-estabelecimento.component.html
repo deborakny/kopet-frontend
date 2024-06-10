@@ -6,7 +6,7 @@
 <app-container class="container">
   <div class="content">
     <div class="info nome">
-      <h1 class="titulo">{{ estabelecimento?.nome }}</h1>
+      <h1 class="titulo">{{ estabelecimento ? estabelecimento!.nome : 'Sem nome'}}</h1>
       <mat-divider></mat-divider>
     </div>
 
@@ -35,6 +35,7 @@
             {{ horario.horaFinal }}
           </li>
         </ul>
+        <app-primary-button text="Editar" class="button button__editar" routerLink="/cadastrar/conta-estabelecimento/horarios-funcionamento"></app-primary-button>
       </mat-expansion-panel>
     </div>
     <div class="horario-desktop">

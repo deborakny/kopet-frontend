@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { Payload } from '../types/payload';
 import { BehaviorSubject } from 'rxjs';
+import { Router } from '@angular/router';
 
 const KEY = 'conta'
 
@@ -15,7 +16,8 @@ export class ContaService {
   private readonly apiUrl: string = environment.apiUrl;
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private router: Router
   ) { }
 
   private contaSubject = new BehaviorSubject<Conta | null>(null);
@@ -28,6 +30,7 @@ export class ContaService {
         tipoEstabelecimento: payload.tipoEstabelecimento
       }
       this.contaSubject.next(conta);
+      this.storageConta();
     }
   }
 
@@ -49,6 +52,20 @@ export class ContaService {
 
   logOut() {
     this.contaSubject.next(null);
+    this.storageConta();
+    this.router.navigate(['/'])
+
+  }
+
+  storageConta() {
+    sessionStorage.setItem(KEY, JSON.stringify(this.contaSubject.getValue()));
+  }
+
+  storageLogin() {
+    const session = sessionStorage.getItem(KEY);
+    if (session && !this.logado()) {
+      this.contaSubject.next(JSON.parse(session));
+    }
   }
 
 }

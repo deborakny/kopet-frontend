@@ -73,7 +73,8 @@ const routes: Routes = [
   },
   {
     path: 'perfil-estabelecimento/:id',
-    component: PerfilContaEstabelecimentoComponent
+    component: PerfilContaEstabelecimentoComponent,
+    canActivate: [authGuard]
   },
   {
     path: 'perfil-estabelecimento/:id/cadastrar-servico',

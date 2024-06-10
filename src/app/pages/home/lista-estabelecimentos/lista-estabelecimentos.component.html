@@ -5,4 +5,8 @@
   >
   </app-card-petshop>
 </div>
+<div class="sem-estabelecimento">
+  <span *ngIf="estabelecimentosFiltrados.length == 0 && buscaControl.value == ''">Procure pelo nome do estabelecimento</span>
+  <span *ngIf="estabelecimentosFiltrados.length == 0 && buscaControl.value != ''">Nenhum estabelecimento encontrado com esse nome</span>
+</div>
 

@@ -14,19 +14,24 @@ export class FooterComponent implements OnInit {
 
   constructor(
     private contaService: ContaService
-  ){}
+  ) { }
+
+  conta$ = this.contaService.retornaConta();
 
   ngOnInit(): void {
-
-    if (this.contaService.logado()) {
-      this.iconName = 'schedule'
-      this.legenda = 'Agendamentos'
-      this.url = 'agendamentos'
-    } else {
-      this.iconName = 'login'
-      this.legenda = 'Entrar na Conta'
-      this.url = 'login'
-    }
+    this.conta$.subscribe(
+      value => {
+        if (this.contaService.logado()) {
+          this.iconName = 'schedule'
+          this.legenda = 'Agendamentos'
+          this.url = 'agendamentos'
+        } else {
+          this.iconName = 'login'
+          this.legenda = 'Entrar na Conta'
+          this.url = 'login'
+        }
+      }
+    )
   }
 
 

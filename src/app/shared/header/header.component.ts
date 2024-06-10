@@ -19,20 +19,26 @@ export class HeaderComponent implements OnInit{
     private clienteService: ClienteService
   ) {}
 
+  conta$ = this.contaService.retornaConta();
+
   ngOnInit(): void {
-    if (this.contaService.logado()) {
-      this.logado = true;
-      const contaId = this.contaService.getId();
-      console.log(contaId)
-      if (this.contaService.getTipoEstabelecimento()) {
-        this.tipoCliente = false
-      } else {
-        this.tipoCliente = true;
-        this.getCliente(contaId!);
-      }
-    } else {
-      this.logado = false
-    }
+    // if (this.contaService.logado()) {
+    //   this.logado = true;
+    //   const contaId = this.contaService.getId();
+    //   console.log(contaId)
+      this.conta$.subscribe(value => {
+        this.tipoCliente = !value?.tipoEstabelecimento;
+        this.logado = value ? true : false
+      });
+      // if (this.contaService.getTipoEstabelecimento()) {
+      //   this.tipoCliente = false
+      // } else {
+      //   this.tipoCliente = true;
+      //   this.getCliente(contaId!);
+      // }
+    // } else {
+    //   this.logado = false
+    // }
   }
 
   getCliente(id: number) {
@@ -41,5 +47,9 @@ export class HeaderComponent implements OnInit{
         this.cliente = res
       }
     )
+  }
+
+  logOut() {
+    this.contaService.logOut();
   }
 }

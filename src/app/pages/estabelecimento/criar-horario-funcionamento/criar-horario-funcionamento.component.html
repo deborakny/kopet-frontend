@@ -1,4 +1,4 @@
-<app-banner [logo]='true'></app-banner>
+<app-banner [logo]="true"></app-banner>
 <div class="horario-funcionamento">
   <app-container class="container">
     <div class="content">
@@ -7,117 +7,135 @@
         <div class="dias-horas">
           <div class="seleciona-tudo">
             <mat-checkbox
-            class="example-margin">
-              Todos os dias
+              class="example-margin"
+              [checked]="allComplete"
+              [indeterminate]="someComplete()"
+              (change)="setAll($event.checked)"
+            >
+              {{ dia.nome }}
             </mat-checkbox>
           </div>
           <div class="lista-dias">
-            <div class="dia-hora-wrapper">
-              <mat-checkbox class="checkbox-title">
-                Segunda-feira
+            <div class="dia-hora-wrapper" *ngFor="let dia of dia.dias">
+              <mat-checkbox
+                [(ngModel)]="dia.completed"
+                [ngModelOptions]="{ standalone: true }"
+                value= {{dia.value}}
+                (ngModelChange)="updateAllComplete()"
+              >
+                {{ dia.nome }}
               </mat-checkbox>
-              <div class="horas">
+              <div class="horas" *ngIf="dia.completed">
                 <mat-form-field class="example-full-width">
                   <mat-label>Hora Inicial</mat-label>
-                  <input matInput>
+                  <input matInput />
                 </mat-form-field>
                 <mat-form-field class="example-full-width">
                   <mat-label>Hora Final</mat-label>
-                  <input matInput>
-                </mat-form-field>
-              </div>
-            </div>
-            <div class="dia-hora-wrapper">
-              <mat-checkbox class="checkbox-title">
-                Terça-feira
-              </mat-checkbox>
-              <div class="horas">
-                <mat-form-field class="example-full-width">
-                  <mat-label>Hora Inicial</mat-label>
-                  <input matInput>
-                </mat-form-field>
-                <mat-form-field class="example-full-width">
-                  <mat-label>Hora Final</mat-label>
-                  <input matInput>
-                </mat-form-field>
-              </div>
-            </div>
-            <div class="dia-hora-wrapper">
-              <mat-checkbox class="checkbox-title">
-                Quarta-feira
-              </mat-checkbox>
-              <div class="horas">
-                <mat-form-field class="example-full-width">
-                  <mat-label>Hora Inicial</mat-label>
-                  <input matInput>
-                </mat-form-field>
-                <mat-form-field class="example-full-width">
-                  <mat-label>Hora Final</mat-label>
-                  <input matInput>
-                </mat-form-field>
-              </div>
-            </div>
-            <div class="dia-hora-wrapper">
-              <mat-checkbox class="checkbox-title">
-                Quinta-feira
-              </mat-checkbox>
-              <div class="horas">
-                <mat-form-field class="example-full-width">
-                  <mat-label>Hora Inicial</mat-label>
-                  <input matInput>
-                </mat-form-field>
-                <mat-form-field class="example-full-width">
-                  <mat-label>Hora Final</mat-label>
-                  <input matInput>
-                </mat-form-field>
-              </div>
-            </div>
-            <div class="dia-hora-wrapper">
-              <mat-checkbox class="checkbox-title">
-                Sexta-feira
-              </mat-checkbox>
-              <div class="horas">
-                <mat-form-field class="example-full-width">
-                  <mat-label>Hora Inicial</mat-label>
-                  <input matInput>
-                </mat-form-field>
-                <mat-form-field class="example-full-width">
-                  <mat-label>Hora Final</mat-label>
-                  <input matInput>
-                </mat-form-field>
-              </div>
-            </div>
-            <div class="dia-hora-wrapper">
-              <mat-checkbox class="checkbox-title">
-                Sábado
-              </mat-checkbox>
-              <div class="horas">
-                <mat-form-field class="example-full-width">
-                  <mat-label>Hora Inicial</mat-label>
-                  <input matInput>
-                </mat-form-field>
-                <mat-form-field class="example-full-width">
-                  <mat-label>Hora Final</mat-label>
-                  <input matInput>
-                </mat-form-field>
-              </div>
-            </div>
-            <div class="dia-hora-wrapper">
-              <mat-checkbox class="checkbox-title">
-                Domingo
-              </mat-checkbox>
-              <div class="horas">
-                <mat-form-field class="example-full-width">
-                  <mat-label>Hora Inicial</mat-label>
-                  <input matInput>
-                </mat-form-field>
-                <mat-form-field class="example-full-width">
-                  <mat-label>Hora Final</mat-label>
-                  <input matInput>
+                  <input matInput />
                 </mat-form-field>
               </div>
             </div>
           </div>
+
+          <!-- <div class="seleciona-tudo">
+            <mat-checkbox class="example-margin"> Todos os dias </mat-checkbox>
+          </div> -->
+          <!-- <div class="lista-dias">
+            <div class="dia-hora-wrapper">
+              <mat-checkbox class="checkbox-title" value="1">
+                Segunda-feira
+              </mat-checkbox>
+              <div class="horas" *ngIf="">
+                <mat-form-field class="example-full-width">
+                  <mat-label>Hora Inicial</mat-label>
+                  <input matInput />
+                </mat-form-field>
+                <mat-form-field class="example-full-width">
+                  <mat-label>Hora Final</mat-label>
+                  <input matInput />
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="dia-hora-wrapper">
+              <mat-checkbox class="checkbox-title"> Terça-feira </mat-checkbox>
+              <div class="horas">
+                <mat-form-field class="example-full-width">
+                  <mat-label>Hora Inicial</mat-label>
+                  <input matInput />
+                </mat-form-field>
+                <mat-form-field class="example-full-width">
+                  <mat-label>Hora Final</mat-label>
+                  <input matInput />
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="dia-hora-wrapper">
+              <mat-checkbox class="checkbox-title"> Quarta-feira </mat-checkbox>
+              <div class="horas">
+                <mat-form-field class="example-full-width">
+                  <mat-label>Hora Inicial</mat-label>
+                  <input matInput />
+                </mat-form-field>
+                <mat-form-field class="example-full-width">
+                  <mat-label>Hora Final</mat-label>
+                  <input matInput />
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="dia-hora-wrapper">
+              <mat-checkbox class="checkbox-title"> Quinta-feira </mat-checkbox>
+              <div class="horas">
+                <mat-form-field class="example-full-width">
+                  <mat-label>Hora Inicial</mat-label>
+                  <input matInput />
+                </mat-form-field>
+                <mat-form-field class="example-full-width">
+                  <mat-label>Hora Final</mat-label>
+                  <input matInput />
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="dia-hora-wrapper">
+              <mat-checkbox class="checkbox-title"> Sexta-feira </mat-checkbox>
+              <div class="horas">
+                <mat-form-field class="example-full-width">
+                  <mat-label>Hora Inicial</mat-label>
+                  <input matInput />
+                </mat-form-field>
+                <mat-form-field class="example-full-width">
+                  <mat-label>Hora Final</mat-label>
+                  <input matInput />
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="dia-hora-wrapper">
+              <mat-checkbox class="checkbox-title"> Sábado </mat-checkbox>
+              <div class="horas">
+                <mat-form-field class="example-full-width">
+                  <mat-label>Hora Inicial</mat-label>
+                  <input matInput />
+                </mat-form-field>
+                <mat-form-field class="example-full-width">
+                  <mat-label>Hora Final</mat-label>
+                  <input matInput />
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="dia-hora-wrapper">
+              <mat-checkbox class="checkbox-title"> Domingo </mat-checkbox>
+              <div class="horas">
+                <mat-form-field class="example-full-width">
+                  <mat-label>Hora Inicial</mat-label>
+                  <input matInput />
+                </mat-form-field>
+                <mat-form-field class="example-full-width">
+                  <mat-label>Hora Final</mat-label>
+                  <input matInput />
+                </mat-form-field>
+              </div>
+            </div>
+          </div> -->
         </div>
       </form>
     </div>

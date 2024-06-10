@@ -11,7 +11,7 @@ export const authGuard = () => {
   if (contaService.logado()) {
     return true;
   }
-  const snackbarRef = snackbar.open('Faça log in para agendar', 'Log in', {
+  const snackbarRef = snackbar.open('Faça log in para realizar essa ação', 'Log in', {
     horizontalPosition: "center", verticalPosition: "bottom",
    });
   snackbarRef.onAction().subscribe(() => {
