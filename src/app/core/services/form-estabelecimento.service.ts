@@ -31,7 +31,7 @@ export class FormEstabelecimentoService {
         cidade: ['', Validators.required],
         estado: ['', Validators.required],
       }),
-      horariosFuncionamento: [[]]
+      // horariosFuncionamento: [[]]
     });
   }
 

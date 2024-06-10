@@ -5,6 +5,8 @@ import { Router } from '@angular/router';
 import { FormGroup } from '@angular/forms';
 import { Estabelecimento } from 'src/app/core/types/estabelecimento';
 import { EstabelecimentoService } from 'src/app/core/services/estabelecimento.service';
+import { AutenticacaoInterceptor } from 'src/app/core/interceptors/autenticacao.interceptor';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-criar-endereco-estabelecimento',
@@ -20,7 +22,9 @@ export class CriarEnderecoEstabelecimentoComponent implements OnInit{
     private cepService: CepService,
     private formEstabelecimentoService: FormEstabelecimentoService,
     private estabelecimentoService: EstabelecimentoService,
-    private router: Router
+    private router: Router,
+    private autenticacaoInterceptor: AutenticacaoInterceptor,
+    private snackbar: MatSnackBar
   ) { }
 
   ngOnInit(): void {
@@ -33,6 +37,10 @@ export class CriarEnderecoEstabelecimentoComponent implements OnInit{
       this.estabelecimentoService.criar(estabelecimento).subscribe({
         next: (value) => {
           console.log('Sucesso', value);
+          this.snackbar.open('Cadastro realizado com sucesso', '', {
+            horizontalPosition: "center", verticalPosition: "bottom", duration: 3000
+          });
+          this.login(value.id!);
         },
         error: (e) => {
           console.log('Erro', e);
@@ -41,6 +49,17 @@ export class CriarEnderecoEstabelecimentoComponent implements OnInit{
     } else {
       console.log('Formulário inválido', this.formGroup.getRawValue());
       this.formGroup.markAllAsTouched();
+    }
+  }
+
+  login(id: number) {
+    const contaGroup = this.formGroup.get('conta')
+    if (contaGroup) {
+      const email = contaGroup.get('email')?.value;
+      const senha = contaGroup.get('senha')?.value;
+      this.autenticacaoInterceptor.autenticar(email, senha).subscribe(() => {
+        this.router.navigate([`perfil-estabelecimento/${id}`])
+      })
     }
   }
 
