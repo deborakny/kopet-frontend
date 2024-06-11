@@ -24,7 +24,7 @@ export class CriarHorarioFuncionamentoComponent implements OnInit{
   idEstabelecimento?: number;
 
   dia: Dia = {
-    nome: 'Todo os Dias',
+    nome: 'Todos os Dias',
     completed: false,
     dias: [
       {nome: 'Segunda-feira', completed: false, value: 1},

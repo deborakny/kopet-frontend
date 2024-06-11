@@ -1,1 +1,141 @@
-<p>disponibilidade works!</p>
+<div class="header-banner">
+  <app-header></app-header>
+  <app-banner [logo]="false" class="banner"></app-banner>
+</div>
+
+<div class="cadastro-disponibilidade">
+  <app-container class="container">
+    <h2 class="titulo">Cadastro de disponibilidade</h2>
+    <form class="form">
+      <div class="input-wrapper">
+        <label for="servicos" class="label">Serviço</label>
+        <mat-form-field>
+          <mat-label>Selecione um serviço</mat-label>
+          <mat-select
+            id="servicos"
+            (selectionChange)="onSelected($event.value)"
+          >
+            <mat-option
+              *ngFor="let servico of servicosList"
+              value="{{ servico.id }}"
+              >{{ servico.nome }}</mat-option
+            >
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="input-wrapper" *ngIf="servicoId">
+        <label for="funcionarios" class="label">Funcionário</label>
+        <mat-form-field>
+          <mat-label>Selecione um funcionário</mat-label>
+          <mat-select id="funcionarios" (selectionChange)="onFuncionarioSelected($event.value)">
+            <mat-option
+              *ngFor="let funcionario of funcionariosList"
+              value="{{ funcionario.id }}"
+              >{{ funcionario.nome }} {{ funcionario.sobrenome }}</mat-option
+            >
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <!-- Datas disponibilidade -->
+
+      <div class="datas-disponibilidade" *ngIf="funcionarioId">
+        <form class="form" [formGroup]="formGroup">
+          <div class="dias-horas">
+            <div class="seleciona-tudo">
+              <mat-checkbox
+                class="example-margin"
+                [checked]="allComplete"
+                [indeterminate]="someComplete()"
+                (change)="setAll($event.checked)"
+              >
+                <strong>{{ dia.nome }}</strong>
+              </mat-checkbox>
+            </div>
+            <div class="lista-dias">
+              <div
+                class="dia-hora-wrapper"
+                *ngFor="let dia of dia.dias; let i = index; trackBy: trackByDia"
+              >
+                <mat-checkbox
+                  [(ngModel)]="dia.completed"
+                  [ngModelOptions]="{ standalone: true }"
+                  value="{{ dia.value }}"
+                  (ngModelChange)="toggleDia(dia)"
+                >
+                  {{ dia.nome }}
+                </mat-checkbox>
+                <div
+                  class="horas"
+                  [formGroup]="getDataDisponibilidade(i)"
+                  *ngIf="dia.completed"
+                >
+                <div class="input-botao-wrapper">
+                  <h3>Expediente</h3>
+                    <mat-form-field class="example-full-width">
+                      <mat-label>Hora Inicial</mat-label>
+                      <input
+                        matInput
+                        formControlName="horarioInicio"
+                        (input)="updateHorario(dia.value!)"
+                      />
+                    </mat-form-field>
+                    <mat-form-field class="example-full-width">
+                      <mat-label>Hora Final</mat-label>
+                      <input
+                        matInput
+                        formControlName="horarioFim"
+                        (input)="updateHorario(dia.value!)"
+                      />
+                    </mat-form-field>
+                    <app-primary-button
+                      text="Aplicar para todos os dias"
+                      class="button"
+                      (click)="applyHoraToAllDays(i)"
+                    ></app-primary-button>
+                </div>
+
+                <div class="input-botao-wrapper">
+                  <h3>Intervalo</h3>
+                  <mat-form-field class="example-full-width">
+                    <mat-label>Início da pausa</mat-label>
+                    <input
+                      matInput
+                      formControlName="pausaInicio"
+                      (input)="updateHorario(dia.value!)"
+                    />
+                  </mat-form-field>
+                  <mat-form-field class="example-full-width">
+                    <mat-label>Final da pausa</mat-label>
+                    <input
+                      matInput
+                      formControlName="pausaFim"
+                      (input)="updateHorario(dia.value!)"
+                    />
+                  </mat-form-field>
+                  <app-primary-button
+                    text="Aplicar para todos os dias"
+                    class="button"
+                    (click)="applyPausaToAllDays(i)"
+                  ></app-primary-button>
+                </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </form>
+  </app-container>
+
+  <div class="button_wrapper">
+    <app-basic-button
+      text="Cancelar"
+      class="button"
+      routerLink=""
+    ></app-basic-button>
+    <app-primary-button text="Cadastrar" class="button"></app-primary-button>
+  </div>
+</div>
+<app-footer></app-footer>
