@@ -63,3 +63,16 @@
     font-size: 1.5rem;
   }
 }
+
+@media screen and (min-width: 769px) {
+  .card {
+    .button-wrapper {
+      width: 60%;
+    }
+
+    .button-icon {
+      justify-content: center;
+      gap: .25rem;
+    }
+  }
+}
