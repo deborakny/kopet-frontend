@@ -12,7 +12,7 @@
               [indeterminate]="someComplete()"
               (change)="setAll($event.checked)"
             >
-              {{ dia.nome }}
+              <strong>{{ dia.nome }}</strong>
             </mat-checkbox>
           </div>
           <div class="lista-dias">
@@ -36,7 +36,7 @@
                     <mat-label>Hora Final</mat-label>
                     <input matInput formControlName="horaFinal" (input)="updateHorario(dia.value!)"/>
                   </mat-form-field>
-                  <app-primary-button text="Aplicar para todos os dias" class="button" (click)="applyToAllDays(i)"></app-primary-button>
+                  <app-primary-button text="Aplicar para todos os dias" class="button button__aplicar-para-todos" (click)="applyToAllDays(i)"></app-primary-button>
               </div>
             </form>
           </div>
