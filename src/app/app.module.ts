@@ -58,6 +58,7 @@ import { CardAgendamentoComponent } from './shared/card-agendamento/card-agendam
 import { PerfilClienteComponent } from './pages/cliente/perfil-cliente/perfil-cliente.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
+import { DisponibilidadeComponent } from './pages/estabelecimento/disponibilidade/disponibilidade.component';
 
 @NgModule({
   declarations: [
@@ -98,6 +99,7 @@ import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
     ListarAgendamentoComponent,
     CardAgendamentoComponent,
     PerfilClienteComponent,
+    DisponibilidadeComponent,
   ],
   imports: [
     BrowserModule,

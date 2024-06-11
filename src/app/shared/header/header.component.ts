@@ -13,6 +13,7 @@ export class HeaderComponent implements OnInit{
   logado: boolean = false;
   tipoCliente: boolean = false;
   cliente?: Cliente;
+  contaId?: number;
 
   constructor(
     private contaService: ContaService,
@@ -28,7 +29,8 @@ export class HeaderComponent implements OnInit{
     //   console.log(contaId)
       this.conta$.subscribe(value => {
         this.tipoCliente = !value?.tipoEstabelecimento;
-        this.logado = value ? true : false
+        this.logado = value ? true : false;
+        this.contaId = value?.id;
       });
       // if (this.contaService.getTipoEstabelecimento()) {
       //   this.tipoCliente = false
