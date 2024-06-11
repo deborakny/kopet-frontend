@@ -18,6 +18,7 @@ import { CriarServicoComponent } from './pages/estabelecimento/servico/criar-ser
 import { CriarFuncionarioComponent } from './pages/estabelecimento/funcionario/criar-funcionario/criar-funcionario.component';
 import { ListarAgendamentoComponent } from './pages/agendamento/listar-agendamento/listar-agendamento.component';
 import { PerfilClienteComponent } from './pages/cliente/perfil-cliente/perfil-cliente.component';
+import { DisponibilidadeComponent } from './pages/estabelecimento/disponibilidade/disponibilidade.component';
 
 const routes: Routes = [
   {
@@ -83,6 +84,10 @@ const routes: Routes = [
   {
     path: 'perfil-estabelecimento/:id/cadastrar-funcionario',
     component: CriarFuncionarioComponent
+  },
+  {
+    path: 'perfil-estabelecimento/:id/cadastrar-disponibilidade',
+    component: DisponibilidadeComponent
   },
   {
     path: 'perfil/:id/lista-agendamentos',
