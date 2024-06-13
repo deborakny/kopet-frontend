@@ -17,9 +17,9 @@
           <input type="password" matInput class="input" formControlName="senha">
           <mat-error *ngIf="loginForm.get('senha')?.errors?.['required']">Senha obrigatória</mat-error>
         </mat-form-field>
-        <div class="alteracao-senha">
+        <!-- <div class="alteracao-senha">
           <a href="/login">Esqueci minha senha</a>
-        </div>
+        </div> -->
       </div>
       <app-primary-button
         text="Entrar"
@@ -30,7 +30,7 @@
   </app-container>
   <div class="sem-conta">
     <span class="span-sem-conta">Ainda não possui conta?</span>
-    <a href="/login" class="link-cadastrar">Cadastrar estabelecimento</a>
-    <a href="/login" class="link-cadastrar">Cadastrar-se como cliente</a>
+    <a href="/cadastrar/conta-estabelecimento" class="link-cadastrar">Cadastrar estabelecimento</a>
+    <a href="/cadastrar/conta-cliente" class="link-cadastrar">Cadastrar-se como cliente</a>
   </div>
 </div>

@@ -4,6 +4,7 @@
 </div>
 <app-container class="container">
   <h2 class="titulo">Agendamentos</h2>
+  <mat-divider></mat-divider>
   <div class="card-wrapper">
     <app-card-agendamento
       *ngFor="let agendamento of agendamentos"
@@ -12,6 +13,7 @@
     >
     </app-card-agendamento>
   </div>
+  <span *ngIf="agendamentos!.length <= 0" class="sem_agendamento">Não há agendamentos</span>
 </app-container>
 <app-footer [usuarioLogado]="usuarioLogado"></app-footer>
 

@@ -58,3 +58,20 @@
   gap: .75rem;
   margin-bottom: .5rem;
 }
+
+@media screen and (min-width: 769px){
+  .container {
+    margin-top: 0;
+    width: 40%;
+  }
+
+  .button_wrapper {
+    flex-direction: row;
+    justify-content: space-between;
+    width: 40%;
+  }
+
+  .button {
+    width: 45%;
+  }
+}

@@ -26,10 +26,23 @@
   width: 90%;
 }
 
+mat-divider {
+  width: 90%;
+}
+
+.sem_agendamento {
+  text-align: center;
+  margin-top: 1rem;
+}
+
 
 @media screen and (min-width: 769px){
   .container {
     margin-top: 0;
     width: 40%;
+  }
+
+  .sem_agendamento {
+    font-size: 1rem;
   }
 }

@@ -3,7 +3,7 @@
     <!-- Versão Desktop -->
     <mat-toolbar-row class="logo-botoes-desktop">
       <div class="logo-desktop">
-        <span class="logo_nome-desktop">KoPet</span>
+        <span class="logo_nome-desktop" routerLink="/">KoPet</span>
         <span class="example-spacer"></span>
       </div>
       <div class="toolbar__botoes">
@@ -37,11 +37,11 @@
               <mat-icon class="icon-user"></mat-icon>
               <span>Perfil</span>
             </button>
-            <button mat-menu-item class="menu-item">
+            <button mat-menu-item class="menu-item" routerLink="/perfil/{{ contaId }}/lista-agendamentos">
               <mat-icon class="icon-schedule"></mat-icon>
               <span>Agendamentos</span>
             </button>
-            <button mat-menu-item class="menu-item" routerLink="perfil/{{ contaId }}/listar-pets">
+            <button mat-menu-item class="menu-item" routerLink="/perfil/{{ contaId }}/listar-pets">
               <mat-icon class="icon-paw"></mat-icon>
               <span>Pets</span>
             </button>

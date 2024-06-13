@@ -7,12 +7,14 @@
     <h2 class="titulo">Pets</h2>
     <app-primary-button text="Cadastrar pet" class="button" routerLink="/perfil/cadastrar-pet"></app-primary-button>
   </div>
+  <mat-divider></mat-divider>
   <div class="card-wrapper">
     <app-card-pet
       *ngFor="let pet of pets"
       [pet]="pet"
     ></app-card-pet>
   </div>
+  <span *ngIf="pets.length <= 0" class="sem_pet">Nenhum pet cadastrado</span>
 </app-container>
 <app-footer [usuarioLogado]="usuarioLogado"></app-footer>
 

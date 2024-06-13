@@ -5,6 +5,7 @@ import { environment } from 'src/environments/environment';
 import { Payload } from '../types/payload';
 import { BehaviorSubject } from 'rxjs';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 const KEY = 'conta'
 
@@ -17,7 +18,8 @@ export class ContaService {
 
   constructor(
     private http: HttpClient,
-    private router: Router
+    private router: Router,
+    private snackbar: MatSnackBar
   ) { }
 
   private contaSubject = new BehaviorSubject<Conta | null>(null);
@@ -53,6 +55,9 @@ export class ContaService {
   logOut() {
     this.contaSubject.next(null);
     this.storageConta();
+    this.snackbar.open('Usuário deslogado', '', {
+      horizontalPosition: "center", verticalPosition: "bottom", duration: 3000
+    });
     this.router.navigate(['/'])
 
   }

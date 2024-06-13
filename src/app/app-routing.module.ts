@@ -36,7 +36,7 @@ const routes: Routes = [
     component: EstabelecimentoPerfilComponent
   },
   {
-    path: 'agendamento/selecionar-pet',
+    path: 'estabelecimento/:id/agendamento/selecionar-pet',
     component: SelecionarPetComponent,
     canActivate: [authGuard]
   },

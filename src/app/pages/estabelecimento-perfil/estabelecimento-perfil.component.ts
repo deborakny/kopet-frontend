@@ -92,7 +92,7 @@ export class EstabelecimentoPerfilComponent implements OnInit {
 
   agendar() {
     this.formAgendamentoService.setControlNumber('estabelecimentoId', parseInt(this.id!));
-    this.router.navigate(['agendamento/selecionar-pet']);
+    this.router.navigate([`/estabelecimento/${this.id}/agendamento/selecionar-pet`]);
   }
 
 }

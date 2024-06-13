@@ -33,6 +33,15 @@
   gap: 1rem;
 }
 
+mat-divider{
+  width: 90%;
+  margin-bottom: 1.5rem;
+}
+
+.sem_pet {
+  margin: 3rem 0;
+}
+
 @media screen and (min-width: 769px) {
   .container {
     margin-top: 1rem;
@@ -42,5 +51,9 @@
 
   .card-wrapper {
     padding: 0;
+  }
+
+  .sem_pet {
+    font-size: 1.25rem;
   }
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 import { ContaService } from 'src/app/core/services/conta.service';
 import { PetService } from 'src/app/core/services/pet.service';
 
@@ -18,7 +19,8 @@ export class CriarPetComponent implements OnInit{
     private petService: PetService,
     private fb: FormBuilder,
     private contaService: ContaService,
-    private snackbar: MatSnackBar
+    private snackbar: MatSnackBar,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -39,20 +41,24 @@ export class CriarPetComponent implements OnInit{
 
   onSubmitHandler() {
     if (this.formGroup.valid) {
-      this.petService.criar(this.formGroup.value).subscribe({
-        next: (value) => {
-          this.snackbar.open('Cadastro realizado com sucesso', '', {
-            horizontalPosition: "center", verticalPosition: "bottom", duration: 3000
-          });
+      const clienteId = this.contaService.getId();
+      if (clienteId) {
+        this.petService.criar(this.formGroup.value).subscribe({
+          next: (value) => {
+            this.snackbar.open('Cadastro realizado com sucesso', '', {
+              horizontalPosition: "center", verticalPosition: "bottom", duration: 3000
+            });
+            this.router.navigate([`/perfil/${clienteId}/listar-pets`]);
 
-        },
-        error: (e) => {
-          console.error('Erro ao tentar realizar o cadastro:', e);
-          this.snackbar.open('Não foi possível realizar o cadastro', '', {
-            horizontalPosition: "center", verticalPosition: "bottom", duration: 3000
-           });
-        }
-      })
+          },
+          error: (e) => {
+            console.error('Erro ao tentar realizar o cadastro:', e);
+            this.snackbar.open('Não foi possível realizar o cadastro', '', {
+              horizontalPosition: "center", verticalPosition: "bottom", duration: 3000
+            })
+          }
+        });
+      }
     }
   }
 

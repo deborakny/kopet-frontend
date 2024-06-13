@@ -1,5 +1,6 @@
-import { Component, Inject } from '@angular/core';
+import { Component, EventEmitter, Inject, Output } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { PetService } from 'src/app/core/services/pet.service';
 
 @Component({
@@ -9,24 +10,16 @@ import { PetService } from 'src/app/core/services/pet.service';
 })
 export class ConfirmaExclusaoDialogComponent {
 
+  @Output() confirmaExclusao = new EventEmitter<boolean>();
+
   constructor(
     public dialogRef: MatDialogRef<ConfirmaExclusaoDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public id: number,
     private petService: PetService,
   ) { }
 
   confirma() {
-    if (this.id) {
-      this.petService.excluir(this.id).subscribe({
-        next: (value) => {
-          console.log('Excluído')
-          window.location.reload();
-        },
-        error: (err) => {
-          console.log('erro', err)
-        }
-      })
-    }
+    console.log('confirmado');
+    this.confirmaExclusao.emit(true);
   }
 
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ContaService } from 'src/app/core/services/conta.service';
 import { FormAgendamentoService } from 'src/app/core/services/form-agendamento.service';
 import { PetService } from 'src/app/core/services/pet.service';
@@ -18,16 +18,19 @@ export class SelecionarPetComponent implements OnInit{
   usuarioLogado: boolean = true;
   petControl = new FormControl();
   pets?: Pet[];
+  estabelecimentoId!: string | null;
 
   constructor(
     private formAgendamentoService: FormAgendamentoService,
     private router: Router,
     private contaService: ContaService,
     private snackbar: MatSnackBar,
-    private petService: PetService
+    private petService: PetService,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
+    this.estabelecimentoId = this.route.snapshot.paramMap.get('id');
     this.petControl = this.formAgendamentoService.getControl('petId');
 
     const clienteId = this.contaService.getId();
@@ -57,6 +60,12 @@ export class SelecionarPetComponent implements OnInit{
                   duration: 3000,
                   panelClass: ['custom-snackbar']
                 });
+    }
+  }
+
+  voltar() {
+    if (this.estabelecimentoId) {
+      this.router.navigate([`/estabelecimento/${parseInt(this.estabelecimentoId)}`]);
     }
   }
 }
