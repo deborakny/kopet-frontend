@@ -26,4 +26,8 @@ export class AgendamentoService {
   listarPorEstabelecimentoId(id: number): Observable<Agendamento[]> {
     return this.http.get<Agendamento[]>(`${this.apiUrl}/agendamentos/estabelecimento/${id}`)
   }
+
+  atualizar(id: number, agendamento: Agendamento): Observable<Agendamento> {
+    return this.http.patch<Agendamento>(`${this.apiUrl}/agendamentos/${id}`, agendamento);
+  }
 }

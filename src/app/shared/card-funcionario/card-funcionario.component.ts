@@ -17,6 +17,6 @@ export class CardFuncionarioComponent implements OnInit{
 
 
   ngOnInit(): void {
-    this.estabelecimentoLogado = this.contaService.logado();
+    this.estabelecimentoLogado = this.contaService.logado() && this.contaService.getTipoEstabelecimento();
   }
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ContaService } from 'src/app/core/services/conta.service';
+import { EstabelecimentoService } from 'src/app/core/services/estabelecimento.service';
 import { HorarioFuncionamento } from 'src/app/core/types/horario-funcionamento';
 
 export interface Dia {
@@ -41,7 +42,8 @@ export class CriarHorarioFuncionamentoComponent implements OnInit{
 
   constructor(
     private contaService: ContaService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private estabelecimentoService: EstabelecimentoService
   ) {}
 
 
@@ -63,9 +65,6 @@ export class CriarHorarioFuncionamentoComponent implements OnInit{
       dia: [dia, Validators.required],
       horaInicial: [horaInicial, Validators.required],
       horaFinal: [horaFinal, Validators.required],
-      estabelecimento: this.fb.group({
-        id: [this.idEstabelecimento]
-      })
     });
   }
 
@@ -114,9 +113,17 @@ export class CriarHorarioFuncionamentoComponent implements OnInit{
     return this.horariosFuncionamento.at(index) as FormGroup;
   }
 
-  getHorarioFuncionamentoPorDia(dia: number): FormGroup | null {
+  // getHorarioFuncionamentoPorDia(dia: number): FormGroup | null {
+  //   const horarioFuncionamento = this.horariosFuncionamento.controls.find(control => control.get('dia')?.value === dia);
+  //   return horarioFuncionamento ? horarioFuncionamento as FormGroup : null;
+  // }
+
+  getHorarioFuncionamentoPorDia(dia: number): FormGroup {
     const horarioFuncionamento = this.horariosFuncionamento.controls.find(control => control.get('dia')?.value === dia);
-    return horarioFuncionamento ? horarioFuncionamento as FormGroup : null;
+    if (!horarioFuncionamento) {
+      throw new Error(`No horarioFuncionamento found for dia: ${dia}`);
+    }
+    return horarioFuncionamento as FormGroup;
   }
 
 
@@ -157,38 +164,77 @@ export class CriarHorarioFuncionamentoComponent implements OnInit{
     console.log('Estado atual do FormArray:', horariosFuncionamentoArray.value);
   }
 
-  applyToAllDays(i: number) {
+  // applyToAllDays(i: number) {
+  //   const selectedDays = this.dia.dias!.filter(dia => dia.completed); // Obter todos os dias selecionados
+  //   console.log('Dias selecionados:', selectedDays);
+
+  //   const horaInicial = this.formGroup.get('horariosFuncionamento')?.value[i]?.horaInicial || '';
+  //   const horaFinal = this.formGroup.get('horariosFuncionamento')?.value[i]?.horaFinal || '';
+  //   console.log('Hora inicial:', horaInicial);
+  //   console.log('Hora final:', horaFinal);
+
+  //   if (horaInicial !== '' && horaFinal !== '') {
+  //     selectedDays.forEach(dia => {
+  //       const horarioFuncionamento = this.getHorarioFuncionamento(dia.value!);
+  //       horarioFuncionamento ? horarioFuncionamento.get('horaInicial')?.setValue(horaInicial) : '';
+  //       horarioFuncionamento ? horarioFuncionamento.get('horaFinal')?.setValue(horaFinal) : console.log('Não consegui para o dia: ', dia.nome);
+  //       horarioFuncionamento ? console.log('FormGroup:', horarioFuncionamento.getRawValue()) : '';
+  //     });
+  //   }
+
+  //   console.log('Estado atual do FormArray:', this.horariosFuncionamento.value);
+  // }
+
+  applyToAllDays(dia: number) {
     const selectedDays = this.dia.dias!.filter(dia => dia.completed); // Obter todos os dias selecionados
     console.log('Dias selecionados:', selectedDays);
 
-    const horaInicial = this.formGroup.get('horariosFuncionamento')?.value[i]?.horaInicial || '';
-    const horaFinal = this.formGroup.get('horariosFuncionamento')?.value[i]?.horaFinal || '';
+    //const horarioFuncionamentoControl = this.horariosFuncionamento.at(i) as FormGroup;
+    const horarioFuncionamentoControl = this.horariosFuncionamento.controls.find(control => control.get('dia')?.value === dia) as FormGroup;
+
+    const horaInicial = horarioFuncionamentoControl!.get('horaInicial')?.value || '';
+    const horaFinal = horarioFuncionamentoControl!.get('horaFinal')?.value || '';
     console.log('Hora inicial:', horaInicial);
     console.log('Hora final:', horaFinal);
 
     if (horaInicial !== '' && horaFinal !== '') {
       selectedDays.forEach(dia => {
-        const horarioFuncionamento = this.getHorarioFuncionamento(dia.value!);
-        horarioFuncionamento ? horarioFuncionamento.get('horaInicial')?.setValue(horaInicial) : '';
-        horarioFuncionamento ? horarioFuncionamento.get('horaFinal')?.setValue(horaFinal) : console.log('Não consegui para o dia: ', dia.nome);
-        horarioFuncionamento ? console.log('FormGroup:', horarioFuncionamento.getRawValue()) : '';
+        const horarioFuncionamento = this.getHorarioFuncionamentoPorDia(dia.value!);
+        if (horarioFuncionamento) {
+          horarioFuncionamento.get('horaInicial')?.setValue(horaInicial);
+          horarioFuncionamento.get('horaFinal')?.setValue(horaFinal);
+          console.log('FormGroup:', horarioFuncionamento.getRawValue());
+        } else {
+          console.log('Não consegui para o dia: ', dia.nome);
+        }
       });
     }
 
     console.log('Estado atual do FormArray:', this.horariosFuncionamento.value);
   }
 
-
-
-
-
-
-
   submitHandler() {
-    console.log('Enviado....')
-    this.horariosFuncionamento.controls.forEach(value => {
-      console.log('\nDado: ', value.value)
-    })
+    if (this.formGroup.valid) {
+      const horarios = this.horariosFuncionamento.controls.map(control => {
+        const horario = {
+          // id:,
+          dia: control.get('dia')?.value,
+          horaInicial: control.get('horaInicial')?.value,
+          horaFinal: control.get('horaFinal')?.value,
+        }
+        return horario as HorarioFuncionamento;
+      })
+      this.estabelecimentoService.saveHorarioFuncionamento(this.idEstabelecimento!, horarios).subscribe({
+        next: (value) => {
+          console.log('Sucesso', horarios);
+
+        },
+        error: (e) => {
+          console.log('erro', e);
+        }
+      })
+    }
+    console.log(this.formGroup.value)
   }
 
 }

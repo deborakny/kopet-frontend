@@ -59,6 +59,12 @@ import { PerfilClienteComponent } from './pages/cliente/perfil-cliente/perfil-cl
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
 import { DisponibilidadeComponent } from './pages/estabelecimento/disponibilidade/disponibilidade.component';
+import { DataPipe } from './core/pipes/data.pipe';
+import { HoraPipe } from './core/pipes/hora.pipe';
+import {MatDialogModule} from '@angular/material/dialog';
+import { ConfirmaAcaoDialogComponent } from './shared/confirma-acao-dialog/confirma-acao-dialog.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { EditarPerfilClienteComponent } from './pages/cliente/editar-perfil-cliente/editar-perfil-cliente.component';
 
 @NgModule({
   declarations: [
@@ -100,6 +106,10 @@ import { DisponibilidadeComponent } from './pages/estabelecimento/disponibilidad
     CardAgendamentoComponent,
     PerfilClienteComponent,
     DisponibilidadeComponent,
+    DataPipe,
+    HoraPipe,
+    ConfirmaAcaoDialogComponent,
+    EditarPerfilClienteComponent,
   ],
   imports: [
     BrowserModule,
@@ -124,7 +134,9 @@ import { DisponibilidadeComponent } from './pages/estabelecimento/disponibilidad
     MatSnackBarModule,
     MatMenuModule,
     MatCheckboxModule,
-    NgxMaskDirective
+    NgxMaskDirective,
+    MatDialogModule,
+    MatProgressSpinnerModule
   ],
   providers: [provideNgxMask()],
   bootstrap: [AppComponent],

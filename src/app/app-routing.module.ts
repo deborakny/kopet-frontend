@@ -19,6 +19,7 @@ import { CriarFuncionarioComponent } from './pages/estabelecimento/funcionario/c
 import { ListarAgendamentoComponent } from './pages/agendamento/listar-agendamento/listar-agendamento.component';
 import { PerfilClienteComponent } from './pages/cliente/perfil-cliente/perfil-cliente.component';
 import { DisponibilidadeComponent } from './pages/estabelecimento/disponibilidade/disponibilidade.component';
+import { EditarPerfilClienteComponent } from './pages/cliente/editar-perfil-cliente/editar-perfil-cliente.component';
 
 const routes: Routes = [
   {
@@ -61,7 +62,7 @@ const routes: Routes = [
     component: CriarEnderecoEstabelecimentoComponent
   },
   {
-    path: 'cadastrar/conta-estabelecimento/horarios-funcionamento',
+    path: 'perfil-estabelecimento/:id/cadastrar-horario',
     component: CriarHorarioFuncionamentoComponent
   },
   {
@@ -96,6 +97,10 @@ const routes: Routes = [
   {
     path: 'perfil-cliente/:id',
     component: PerfilClienteComponent
+  },
+  {
+    path: 'perfil-cliente/:id/editar-perfil',
+    component: EditarPerfilClienteComponent
   },
 ];
 

@@ -18,7 +18,7 @@ export class CardServicoComponent implements OnInit{
   ) { }
 
   ngOnInit(): void {
-    this.estabelecimentoLogado = this.contaService.logado();
+    this.estabelecimentoLogado = this.contaService.logado() && this.contaService.getTipoEstabelecimento();
     if (this.servico.valor) {
       this.valorString = `R$ ${this.servico.valor}`
     } else {

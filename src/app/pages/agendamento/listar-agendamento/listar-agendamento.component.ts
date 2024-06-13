@@ -11,7 +11,7 @@ import { Agendamento } from 'src/app/core/types/agendamento';
 export class ListarAgendamentoComponent implements OnInit{
 
   usuarioLogado?: boolean;
-  tipoEstabelecimento!: boolean;
+  tipoEstabelecimento?: boolean;
   agendamentos: Agendamento[] = [];
 
   constructor(
@@ -20,16 +20,14 @@ export class ListarAgendamentoComponent implements OnInit{
   ) { }
 
   ngOnInit(): void {
-    //const contaId = this.contaService.getId();
-    const contaId = 18;
-    //this.tipoEstabelecimento = this.contaService.getTipoEstabelecimento();
-    this.tipoEstabelecimento = false;
+    const contaId = this.contaService.getId();
+    this.tipoEstabelecimento = this.contaService.getTipoEstabelecimento();
     this.usuarioLogado = this.contaService.logado();
 
     if (this.tipoEstabelecimento) {
-      this.getAgendamentosEstabelecimento(contaId)
+      this.getAgendamentosEstabelecimento(contaId!!)
     } else {
-      this.getAgendamentosCliente(contaId)
+      this.getAgendamentosCliente(contaId!)
     }
   }
 

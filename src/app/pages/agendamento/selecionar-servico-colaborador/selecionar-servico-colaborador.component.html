@@ -22,7 +22,11 @@
           class="card"
           [objControl]="colaboradorControl"
         >
+        <div></div>
         </app-card-selecionar>
+      </div>
+      <div *ngIf="!(funcionarios!.length > 0) && servicoControl.value && !colaboradorControl.value">
+        <span>Não há colaborador disponível para esse serviço</span>
       </div>
     </div>
   </app-container>

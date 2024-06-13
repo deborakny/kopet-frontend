@@ -17,6 +17,7 @@ export class FooterComponent implements OnInit {
   ) { }
 
   conta$ = this.contaService.retornaConta();
+  contaId?: number;
 
   ngOnInit(): void {
     this.conta$.subscribe(
@@ -24,7 +25,8 @@ export class FooterComponent implements OnInit {
         if (this.contaService.logado()) {
           this.iconName = 'schedule'
           this.legenda = 'Agendamentos'
-          this.url = 'agendamentos'
+          this.contaId = value?.id
+          this.url = `perfil/${this.contaId}/lista-agendamentos`
         } else {
           this.iconName = 'login'
           this.legenda = 'Entrar na Conta'

@@ -31,21 +31,21 @@
         </mat-expansion-panel-header>
         <ul *ngFor="let horario of estabelecimento?.horariosFuncionamento" class="lista-horario">
           <li>
-            {{ getNomeDia(horario.dia) }}: {{ horario.horaInicial }} -
+            {{ getNomeDia(horario.dia) }}: {{ horario.horaInicial }} às
             {{ horario.horaFinal }}
           </li>
         </ul>
-        <app-primary-button text="Editar horário" class="button button__editar-horario" routerLink="/cadastrar/conta-estabelecimento/horarios-funcionamento"></app-primary-button>
+        <app-primary-button [text]="estabelecimento ? (estabelecimento!.horariosFuncionamento!.length > 0 ? 'Editar horários' : 'Cadastrar horários') : 'Cadastrar horários'" class="button button__editar-horario" routerLink="/perfil-estabelecimento/{{estabelecimentoId}}/cadastrar-horario"></app-primary-button>
       </mat-expansion-panel>
     </div>
     <div class="horario-desktop">
       <h2>Horário de Funcionamento</h2>
       <ul *ngFor="let horario of estabelecimento?.horariosFuncionamento" class="lista-horario">
         <li>
-          {{ getNomeDia(horario.dia) }}: {{ horario.horaInicial }} - {{ horario.horaFinal }}
+          {{ getNomeDia(horario.dia) }}: {{ horario.horaInicial }} às {{ horario.horaFinal }}
         </li>
       </ul>
-      <app-basic-button text="Editar horários" class="editar_horario-desktop"></app-basic-button>
+      <app-basic-button [text]="estabelecimento ? (estabelecimento!.horariosFuncionamento!.length > 0 ? 'Editar horários' : 'Cadastrar horários') : 'Cadastrar horários'" routerLink="/perfil-estabelecimento/{{estabelecimentoId}}/cadastrar-horario"></app-basic-button>
     </div>
     <div class="button">
       <app-primary-button text="Editar" class="button__editar"></app-primary-button>

@@ -6,6 +6,7 @@ import { ServicoService } from 'src/app/core/services/servico.service';
 import { DiaDaSemana } from 'src/app/core/types/enum/dia-da-semana.enum';
 import { Estabelecimento } from 'src/app/core/types/estabelecimento';
 import { Funcionario } from 'src/app/core/types/funcionario';
+import { HorarioFuncionamento } from 'src/app/core/types/horario-funcionamento';
 import { Servico } from 'src/app/core/types/servico';
 
 @Component({
@@ -23,6 +24,8 @@ export class PerfilContaEstabelecimentoComponent implements OnInit {
   servicos: Servico[] = [];
   slidesPerViewFuncionario: number = 3;
   slidesPerViewServico: number = 3;
+  estabelecimentoId?: number;
+  horariosFuncionamento?: HorarioFuncionamento[];
 
   constructor(
     private contaService: ContaService,
@@ -33,12 +36,11 @@ export class PerfilContaEstabelecimentoComponent implements OnInit {
 
   ngOnInit(): void {
     this.usuarioLogado = this.contaService.logado();
-    const estabelecimentoId = this.contaService.getId();
-    console.log('id:',estabelecimentoId)
-    // const estabelecimentoId = 31;
-    this.getEstabelecimento(estabelecimentoId!);
-    this.getServicos(estabelecimentoId!);
-    this.getFuncionarios(estabelecimentoId!);
+    this.estabelecimentoId = this.contaService.getId();
+    this.getHorariosFuncionamento(this.estabelecimentoId!);
+    this.getEstabelecimento(this.estabelecimentoId!);
+    this.getServicos(this.estabelecimentoId!);
+    this.getFuncionarios(this.estabelecimentoId!);
   }
 
   getEstabelecimento(id: number) {
@@ -86,6 +88,13 @@ export class PerfilContaEstabelecimentoComponent implements OnInit {
     return nomeDia;
   }
 
+  getHorariosFuncionamento(estabelecimentoId: number) {
+    this.estabelecimentoService.getHorariosFuncionamentoByEstabelecimento(estabelecimentoId).subscribe(
+      res => {
+        this.horariosFuncionamento = res
+      }
+    );
+  }
 
 
 }

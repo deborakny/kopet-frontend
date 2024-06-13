@@ -1,3 +1,4 @@
+import { Disponibilidade } from "./disponibilidade";
 import { Funcionario } from "./funcionario";
 
 export interface Servico {
@@ -7,4 +8,5 @@ export interface Servico {
   duracao: number;
   informacoesAdicionais: string;
   funcionarios?: Funcionario[];
+  disponibilidades?: Disponibilidade[];
 }

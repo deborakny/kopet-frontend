@@ -1,4 +1,8 @@
-<app-banner [logo]="true"></app-banner>
+<div class="header-banner">
+  <app-header></app-header>
+  <app-banner [logo]='false' class="banner"></app-banner>
+</div>
+
 <div class="horario-funcionamento">
   <app-container class="container">
     <div class="content">
@@ -27,7 +31,7 @@
               >
                 {{ dia.nome }}
               </mat-checkbox>
-              <div class="horas"  [formGroup]="getHorarioFuncionamento(i)" *ngIf="dia.completed">
+              <div class="horas" [formGroup]="getHorarioFuncionamentoPorDia(dia.value!)" *ngIf="dia.completed">
                   <mat-form-field class="example-full-width">
                     <mat-label>Hora Inicial</mat-label>
                     <input matInput formControlName="horaInicial" (input)="updateHorario(dia.value!)"/>
@@ -36,7 +40,7 @@
                     <mat-label>Hora Final</mat-label>
                     <input matInput formControlName="horaFinal" (input)="updateHorario(dia.value!)"/>
                   </mat-form-field>
-                  <app-primary-button text="Aplicar para todos os dias" class="button button__aplicar-para-todos" (click)="applyToAllDays(i)"></app-primary-button>
+                  <app-primary-button text="Aplicar para todos os dias" class="button button__aplicar-para-todos" (click)="applyToAllDays(dia.value!)"></app-primary-button>
               </div>
             </form>
           </div>
@@ -49,7 +53,7 @@
     <app-basic-button
       text="Cancelar"
       class="button"
-      routerLink=""
+      routerLink="/perfil-estabelecimento/{{idEstabelecimento}}"
     ></app-basic-button>
     <app-primary-button text="Salvar" class="button" (click)="submitHandler()"></app-primary-button>
   </div>

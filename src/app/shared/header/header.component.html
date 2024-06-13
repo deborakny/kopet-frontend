@@ -29,11 +29,11 @@
           <button mat-button [matMenuTriggerFor]="menu" aria-label="icon-button with a menu" class="btn-logado-desktop">
             <div class="botao-menu-logado-desktop">
               <i class="icon-iconmonstr-user-circle-thin"></i>
-              <span>Olá, {{ cliente!.nome }}</span>
+              <span>Olá, {{ cliente ? cliente!.nome : ''}} {{ cliente ? cliente!.sobrenome : ''}}</span>
             </div>
           </button>
           <mat-menu #menu="matMenu" xPosition="after">
-            <button mat-menu-item class="menu-item" routerLink="/perfil-cliente/{{ cliente!.id }}">
+            <button mat-menu-item class="menu-item" routerLink="/perfil-cliente/{{ contaId }}">
               <mat-icon class="icon-user"></mat-icon>
               <span>Perfil</span>
             </button>
@@ -41,7 +41,7 @@
               <mat-icon class="icon-schedule"></mat-icon>
               <span>Agendamentos</span>
             </button>
-            <button mat-menu-item class="menu-item" routerLink="perfil/{{ cliente!.id}}/listar-pets">
+            <button mat-menu-item class="menu-item" routerLink="perfil/{{ contaId }}/listar-pets">
               <mat-icon class="icon-paw"></mat-icon>
               <span>Pets</span>
             </button>
@@ -89,11 +89,11 @@
           <i class="icon-user"></i>
         </button>
         <mat-menu #perfilMenu="matMenu" xPosition="before">
-          <button mat-menu-item class="menu-item" routerLink="/perfil-cliente/{{ cliente!.id }}">
+          <button mat-menu-item class="menu-item" routerLink="/perfil-cliente/{{ contaId }}">
             <mat-icon class="icon-user"></mat-icon>
             <span>Perfil</span>
           </button>
-          <button mat-menu-item class="menu-item" routerLink="perfil/{{ cliente!.id}}/listar-pets">
+          <button mat-menu-item class="menu-item" routerLink="/perfil/{{ contaId }}/listar-pets">
             <mat-icon class="icon-paw"></mat-icon>
             <span>Pets</span>
           </button>
@@ -114,11 +114,11 @@
             <mat-icon class="icon-shop"></mat-icon>
             <span>Perfil</span>
           </button>
-          <button mat-menu-item class="menu-item">
+          <button mat-menu-item class="menu-item" routerLink="/perfil-estabelecimento/{{contaId}}">
             <mat-icon class="icon-briefcase"></mat-icon>
             <span>Serviços</span>
           </button>
-          <button mat-menu-item class="menu-item">
+          <button mat-menu-item class="menu-item" routerLink="/perfil-estabelecimento/{{contaId}}">
             <mat-icon class="icon-users"></mat-icon>
             <span>Funcionários</span>
           </button>

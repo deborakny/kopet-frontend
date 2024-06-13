@@ -1,0 +1,45 @@
+<div class="header-banner">
+  <app-header></app-header>
+  <app-banner [logo]='false' class="banner"></app-banner>
+</div>
+
+<div class="edicao-cliente">
+  <app-container class="container">
+    <div class="content">
+      <h2 class="titulo">Editar Perfil</h2>
+      <form class="form">
+        <div class="input-wrapper">
+          <label for="nome" class="label">Nome</label>
+          <mat-form-field class="form-field" subscriptSizing="dynamic" appearance="outline">
+            <input type="text" matInput class="input" id="nome">
+            <!-- <mat-error *ngIf="loginForm.get('email')?.errors?.['required']">Campo obrigatório</mat-error> -->
+          </mat-form-field>
+        </div>
+        <div class="input-wrapper">
+          <label for="sobrenome" class="label">Sobrenome</label>
+          <mat-form-field class="form-field" subscriptSizing="dynamic" appearance="outline">
+            <input type="text" matInput class="input" id="sobrenome">
+            <!-- <mat-error *ngIf="loginForm.get('email')?.errors?.['required']">Campo obrigatório</mat-error> -->
+          </mat-form-field>
+        </div>
+        <div class="input-wrapper">
+          <label for="telefone" class="label">Telefone</label>
+          <mat-form-field class="form-field" subscriptSizing="dynamic" appearance="outline">
+            <input type="text" matInput class="input" id="telefone">
+            <!-- <mat-error *ngIf="loginForm.get('email')?.errors?.['required']">Campo obrigatório</mat-error> -->
+          </mat-form-field>
+        </div>
+      </form>
+    </div>
+  </app-container>
+  <div class="button_wrapper">
+    <app-basic-button
+      text="Cancelar"
+      class="button"
+      routerLink=""
+    ></app-basic-button>
+    <app-primary-button text="Salvar" class="button" (click)="onSubmitHandler()"></app-primary-button>
+  </div>
+</div>
+<app-footer></app-footer>
+

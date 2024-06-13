@@ -10,7 +10,29 @@ import { Cliente } from 'src/app/core/types/cliente';
 })
 export class PerfilClienteComponent implements OnInit{
 
+  // cliente!: Cliente;
+
+  // constructor(
+  //   private contaService: ContaService,
+  //   private clienteService: ClienteService
+  // ) { }
+
+  // ngOnInit(): void {
+  //   const id = this.contaService.getId();
+  //   //const id = 26;
+  //   this.getCliente(id!);
+  // }
+
+  // getCliente(id: number) {
+  //   this.clienteService.getCliente(id).subscribe(
+  //     res => {
+  //       this.cliente = res;
+  //     }
+  //   );
+  // }
+
   cliente!: Cliente;
+  isLoading = true;
 
   constructor(
     private contaService: ContaService,
@@ -26,9 +48,13 @@ export class PerfilClienteComponent implements OnInit{
   getCliente(id: number) {
     this.clienteService.getCliente(id).subscribe(
       res => {
-        this.cliente = res;
+        setTimeout(() => {
+          this.cliente = res;
+          this.isLoading = false;
+        }, 1000); // Atraso de 2 segundos
       }
     );
   }
+
 
 }

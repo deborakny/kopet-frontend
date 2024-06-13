@@ -32,6 +32,10 @@ export class HeaderComponent implements OnInit{
         this.logado = value ? true : false;
         this.contaId = value?.id;
       });
+
+    if (this.logado && this.tipoCliente) {
+      this.getCliente(this.contaId!);
+    }
       // if (this.contaService.getTipoEstabelecimento()) {
       //   this.tipoCliente = false
       // } else {

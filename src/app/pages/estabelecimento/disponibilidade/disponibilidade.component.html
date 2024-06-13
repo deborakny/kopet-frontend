@@ -6,7 +6,7 @@
 <div class="cadastro-disponibilidade">
   <app-container class="container">
     <h2 class="titulo">Cadastro de disponibilidade</h2>
-    <form class="form">
+    <form class="form" [formGroup]="formGroup">
       <div class="input-wrapper">
         <label for="servicos" class="label">Serviço</label>
         <mat-form-field>
@@ -28,7 +28,10 @@
         <label for="funcionarios" class="label">Funcionário</label>
         <mat-form-field>
           <mat-label>Selecione um funcionário</mat-label>
-          <mat-select id="funcionarios" (selectionChange)="onFuncionarioSelected($event.value)">
+          <mat-select
+          id="funcionarios"
+          (selectionChange)="onFuncionarioSelected($event.value)"
+          >
             <mat-option
               *ngFor="let funcionario of funcionariosList"
               value="{{ funcionario.id }}"
@@ -41,7 +44,7 @@
       <!-- Datas disponibilidade -->
 
       <div class="datas-disponibilidade" *ngIf="funcionarioId">
-        <form class="form" [formGroup]="formGroup">
+        <form class="form" formGroupName="datasDisponibilidade">
           <div class="dias-horas">
             <div class="seleciona-tudo">
               <mat-checkbox
@@ -68,7 +71,7 @@
                 </mat-checkbox>
                 <div
                   class="horas"
-                  [formGroup]="getDataDisponibilidade(i)"
+                  [formGroup]="getHorarioDisponibilidadePorDia(dia.value!)"
                   *ngIf="dia.completed"
                 >
                 <div class="input-botao-wrapper">
@@ -92,7 +95,7 @@
                     <app-primary-button
                       text="Aplicar para todos os dias"
                       class="button"
-                      (click)="applyHoraToAllDays(i)"
+                      (click)="applyHoraToAllDays(dia.value!)"
                     ></app-primary-button>
                 </div>
 
@@ -117,7 +120,7 @@
                   <app-primary-button
                     text="Aplicar para todos os dias"
                     class="button"
-                    (click)="applyPausaToAllDays(i)"
+                    (click)="applyPausaToAllDays(dia.value!)"
                   ></app-primary-button>
                 </div>
                 </div>
@@ -135,7 +138,7 @@
       class="button"
       routerLink=""
     ></app-basic-button>
-    <app-primary-button text="Cadastrar" class="button"></app-primary-button>
+    <app-primary-button text="Cadastrar" class="button" (click)="submitHandler()"></app-primary-button>
   </div>
 </div>
 <app-footer></app-footer>

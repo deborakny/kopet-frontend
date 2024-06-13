@@ -22,4 +22,8 @@ export class ClienteService {
   getCliente(id: number): Observable<Cliente> {
     return this.http.get<Cliente>(`${this.apiUrl}/clientes/${id}`);
   }
+
+  editar(id: number, cliente: Cliente): Observable<Cliente> {
+    return this.http.patch<Cliente>(`${this.apiUrl}/clientes/${id}`, cliente)
+  }
 }

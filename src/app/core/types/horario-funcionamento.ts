@@ -5,5 +5,5 @@ export interface HorarioFuncionamento {
   dia: number;
   horaInicial: string;
   horaFinal: string;
-  estabelecimento: Estabelecimento
+  estabelecimento: Estabelecimento;
 }

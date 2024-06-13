@@ -3,7 +3,7 @@
   border-radius: 0 0 100px 100px;
 }
 
-.horario-funcionamento {
+.edicao-cliente{
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -23,39 +23,39 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-
 }
 
 .titulo {
-  margin: 1.5rem 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
 }
 
 .form {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+
+.form-conta {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+
+.input-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  font-size: 1rem;
+}
+
+.form-field {
   width: 100%;
-}
-
-.dias-horas {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
-}
-
-// .lista-dias {
-//   display: flex;
-//   flex-direction: column;
-//   gap: 1.5rem;
-// }
-
-.dia-hora-wrapper {
-  margin-bottom: 1rem;
-
-}
-
-.horas {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
 .button_wrapper {
@@ -80,19 +80,5 @@
 
   .button {
     width: 45%;
-  }
-
-  .button__aplicar-para-todos {
-    width: 70%;
-  }
-
-  .horas {
-    flex-direction: row;
-    gap: 1rem;
-  }
-
-  .checkbox-title {
-    width: 100%;
-    text-align: start;
   }
 }

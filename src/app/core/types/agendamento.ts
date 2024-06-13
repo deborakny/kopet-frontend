@@ -1,3 +1,9 @@
+import { Cliente } from "./cliente";
+import { Estabelecimento } from "./estabelecimento";
+import { Funcionario } from "./funcionario";
+import { Pet } from "./pet";
+import { Servico } from "./servico";
+
 export interface Agendamento {
   id?: number;
   estabelecimentoId: number;
@@ -7,5 +13,10 @@ export interface Agendamento {
   petId: number;
   dia: string;
   hora: string;
-  status?: string;
+  status: string;
+  servico?: Servico;
+  funcionario?: Funcionario;
+  cliente?: Cliente;
+  estabelecimento?: Estabelecimento;
+  pet: Pet;
 }

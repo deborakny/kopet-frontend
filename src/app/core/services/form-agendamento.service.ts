@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
+const KEY = 'formAgendamento'
 @Injectable({
   providedIn: 'root',
 })
@@ -20,14 +21,28 @@ export class FormAgendamentoService {
   }
 
   getControl(controlName: string) {
+    // this.pegarStorage();
     return this.formGroup.get(controlName) as FormControl;
   }
 
   setControlNumber(controlName: string, valor: number) {
+    // this.salvarStorage()
     this.formGroup.get(controlName)?.setValue(valor);
   }
 
   getForm(): FormGroup | null {
+    // this.pegarStorage();
     return this.formGroup;
+  }
+
+  salvarStorage() {
+    sessionStorage.setItem(KEY, JSON.stringify(this.formGroup));
+  }
+
+  pegarStorage() {
+    const formGroup = sessionStorage.getItem(KEY);
+    if (formGroup) {
+      this.formGroup = JSON.parse(formGroup);
+    }
   }
 }
