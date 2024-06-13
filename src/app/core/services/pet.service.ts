@@ -22,4 +22,12 @@ export class PetService {
   criar(pet: Pet): Observable<Pet> {
     return this.http.post<Pet>(`${this.apiUrl}/pets`, pet);
   }
+
+  editar(id: number, pet: Pet): Observable<Pet> {
+    return this.http.patch<Pet>(`${this.apiUrl}/pets/${id}`, pet)
+  }
+
+  getPetById(id: number): Observable<Pet> {
+    return this.http.get<Pet>(`${this.apiUrl}/pets/${id}`);
+  }
 }

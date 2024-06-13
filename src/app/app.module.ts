@@ -65,6 +65,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { ConfirmaAcaoDialogComponent } from './shared/confirma-acao-dialog/confirma-acao-dialog.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { EditarPerfilClienteComponent } from './pages/cliente/editar-perfil-cliente/editar-perfil-cliente.component';
+import { EditarPetComponent } from './pages/cliente/pet/editar-pet/editar-pet.component';
 
 @NgModule({
   declarations: [
@@ -110,6 +111,7 @@ import { EditarPerfilClienteComponent } from './pages/cliente/editar-perfil-clie
     HoraPipe,
     ConfirmaAcaoDialogComponent,
     EditarPerfilClienteComponent,
+    EditarPetComponent,
   ],
   imports: [
     BrowserModule,

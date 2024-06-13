@@ -1,5 +1,6 @@
 import { Pet } from 'src/app/core/types/pet';
 import { Component, Input } from '@angular/core';
+import { ContaService } from 'src/app/core/services/conta.service';
 
 @Component({
   selector: 'app-card-pet',
@@ -8,4 +9,11 @@ import { Component, Input } from '@angular/core';
 })
 export class CardPetComponent {
   @Input() pet: any;
+  clienteId?: number;
+
+  constructor(
+    private contaService: ContaService
+  ) {
+    this.clienteId = contaService.getId();
+  }
 }

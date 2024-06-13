@@ -20,6 +20,7 @@ import { ListarAgendamentoComponent } from './pages/agendamento/listar-agendamen
 import { PerfilClienteComponent } from './pages/cliente/perfil-cliente/perfil-cliente.component';
 import { DisponibilidadeComponent } from './pages/estabelecimento/disponibilidade/disponibilidade.component';
 import { EditarPerfilClienteComponent } from './pages/cliente/editar-perfil-cliente/editar-perfil-cliente.component';
+import { EditarPetComponent } from './pages/cliente/pet/editar-pet/editar-pet.component';
 
 const routes: Routes = [
   {
@@ -101,6 +102,10 @@ const routes: Routes = [
   {
     path: 'perfil-cliente/:id/editar-perfil',
     component: EditarPerfilClienteComponent
+  },
+  {
+    path: 'perfil-cliente/:id/editar-pet/:petId',
+    component: EditarPetComponent
   },
 ];
 
