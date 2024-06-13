@@ -1,6 +1,8 @@
 import { Pet } from 'src/app/core/types/pet';
 import { Component, Input } from '@angular/core';
 import { ContaService } from 'src/app/core/services/conta.service';
+import { MatDialog } from '@angular/material/dialog';
+import { ConfirmaExclusaoDialogComponent } from '../confirma-exclusao-dialog/confirma-exclusao-dialog.component';
 
 @Component({
   selector: 'app-card-pet',
@@ -12,8 +14,16 @@ export class CardPetComponent {
   clienteId?: number;
 
   constructor(
-    private contaService: ContaService
+    private contaService: ContaService,
+    public dialog: MatDialog,
   ) {
     this.clienteId = contaService.getId();
+  }
+
+  openDialog(): void {
+    this.dialog.open(ConfirmaExclusaoDialogComponent, {
+      width: '250px',
+      data: this.pet.id
+    })
   }
 }

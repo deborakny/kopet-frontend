@@ -30,4 +30,9 @@ export class PetService {
   getPetById(id: number): Observable<Pet> {
     return this.http.get<Pet>(`${this.apiUrl}/pets/${id}`);
   }
-}
+
+  excluir(id: number): Observable<Pet> {
+    return this.http.delete<Pet>(`${this.apiUrl}/pets/${id}`)
+  }
+
+ }
