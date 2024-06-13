@@ -51,7 +51,7 @@ export class PerfilClienteComponent implements OnInit{
         setTimeout(() => {
           this.cliente = res;
           this.isLoading = false;
-        }, 1000); // Atraso de 2 segundos
+        }, 1000); // Atraso de 1 segundo
       }
     );
   }
