@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 import { ContaService } from 'src/app/core/services/conta.service';
 import { EstabelecimentoService } from 'src/app/core/services/estabelecimento.service';
 import { HorarioFuncionamento } from 'src/app/core/types/horario-funcionamento';
@@ -43,7 +45,9 @@ export class CriarHorarioFuncionamentoComponent implements OnInit{
   constructor(
     private contaService: ContaService,
     private fb: FormBuilder,
-    private estabelecimentoService: EstabelecimentoService
+    private estabelecimentoService: EstabelecimentoService,
+    private router: Router,
+    private snackbar: MatSnackBar
   ) {}
 
 
@@ -227,10 +231,15 @@ export class CriarHorarioFuncionamentoComponent implements OnInit{
       this.estabelecimentoService.saveHorarioFuncionamento(this.idEstabelecimento!, horarios).subscribe({
         next: (value) => {
           console.log('Sucesso', horarios);
-
+          this.snackbar.open('Horários salvos com sucesso', '', {
+            horizontalPosition: "center", verticalPosition: "bottom", duration: 3000
+          });
+          this.router.navigate([`perfil-estabelecimento/${this.idEstabelecimento}`])
         },
         error: (e) => {
-          console.log('erro', e);
+          this.snackbar.open('Não foi possível salvar os horários', '', {
+            horizontalPosition: "center", verticalPosition: "bottom", duration: 3000
+          });
         }
       })
     }

@@ -26,6 +26,7 @@ export class PerfilContaEstabelecimentoComponent implements OnInit {
   slidesPerViewServico: number = 3;
   estabelecimentoId?: number;
   horariosFuncionamento?: HorarioFuncionamento[];
+  isLoading = true;
 
   constructor(
     private contaService: ContaService,
@@ -45,21 +46,24 @@ export class PerfilContaEstabelecimentoComponent implements OnInit {
 
   getEstabelecimento(id: number) {
     this.estabelecimentoService.getEstabelecimentoById(id).subscribe(res => {
-      this.estabelecimento = res;
-      if (this.estabelecimento!.endereco.complemento) {
-        this.enderecoString = `${this.estabelecimento!.endereco.logradouro},
-          ${this.estabelecimento!.endereco.numero},
-          ${this.estabelecimento!.endereco.complemento},
-          ${this.estabelecimento!.endereco.bairro},
-          ${this.estabelecimento!.endereco.cidade},
-          ${this.estabelecimento!.endereco.estado}`
-      } else {
-        this.enderecoString = `${this.estabelecimento!.endereco.logradouro},
-          ${this.estabelecimento!.endereco.numero},
-          ${this.estabelecimento!.endereco.bairro},
-          ${this.estabelecimento!.endereco.cidade},
-          ${this.estabelecimento!.endereco.estado}`
-      }
+      setTimeout(() => {
+        this.estabelecimento = res;
+        if (this.estabelecimento!.endereco.complemento) {
+          this.enderecoString = `${this.estabelecimento!.endereco.logradouro},
+            ${this.estabelecimento!.endereco.numero},
+            ${this.estabelecimento!.endereco.complemento},
+            ${this.estabelecimento!.endereco.bairro},
+            ${this.estabelecimento!.endereco.cidade},
+            ${this.estabelecimento!.endereco.estado}`
+        } else {
+          this.enderecoString = `${this.estabelecimento!.endereco.logradouro},
+            ${this.estabelecimento!.endereco.numero},
+            ${this.estabelecimento!.endereco.bairro},
+            ${this.estabelecimento!.endereco.cidade},
+            ${this.estabelecimento!.endereco.estado}`
+        }
+        this.isLoading = false;
+      }, 1000)
     });
   }
 

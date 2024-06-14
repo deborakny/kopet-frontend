@@ -1,128 +1,134 @@
-<div class="header-banner">
-  <app-header></app-header>
-  <app-banner></app-banner>
-</div>
+<div *ngIf="!isLoading">
+  <div class="header-banner">
+    <app-header></app-header>
+    <app-banner></app-banner>
+  </div>
 
-<app-container class="container">
-  <div class="content">
-    <div class="info nome">
-      <h1 class="titulo">{{ estabelecimento ? estabelecimento!.nome : 'Sem nome'}}</h1>
-      <mat-divider></mat-divider>
-    </div>
+  <app-container class="container">
+    <div class="content">
+      <div class="info nome">
+        <h1 class="titulo">{{ estabelecimento!.nome }}</h1>
+        <mat-divider></mat-divider>
+      </div>
 
 
-    <div class="info endereco">
-      <h2 class="titulo">Endereço:</h2>
-      <span class="endereco__texto">{{ enderecoString }}</span>
-    </div>
+      <div class="info endereco">
+        <h2 class="titulo">Endereço:</h2>
+        <span class="endereco__texto">{{ enderecoString }}</span>
+      </div>
 
-    <div class="info telefone">
-      <h2 class="titulo">Telefone:</h2>
-      <span>{{ (estabelecimento ? estabelecimento!.telefone : '0000000000')  | telefone }}</span>
-    </div>
+      <div class="info telefone">
+        <h2 class="titulo">Telefone:</h2>
+        <span>{{ ( estabelecimento!.telefone )  | telefone }}</span>
+      </div>
 
-    <div class="info horario-mobile">
-      <mat-expansion-panel
-        (opened)="panelOpenState = true"
-        (closed)="panelOpenState = false"
-      >
-        <mat-expansion-panel-header class="panel-header-mobile">
-          <h2 class="titulo titulo-horario-funcionamento">Horário de Funcionamento</h2>
-        </mat-expansion-panel-header>
+      <div class="info horario-mobile">
+        <mat-expansion-panel
+          (opened)="panelOpenState = true"
+          (closed)="panelOpenState = false"
+        >
+          <mat-expansion-panel-header class="panel-header-mobile">
+            <h2 class="titulo titulo-horario-funcionamento">Horário de Funcionamento</h2>
+          </mat-expansion-panel-header>
+          <ul *ngFor="let horario of estabelecimento?.horariosFuncionamento" class="lista-horario">
+            <li>
+              {{ getNomeDia(horario.dia) }}: {{ horario.horaInicial }} às
+              {{ horario.horaFinal }}
+            </li>
+          </ul>
+          <app-primary-button [text]="estabelecimento!.horariosFuncionamento!.length > 0 ? 'Editar horários' : 'Cadastrar horários'" class="button button__editar-horario" routerLink="/perfil-estabelecimento/{{estabelecimentoId}}/cadastrar-horario"></app-primary-button>
+        </mat-expansion-panel>
+      </div>
+      <div class="horario-desktop">
+        <h2 class="titulo">Horário de Funcionamento</h2>
         <ul *ngFor="let horario of estabelecimento?.horariosFuncionamento" class="lista-horario">
           <li>
-            {{ getNomeDia(horario.dia) }}: {{ horario.horaInicial }} às
-            {{ horario.horaFinal }}
+            {{ getNomeDia(horario.dia) }}: {{ horario.horaInicial }} às {{ horario.horaFinal }}
           </li>
         </ul>
-        <app-primary-button [text]="estabelecimento ? (estabelecimento!.horariosFuncionamento!.length > 0 ? 'Editar horários' : 'Cadastrar horários') : 'Cadastrar horários'" class="button button__editar-horario" routerLink="/perfil-estabelecimento/{{estabelecimentoId}}/cadastrar-horario"></app-primary-button>
-      </mat-expansion-panel>
+        <app-basic-button class="editar_horario-desktop" [text]="estabelecimento!.horariosFuncionamento!.length > 0 ? 'Editar horários' : 'Cadastrar horários'" routerLink="/perfil-estabelecimento/{{estabelecimentoId}}/cadastrar-horario"></app-basic-button>
+      </div>
+      <div class="button">
+        <app-primary-button text="Editar" class="button__editar" routerLink="/perfil-estabelecimento/{{estabelecimentoId}}/editar"></app-primary-button>
+      </div>
     </div>
-    <div class="horario-desktop">
-      <h2>Horário de Funcionamento</h2>
-      <ul *ngFor="let horario of estabelecimento?.horariosFuncionamento" class="lista-horario">
-        <li>
-          {{ getNomeDia(horario.dia) }}: {{ horario.horaInicial }} às {{ horario.horaFinal }}
-        </li>
-      </ul>
-      <app-basic-button [text]="estabelecimento ? (estabelecimento!.horariosFuncionamento!.length > 0 ? 'Editar horários' : 'Cadastrar horários') : 'Cadastrar horários'" routerLink="/perfil-estabelecimento/{{estabelecimentoId}}/cadastrar-horario"></app-basic-button>
-    </div>
-    <div class="button">
-      <app-primary-button text="Editar" class="button__editar"></app-primary-button>
-    </div>
-  </div>
-</app-container>
+  </app-container>
 
-<div class="main">
-  <div class="divider">
-    <h1 class="divider__titulo">Serviços</h1>
-  </div>
+  <div class="main">
+    <div class="divider">
+      <h1 class="divider__titulo">Serviços</h1>
+    </div>
 
-  <div class="button-wrapper">
-    <div class="botao-adicionar">
-      <app-primary-button text="Adicionar Serviço"
-      class="botao-adicionar__item"
-      routerLink="/perfil-estabelecimento/{{ estabelecimento?.id }}/cadastrar-servico"
-      ></app-primary-button>
+    <div class="button-wrapper">
+      <div class="botao-adicionar">
+        <app-primary-button text="Adicionar Serviço"
+        class="botao-adicionar__item"
+        routerLink="/perfil-estabelecimento/{{ estabelecimento?.id }}/cadastrar-servico"
+        ></app-primary-button>
+      </div>
+    </div>
+    <div class="info-servico-funcionario servico" *ngIf="servicos!.length > 0; else semServico">
+      <swiper-container
+        navigation="false"
+        class="swiper-wrapper"
+        mousewheel="true"
+        [slidesPerView]="3"
+        pagination="true"
+        pagination-clickable="true"
+        space-between="10"
+      >
+        <swiper-slide class="swiper__slide" *ngFor="let servico of servicos">
+          <app-card-servico class="card" [servico]="servico"></app-card-servico>
+        </swiper-slide>
+      </swiper-container>
+    </div>
+
+    <div class="divider">
+      <h1 class="divider__titulo">Colaboradores</h1>
+    </div>
+
+    <div class="button-wrapper">
+      <div class="botao-adicionar">
+        <app-primary-button
+        text="Adicionar Colaborador"
+        class="botao-adicionar__item"
+        routerLink="/perfil-estabelecimento/{{ estabelecimento?.id }}/cadastrar-funcionario"
+        ></app-primary-button>
+      </div>
+    </div>
+    <div class="info-servico-funcionario servico" *ngIf="funcionarios!.length > 0; else semColaborador">
+      <swiper-container
+        navigation="false"
+        class="swiper-wrapper"
+        [slidesPerView]="3"
+        mousewheel="true"
+        pagination="true"
+        pagination-clickable="true"
+        space-between="10"
+      >
+        <swiper-slide class="swiper__slide" *ngFor="let funcionario of funcionarios">
+          <app-card-funcionario class="card" [funcionario]="funcionario"></app-card-funcionario>
+        </swiper-slide>
+      </swiper-container>
     </div>
   </div>
-  <div class="info-servico-funcionario servico" *ngIf="servicos!.length > 0; else semServico">
-    <swiper-container
-      navigation="false"
-      class="swiper-wrapper"
-      mousewheel="true"
-      [slidesPerView]="3"
-      pagination="true"
-      pagination-clickable="true"
-      space-between="10"
-    >
-      <swiper-slide class="swiper__slide" *ngFor="let servico of servicos">
-        <app-card-servico class="card" [servico]="servico"></app-card-servico>
-      </swiper-slide>
-    </swiper-container>
-  </div>
 
-  <div class="divider">
-    <h1 class="divider__titulo">Colaboradores</h1>
-  </div>
-
-  <div class="button-wrapper">
-    <div class="botao-adicionar">
-      <app-primary-button
-      text="Adicionar Colaborador"
-      class="botao-adicionar__item"
-      routerLink="/perfil-estabelecimento/{{ estabelecimento?.id }}/cadastrar-funcionario"
-      ></app-primary-button>
+  <ng-template #semServico>
+    <div class="ff-inter sem-pensamentos">
+        <p class="texto-template">Ainda não há serviços cadastrados!</p>
     </div>
-  </div>
-  <div class="info-servico-funcionario servico" *ngIf="funcionarios!.length > 0; else semColaborador">
-    <swiper-container
-      navigation="false"
-      class="swiper-wrapper"
-      [slidesPerView]="3"
-      mousewheel="true"
-      pagination="true"
-      pagination-clickable="true"
-      space-between="10"
-    >
-      <swiper-slide class="swiper__slide" *ngFor="let funcionario of funcionarios">
-        <app-card-funcionario class="card" [funcionario]="funcionario"></app-card-funcionario>
-      </swiper-slide>
-    </swiper-container>
-  </div>
+  </ng-template>
+
+  <ng-template #semColaborador>
+    <div class="ff-inter sem-pensamentos">
+        <p class="texto-template">Ainda não há colaboradores cadastrados!</p>
+    </div>
+  </ng-template>
+
+  <app-footer class="footer" [usuarioLogado]="usuarioLogado"></app-footer>
 </div>
 
-<ng-template #semServico>
-  <div class="ff-inter sem-pensamentos">
-      <p class="texto-template">Ainda não há serviços cadastrados!</p>
-  </div>
-</ng-template>
-
-<ng-template #semColaborador>
-  <div class="ff-inter sem-pensamentos">
-      <p class="texto-template">Ainda não há colaboradores cadastrados!</p>
-  </div>
-</ng-template>
-
-<app-footer class="footer" [usuarioLogado]="usuarioLogado"></app-footer>
+<div class="spinner-container" *ngIf="isLoading">
+  <mat-spinner></mat-spinner>
+</div>
 

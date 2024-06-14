@@ -21,6 +21,7 @@ import { PerfilClienteComponent } from './pages/cliente/perfil-cliente/perfil-cl
 import { DisponibilidadeComponent } from './pages/estabelecimento/disponibilidade/disponibilidade.component';
 import { EditarPerfilClienteComponent } from './pages/cliente/editar-perfil-cliente/editar-perfil-cliente.component';
 import { EditarPetComponent } from './pages/cliente/pet/editar-pet/editar-pet.component';
+import { EditarPerfilEstabelecimentoComponent } from './pages/estabelecimento/editar-perfil-estabelecimento/editar-perfil-estabelecimento.component';
 
 const routes: Routes = [
   {
@@ -77,6 +78,11 @@ const routes: Routes = [
   {
     path: 'perfil-estabelecimento/:id',
     component: PerfilContaEstabelecimentoComponent,
+    canActivate: [authGuard]
+  },
+  {
+    path: 'perfil-estabelecimento/:id/editar',
+    component: EditarPerfilEstabelecimentoComponent,
     canActivate: [authGuard]
   },
   {

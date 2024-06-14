@@ -67,6 +67,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { EditarPerfilClienteComponent } from './pages/cliente/editar-perfil-cliente/editar-perfil-cliente.component';
 import { EditarPetComponent } from './pages/cliente/pet/editar-pet/editar-pet.component';
 import { ConfirmaExclusaoDialogComponent } from './shared/confirma-exclusao-dialog/confirma-exclusao-dialog.component';
+import { EditarPerfilEstabelecimentoComponent } from './pages/estabelecimento/editar-perfil-estabelecimento/editar-perfil-estabelecimento.component';
 
 @NgModule({
   declarations: [
@@ -114,6 +115,7 @@ import { ConfirmaExclusaoDialogComponent } from './shared/confirma-exclusao-dial
     EditarPerfilClienteComponent,
     EditarPetComponent,
     ConfirmaExclusaoDialogComponent,
+    EditarPerfilEstabelecimentoComponent,
   ],
   imports: [
     BrowserModule,
