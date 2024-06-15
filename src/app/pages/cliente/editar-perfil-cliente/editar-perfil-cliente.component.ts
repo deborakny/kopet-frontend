@@ -15,7 +15,6 @@ export class EditarPerfilClienteComponent implements OnInit{
   formGroup!: FormGroup;
   id?: number;
   telefone?: string;
-  telefoneMask?: string;
   phoneMask: string = '(00) 0000-00009';
   isLoading = true;
 
@@ -72,7 +71,7 @@ export class EditarPerfilClienteComponent implements OnInit{
           this.snackbar.open('Cliente atualizado com sucesso', '', {
             horizontalPosition: "center", verticalPosition: "bottom", duration: 3000
           });
-          this.router.navigate([`perfil-cliente/${this.id}`]);
+          this.router.navigate([`/perfil-cliente/${this.id}`]);
         },
         error: (err) => {
           console.log('erro', err);

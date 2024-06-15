@@ -28,6 +28,10 @@ export class EstabelecimentoService {
     return this.http.get<Estabelecimento>(`${this.apiUrl}/estabelecimentos/${id}`);
   }
 
+  editar(id: number, estabelecimento: Estabelecimento): Observable<Estabelecimento> {
+    return this.http.patch<Estabelecimento>(`${this.apiUrl}/estabelecimentos/${id}`, estabelecimento)
+  }
+
   saveHorarioFuncionamento(estabelecimentoId: number, horarioFuncionamento: HorarioFuncionamento[]): Observable<HorarioFuncionamento[]> {
     return this.http.patch<HorarioFuncionamento[]>(`${this.apiUrl}/horario-funcionamento/estabelecimento/${estabelecimentoId}`, horarioFuncionamento)
   }
