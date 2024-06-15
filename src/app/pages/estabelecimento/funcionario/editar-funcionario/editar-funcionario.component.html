@@ -1,0 +1,89 @@
+<div *ngIf="!isLoading">
+  <div class="header-banner">
+    <app-header></app-header>
+    <app-banner [logo]='false' class="banner"></app-banner>
+  </div>
+
+  <div class="edicao-funcionario">
+    <app-container class="container">
+      <h2 class="titulo">Editar Funcionário</h2>
+      <form class="form" [formGroup]="formGroup">
+        <div class="input-wrapper">
+          <label for="nome" class="label">Nome</label>
+          <mat-form-field class="form-field" subscriptSizing="dynamic" appearance="outline">
+            <input type="text" matInput class="input" id="nome" formControlName="nome">
+            <!-- <mat-error *ngIf="loginForm.get('email')?.errors?.['required']">Campo obrigatório</mat-error> -->
+          </mat-form-field>
+        </div>
+
+        <div class="input-wrapper">
+          <label for="sobrenome" class="label">Sobrenome</label>
+          <mat-form-field class="form-field" subscriptSizing="dynamic" appearance="outline">
+            <input type="text" matInput class="input" id="sobrenome" formControlName="sobrenome">
+            <!-- <mat-error *ngIf="loginForm.get('email')?.errors?.['required']">Campo obrigatório</mat-error> -->
+          </mat-form-field>
+        </div>
+
+        <div class="input-wrapper">
+          <label for="cpf" class="label">CPF</label>
+          <mat-form-field class="form-field" subscriptSizing="dynamic" appearance="outline">
+            <input type="text" matInput class="input" id="cpf" formControlName="cpf" mask="000.000.000-00">
+            <!-- <mat-error *ngIf="loginForm.get('email')?.errors?.['required']">Campo obrigatório</mat-error> -->
+          </mat-form-field>
+        </div>
+
+        <div class="input-wrapper">
+          <label for="email" class="label">E-mail</label>
+          <mat-form-field class="form-field" subscriptSizing="dynamic" appearance="outline">
+            <input type="email" matInput class="input" id="email" formControlName="email">
+            <!-- <mat-error *ngIf="loginForm.get('email')?.errors?.['required']">Campo obrigatório</mat-error> -->
+          </mat-form-field>
+        </div>
+
+        <div class="input-wrapper">
+          <label for="telefone" class="label">Telefone</label>
+          <mat-form-field class="form-field" subscriptSizing="dynamic" appearance="outline">
+            <input type="text" matInput class="input" id="telefone" formControlName="telefone" [mask]="phoneMask">
+            <!-- <mat-error *ngIf="loginForm.get('email')?.errors?.['required']">Campo obrigatório</mat-error> -->
+          </mat-form-field>
+        </div>
+
+        <!-- Aqui vai os servicos -->
+        <div class="input-wrapper">
+          <label for="servicos" class="label">Serviço(s)</label>
+          <mat-form-field>
+            <mat-label>Selecione os serviços</mat-label>
+            <mat-select multiple id="servicos" [value]="getSelectedServicoIds()" (selectionChange)="onServicoChange($event)">
+              <mat-option *ngFor="let servico of servicosList" [value]="servico.id"> {{ servico.nome }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div class="input-wrapper">
+          <label for="informacoesAdicionais" class="label">Informacoes Adicionais</label>
+          <mat-form-field class="form-field" subscriptSizing="dynamic" appearance="outline">
+            <input type="text" matInput class="input" id="informacoesAdicionais" formControlName="informacoesAdicionais">
+            <!-- <mat-error *ngIf="loginForm.get('email')?.errors?.['required']">Campo obrigatório</mat-error> -->
+          </mat-form-field>
+        </div>
+
+
+      </form>
+    </app-container>
+
+    <div class="button_wrapper">
+      <app-basic-button
+        text="Cancelar"
+        class="button"
+        routerLink="/perfil-estabelecimento/{{estabelecimentoId}}"
+      ></app-basic-button>
+      <app-primary-button text="Salvar" class="button" (click)="submitHandler()"></app-primary-button>
+    </div>
+  </div>
+  <app-footer></app-footer>
+</div>
+
+<div class="spinner-container" *ngIf="isLoading">
+  <mat-spinner></mat-spinner>
+</div>
+

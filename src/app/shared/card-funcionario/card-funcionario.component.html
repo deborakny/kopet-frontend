@@ -10,7 +10,7 @@
   </mat-card-content>
 
   <div class="button-wrapper" *ngIf="estabelecimentoLogado">
-    <button class="button-icon">
+    <button class="button-icon" routerLink="/perfil-estabelecimento/{{ estabelecimentoId }}/editar-funcionario/{{ funcionario.id }}">
       <i class="icon-edit icon"></i>
       <span class="btn-texto">Editar</span>
     </button>

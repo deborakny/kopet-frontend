@@ -22,6 +22,7 @@ import { DisponibilidadeComponent } from './pages/estabelecimento/disponibilidad
 import { EditarPerfilClienteComponent } from './pages/cliente/editar-perfil-cliente/editar-perfil-cliente.component';
 import { EditarPetComponent } from './pages/cliente/pet/editar-pet/editar-pet.component';
 import { EditarPerfilEstabelecimentoComponent } from './pages/estabelecimento/editar-perfil-estabelecimento/editar-perfil-estabelecimento.component';
+import { EditarFuncionarioComponent } from './pages/estabelecimento/funcionario/editar-funcionario/editar-funcionario.component';
 
 const routes: Routes = [
   {
@@ -83,6 +84,11 @@ const routes: Routes = [
   {
     path: 'perfil-estabelecimento/:id/editar',
     component: EditarPerfilEstabelecimentoComponent,
+    canActivate: [authGuard]
+  },
+  {
+    path: 'perfil-estabelecimento/:idEstabelecimento/editar-funcionario/:idFuncionario',
+    component: EditarFuncionarioComponent,
     canActivate: [authGuard]
   },
   {

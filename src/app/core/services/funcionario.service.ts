@@ -23,8 +23,16 @@ export class FuncionarioService {
     return this.http.get<Funcionario[]>(`${this.apiUrl}/funcionarios/servico/${idServico}`);
   }
 
+  getFuncionarioById(id: number): Observable<Funcionario> {
+    return this.http.get<Funcionario>(`${this.apiUrl}/funcionarios/${id}`)
+  }
+
   criar(funcionario: Funcionario): Observable<Funcionario> {
     return this.http.post<Funcionario>(`${this.apiUrl}/funcionarios`, funcionario);
+  }
+
+  editar(id: number, funcionario: Funcionario): Observable<Funcionario> {
+    return this.http.patch<Funcionario>(`${this.apiUrl}/funcionarios/${id}`, funcionario)
   }
 
 }

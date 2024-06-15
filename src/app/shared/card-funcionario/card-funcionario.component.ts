@@ -10,6 +10,7 @@ export class CardFuncionarioComponent implements OnInit{
   @Input() funcionario?: any;
 
   estabelecimentoLogado?: boolean;
+  estabelecimentoId?: number;
 
   constructor(
     private contaService: ContaService
@@ -18,5 +19,6 @@ export class CardFuncionarioComponent implements OnInit{
 
   ngOnInit(): void {
     this.estabelecimentoLogado = this.contaService.logado() && this.contaService.getTipoEstabelecimento();
+    this.estabelecimentoId = this.contaService.getId();
   }
 }
