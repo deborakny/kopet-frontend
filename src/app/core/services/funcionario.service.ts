@@ -35,4 +35,8 @@ export class FuncionarioService {
     return this.http.patch<Funcionario>(`${this.apiUrl}/funcionarios/${id}`, funcionario)
   }
 
+  excluir(id: number): Observable<Funcionario> {
+    return this.http.delete<Funcionario>(`${this.apiUrl}/funcionarios/${id}`)
+  }
+
 }
