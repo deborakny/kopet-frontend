@@ -22,4 +22,16 @@ export class ServicoService {
   criar(servico: Servico): Observable<Servico> {
     return this.http.post<Servico>(`${this.apiUrl}/servicos`, servico);
   }
+
+  editar(id: number, servico: Servico): Observable<Servico> {
+    return this.http.patch<Servico>(`${this.apiUrl}/servicos/${id}`, servico)
+  }
+
+  excluir(id: number): Observable<Servico> {
+    return this.http.delete<Servico>(`${this.apiUrl}/servicos/${id}`)
+  }
+
+  getServicoById(id: number): Observable<Servico> {
+    return this.http.get<Servico>(`${this.apiUrl}/servicos/${id}`)
+  }
 }

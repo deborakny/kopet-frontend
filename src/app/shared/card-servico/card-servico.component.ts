@@ -12,6 +12,7 @@ export class CardServicoComponent implements OnInit{
   valorString: string = '';
 
   estabelecimentoLogado?: boolean;
+  estabelecimentoId?: number;
 
   constructor(
     private contaService: ContaService
@@ -19,11 +20,12 @@ export class CardServicoComponent implements OnInit{
 
   ngOnInit(): void {
     this.estabelecimentoLogado = this.contaService.logado() && this.contaService.getTipoEstabelecimento();
-    if (this.servico.valor) {
-      this.valorString = `R$ ${this.servico.valor}`
-    } else {
-      this.valorString = "Não informado"
-    }
+    this.estabelecimentoId = this.contaService.getId();
+    // if (this.servico.valor) {
+    //   this.valorString = `R$ ${this.servico.valor}`
+    // } else {
+    //   this.valorString = "Não informado"
+    // }
   }
 
 

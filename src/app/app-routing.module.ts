@@ -23,6 +23,7 @@ import { EditarPerfilClienteComponent } from './pages/cliente/editar-perfil-clie
 import { EditarPetComponent } from './pages/cliente/pet/editar-pet/editar-pet.component';
 import { EditarPerfilEstabelecimentoComponent } from './pages/estabelecimento/editar-perfil-estabelecimento/editar-perfil-estabelecimento.component';
 import { EditarFuncionarioComponent } from './pages/estabelecimento/funcionario/editar-funcionario/editar-funcionario.component';
+import { EditarServicoComponent } from './pages/estabelecimento/servico/editar-servico/editar-servico.component';
 
 const routes: Routes = [
   {
@@ -89,6 +90,11 @@ const routes: Routes = [
   {
     path: 'perfil-estabelecimento/:idEstabelecimento/editar-funcionario/:idFuncionario',
     component: EditarFuncionarioComponent,
+    canActivate: [authGuard]
+  },
+  {
+    path: 'perfil-estabelecimento/:idEstabelecimento/editar-servico/:idServico',
+    component: EditarServicoComponent,
     canActivate: [authGuard]
   },
   {

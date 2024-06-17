@@ -69,6 +69,9 @@ import { EditarPetComponent } from './pages/cliente/pet/editar-pet/editar-pet.co
 import { ConfirmaExclusaoDialogComponent } from './shared/confirma-exclusao-dialog/confirma-exclusao-dialog.component';
 import { EditarPerfilEstabelecimentoComponent } from './pages/estabelecimento/editar-perfil-estabelecimento/editar-perfil-estabelecimento.component';
 import { EditarFuncionarioComponent } from './pages/estabelecimento/funcionario/editar-funcionario/editar-funcionario.component';
+import { ListarDisponibilidadeComponent } from './pages/estabelecimento/disponibilidade/listar-disponibilidade/listar-disponibilidade.component';
+import { CardDisponibilidadeComponent } from './shared/card-disponibilidade/card-disponibilidade.component';
+import { EditarServicoComponent } from './pages/estabelecimento/servico/editar-servico/editar-servico.component';
 
 @NgModule({
   declarations: [
@@ -118,6 +121,9 @@ import { EditarFuncionarioComponent } from './pages/estabelecimento/funcionario/
     ConfirmaExclusaoDialogComponent,
     EditarPerfilEstabelecimentoComponent,
     EditarFuncionarioComponent,
+    ListarDisponibilidadeComponent,
+    CardDisponibilidadeComponent,
+    EditarServicoComponent,
   ],
   imports: [
     BrowserModule,
