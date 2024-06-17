@@ -18,4 +18,8 @@ export class DisponibilidadeService {
   criar(disponibilidade: Disponibilidade): Observable<Disponibilidade> {
     return this.http.post<Disponibilidade>(`${this.apiUrl}/disponibilidades`, disponibilidade)
   }
+
+  getDisponibilidadesByEstabelecimento(id: number): Observable<Disponibilidade[]> {
+    return this.http.get<Disponibilidade[]>(`${this.apiUrl}/disponibilidades/estabelecimento/${id}`)
+  }
 }

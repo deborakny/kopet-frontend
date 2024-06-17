@@ -11,6 +11,7 @@ export class FooterComponent implements OnInit {
   iconName: string = '';
   legenda: string = '';
   url: string = '';
+  tipoEstabelecimento?: boolean;
 
   constructor(
     private contaService: ContaService
@@ -23,10 +24,11 @@ export class FooterComponent implements OnInit {
     this.conta$.subscribe(
       value => {
         if (this.contaService.logado()) {
-          this.iconName = 'schedule'
-          this.legenda = 'Agendamentos'
-          this.contaId = value?.id
-          this.url = `perfil/${this.contaId}/lista-agendamentos`
+          this.iconName = 'schedule';
+          this.legenda = 'Agendamentos';
+          this.contaId = value?.id;
+          this.url = `perfil/${this.contaId}/lista-agendamentos`;
+          this.tipoEstabelecimento = value?.tipoEstabelecimento;
         } else {
           this.iconName = 'login'
           this.legenda = 'Entrar na Conta'

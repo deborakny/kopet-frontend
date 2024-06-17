@@ -77,18 +77,16 @@
               <mat-icon class="icon-users"></mat-icon>
               <span>Funcionários</span>
             </button>
+            <button mat-menu-item class="menu-item" routerLink="/perfil-estabelecimento/{{ contaId }}/listar-disponibilidade">
+              <mat-icon class="icon-clock"></mat-icon>
+              <span>Disponibilidade</span>
+            </button>
             <button mat-menu-item class="menu-item" (click)="logOut()">
               <mat-icon class="icon-log-out"></mat-icon>
               <span>Sair</span>
             </button>
           </mat-menu>
         </div>
-        <!-- Botão de agendamentos -->
-          <!-- Botão de Perfil -->
-            <!-- Perfil -->
-            <!-- Serviços -->
-            <!-- Funcionários -->
-            <!-- Sair -->
       </div>
     </mat-toolbar-row>
 
@@ -152,7 +150,7 @@
             <mat-icon class="icon-users"></mat-icon>
             <span>Funcionários</span>
           </button>
-          <button mat-menu-item class="menu-item" routerLink="/perfil-estabelecimento/{{contaId}}/cadastrar-disponibilidade">
+          <button mat-menu-item class="menu-item" routerLink="/perfil-estabelecimento/{{ contaId }}/listar-disponibilidade">
             <mat-icon class="icon-clock"></mat-icon>
             <span>Disponibilidade</span>
           </button>

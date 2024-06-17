@@ -1,1 +1,21 @@
-<p>listar-disponibilidade works!</p>
+<div class="header-banner">
+  <app-header></app-header>
+  <app-banner [logo]='false' class="banner"></app-banner>
+</div>
+<div class="lista-disponibilidade">
+  <app-container class="container">
+    <div class="titulo-botao">
+      <h2 class="titulo">Disponibilidades</h2>
+      <app-primary-button text="Cadastrar disponibilidade" class="button" routerLink="/perfil-estabelecimento/{{ estabelecimentoId }}/cadastrar-disponibilidade"></app-primary-button>
+    </div>
+    <mat-divider></mat-divider>
+    <div class="card-wrapper">
+      <app-card-disponibilidade
+      *ngFor="let disponibilidade of disponibilidades"
+      [disponibilidade]="disponibilidade"
+      ></app-card-disponibilidade>
+    </div>
+    <span *ngIf="disponibilidades.length <= 0" class="sem_disponibilidade">Nenhuma disponibilidade cadastrada</span>
+  </app-container>
+</div>
+<app-footer></app-footer>
