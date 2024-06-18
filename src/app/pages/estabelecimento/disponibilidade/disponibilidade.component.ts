@@ -270,9 +270,11 @@ export class DisponibilidadeComponent implements OnInit{
   }
 
   getServicos(estabelecimentoId: number) {
-    this.servicoService.getServicosByEstabelecimento(estabelecimentoId).subscribe(res => {
-      this.servicosList = res
-    })
+    this.servicoService.getServicosByEstabelecimento(estabelecimentoId).subscribe((res) => {
+      this.servicosList = res.filter((servico) => {
+        return servico.funcionarios!.length > 0;
+      });
+    });
   }
 
   onSelected(servicoId: number) {
@@ -304,7 +306,7 @@ export class DisponibilidadeComponent implements OnInit{
           this.snackbar.open('Cadastro realizado com sucesso', '', {
             horizontalPosition: "center", verticalPosition: "bottom", duration: 3000
           });
-          this.router.navigate([`perfil-estabelecimento/${this.estabelecimentoId}`])
+          this.router.navigate([`/perfil-estabelecimento/${this.estabelecimentoId}/listar-disponibilidade`])
         },
         error: (e) => {
           console.log('Erro', e);

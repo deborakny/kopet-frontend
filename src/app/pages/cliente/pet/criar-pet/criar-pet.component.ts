@@ -14,6 +14,7 @@ export class CriarPetComponent implements OnInit{
 
   formGroup!: FormGroup;
   usuarioLogado?: boolean;
+  clienteId?: number;
 
   constructor(
     private petService: PetService,
@@ -26,6 +27,7 @@ export class CriarPetComponent implements OnInit{
   ngOnInit(): void {
     this.usuarioLogado = this.contaService.logado();
     const clienteId = this.contaService.getId();
+    this.clienteId = clienteId;
     this.formGroup = this.fb.group({
       nome: ['', Validators.required],
       especie: ['', Validators.required],
