@@ -19,11 +19,14 @@
             <p class="info-horarios">pausa: {{horario.pausaInicio | hora}} - {{horario.pausaFim | hora}}</p>
           </li>
         </ul>
-        <app-primary-button class="primary-button" text="Editar"></app-primary-button>
       </mat-expansion-panel>
     </div>
   </div>
   <mat-card-actions>
+    <button mat-button routerLink="/perfil-estabelecimento/{{ estabelecimentoId }}/editar-disponibilidade/{{ disponibilidade!.id }}">
+      <i class="icon-edit"></i>
+      Editar
+    </button>
     <button mat-button>
       <i class="icon-trash-can"></i>
       Excluir

@@ -22,4 +22,12 @@ export class DisponibilidadeService {
   getDisponibilidadesByEstabelecimento(id: number): Observable<Disponibilidade[]> {
     return this.http.get<Disponibilidade[]>(`${this.apiUrl}/disponibilidades/estabelecimento/${id}`)
   }
+
+  getDisponibilidadeById(id: number): Observable<Disponibilidade> {
+    return this.http.get<Disponibilidade>(`${this.apiUrl}/disponibilidades/${id}`);
+  }
+
+  editar(id: number, disponibilidade: Disponibilidade): Observable<Disponibilidade> {
+    return this.http.patch<Disponibilidade>(`${this.apiUrl}/disponibilidades/${id}`, disponibilidade)
+  }
 }

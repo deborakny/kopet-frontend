@@ -72,6 +72,7 @@ import { EditarFuncionarioComponent } from './pages/estabelecimento/funcionario/
 import { ListarDisponibilidadeComponent } from './pages/estabelecimento/disponibilidade/listar-disponibilidade/listar-disponibilidade.component';
 import { CardDisponibilidadeComponent } from './shared/card-disponibilidade/card-disponibilidade.component';
 import { EditarServicoComponent } from './pages/estabelecimento/servico/editar-servico/editar-servico.component';
+import { EditarDisponibilidadeComponent } from './pages/estabelecimento/disponibilidade/editar-disponibilidade/editar-disponibilidade.component';
 
 @NgModule({
   declarations: [
@@ -124,6 +125,7 @@ import { EditarServicoComponent } from './pages/estabelecimento/servico/editar-s
     ListarDisponibilidadeComponent,
     CardDisponibilidadeComponent,
     EditarServicoComponent,
+    EditarDisponibilidadeComponent,
   ],
   imports: [
     BrowserModule,

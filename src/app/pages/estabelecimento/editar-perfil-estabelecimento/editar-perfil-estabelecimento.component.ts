@@ -2,20 +2,21 @@ import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { CepService } from 'src/app/core/services/cep.service';
 import { ContaService } from 'src/app/core/services/conta.service';
 import { EstabelecimentoService } from 'src/app/core/services/estabelecimento.service';
 
 @Component({
   selector: 'app-editar-perfil-estabelecimento',
   templateUrl: './editar-perfil-estabelecimento.component.html',
-  styleUrls: ['./editar-perfil-estabelecimento.component.scss']
+  styleUrls: ['./editar-perfil-estabelecimento.component.scss'],
 })
-export class EditarPerfilEstabelecimentoComponent implements OnInit{
-
+export class EditarPerfilEstabelecimentoComponent implements OnInit {
   formGroup!: FormGroup;
   id?: number;
   isLoading = true;
   phoneMask: string = '(00) 0000-00009';
+  cepExiste?: boolean;
 
   constructor(
     private fb: FormBuilder,
@@ -23,8 +24,9 @@ export class EditarPerfilEstabelecimentoComponent implements OnInit{
     private estabelecimentoService: EstabelecimentoService,
     private cdRef: ChangeDetectorRef,
     private snackbar: MatSnackBar,
-    private router: Router
-  ) { }
+    private router: Router,
+    private cepService: CepService
+  ) {}
 
   ngOnInit(): void {
     this.id = this.contaService.getId();
@@ -40,12 +42,13 @@ export class EditarPerfilEstabelecimentoComponent implements OnInit{
         bairro: ['', Validators.required],
         cidade: ['', Validators.required],
         estado: ['', Validators.required],
-      })
+      }),
     });
 
     if (this.id) {
-      this.estabelecimentoService.getEstabelecimentoById(this.id!).subscribe(
-        estabelecimento => {
+      this.estabelecimentoService
+        .getEstabelecimentoById(this.id!)
+        .subscribe((estabelecimento) => {
           setTimeout(() => {
             this.formGroup.patchValue({
               nome: estabelecimento.nome,
@@ -57,21 +60,21 @@ export class EditarPerfilEstabelecimentoComponent implements OnInit{
                 complemento: estabelecimento.endereco.complemento,
                 bairro: estabelecimento.endereco.bairro,
                 cidade: estabelecimento.endereco.cidade,
-                estado: estabelecimento.endereco.estado
-              }
+                estado: estabelecimento.endereco.estado,
+              },
             });
             this.isLoading = false;
-          }, 1000)
-        }
-      )
+          }, 1000);
+        });
     }
 
-    this.formGroup.get('telefone')?.valueChanges.subscribe(value => {
+    this.formGroup.get('telefone')?.valueChanges.subscribe((value) => {
       if (value) {
-        const newMask = value.length > 10 ? '(00) 00000-0000' : '(00) 0000-00009';
+        const newMask =
+          value.length > 10 ? '(00) 00000-0000' : '(00) 0000-00009';
         if (this.phoneMask !== newMask) {
           this.phoneMask = newMask;
-          this.cdRef.detectChanges();  // Marca para verificação de mudanças
+          this.cdRef.detectChanges(); // Marca para verificação de mudanças
         }
       }
     });
@@ -79,22 +82,47 @@ export class EditarPerfilEstabelecimentoComponent implements OnInit{
 
   submitHandler() {
     if (this.formGroup.valid) {
-      this.estabelecimentoService.editar(this.id!, this.formGroup.value).subscribe({
-        next: (value) => {
-          console.log('sucesso', value);
-          this.snackbar.open('Estabelecimento atualizado com sucesso', '', {
-            horizontalPosition: "center", verticalPosition: "bottom", duration: 3000
-          });
-          this.router.navigate([`/perfil-estabelecimento/${this.id}`]);
-        },
-        error: (err) => {
-          console.log('erro', err);
-          this.snackbar.open('Não foi possível fazer a atualização', '', {
-            horizontalPosition: "center", verticalPosition: "bottom", duration: 3000
-          });
-        },
-      })
+      this.estabelecimentoService
+        .editar(this.id!, this.formGroup.value)
+        .subscribe({
+          next: (value) => {
+            console.log('sucesso', value);
+            this.snackbar.open('Estabelecimento atualizado com sucesso', '', {
+              horizontalPosition: 'center',
+              verticalPosition: 'bottom',
+              duration: 3000,
+            });
+            this.router.navigate([`/perfil-estabelecimento/${this.id}`]);
+          },
+          error: (err) => {
+            console.log('erro', err);
+            this.snackbar.open('Não foi possível fazer a atualização', '', {
+              horizontalPosition: 'center',
+              verticalPosition: 'bottom',
+              duration: 3000,
+            });
+          },
+        });
     }
   }
 
+  procurarEndereco(ev: any) {
+    const cep = this.formGroup.get('endereco.cep')?.value;
+    if (cep && cep.length === 8) {
+      this.cepService.getAddress(cep).subscribe((res) => {
+        if (res.erro === true) {
+          this.cepExiste = false;
+        } else {
+          this.cepExiste = true;
+          this.formGroup.get('endereco')?.patchValue({
+            logradouro: res.logradouro,
+            bairro: res.bairro,
+            cidade: res.localidade,
+            estado: res.uf,
+          });
+        }
+        this.cdRef.detectChanges();
+      });
+    }
+  }
 }

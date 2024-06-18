@@ -25,6 +25,7 @@ import { EditarPerfilEstabelecimentoComponent } from './pages/estabelecimento/ed
 import { EditarFuncionarioComponent } from './pages/estabelecimento/funcionario/editar-funcionario/editar-funcionario.component';
 import { EditarServicoComponent } from './pages/estabelecimento/servico/editar-servico/editar-servico.component';
 import { ListarDisponibilidadeComponent } from './pages/estabelecimento/disponibilidade/listar-disponibilidade/listar-disponibilidade.component';
+import { EditarDisponibilidadeComponent } from './pages/estabelecimento/disponibilidade/editar-disponibilidade/editar-disponibilidade.component';
 
 const routes: Routes = [
   {
@@ -73,6 +74,10 @@ const routes: Routes = [
   {
     path: 'perfil-estabelecimento/:id/listar-disponibilidade',
     component: ListarDisponibilidadeComponent
+  },
+  {
+    path: 'perfil-estabelecimento/:estabelecimentoId/editar-disponibilidade/:disponibilidadeId',
+    component: EditarDisponibilidadeComponent
   },
   {
     path: 'perfil/:id/listar-pets',
