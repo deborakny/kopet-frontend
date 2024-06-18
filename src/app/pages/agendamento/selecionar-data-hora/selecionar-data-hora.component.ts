@@ -8,7 +8,7 @@ import { FormAgendamentoService } from 'src/app/core/services/form-agendamento.s
 import { Agendamento } from 'src/app/core/types/agendamento';
 import { AgendamentoService } from 'src/app/core/services/agendamento.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-selecionar-data-hora',
@@ -21,16 +21,19 @@ export class SelecionarDataHoraComponent implements OnInit{
   horasDisponiveis: HorarioDisponivel[] = [];
   horaControl = new FormControl();
   dataControl = new FormControl();
+  estabelecimentoId!: number;
 
   constructor(
     private opcaoDisponibilidadeService: OpcaoDisponibilidadeService,
     private formAgendamentoService: FormAgendamentoService,
     private agendamentoService: AgendamentoService,
     private snackbar: MatSnackBar,
-    private router: Router
+    private router: Router,
+    private route:ActivatedRoute
   ){}
 
   ngOnInit(): void {
+    this.estabelecimentoId = parseInt(this.route.snapshot.paramMap.get('id')!);
     this.horaControl = this.formAgendamentoService.getControl('hora');
 
     this.dataControl = this.formAgendamentoService.getControl('dia');
@@ -79,7 +82,10 @@ export class SelecionarDataHoraComponent implements OnInit{
         }
       )
     } else {
-      console.log('e', formAgendamentoGroup?.getRawValue())
+      console.log('e', formAgendamentoGroup?.getRawValue());
+      this.snackbar.open('Selecione Data e Hora para o agendamento', '', {
+        horizontalPosition: "center", verticalPosition: "bottom", duration: 3000
+       });
     }
 
   }

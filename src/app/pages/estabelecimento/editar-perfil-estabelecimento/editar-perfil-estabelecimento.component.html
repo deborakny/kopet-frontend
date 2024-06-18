@@ -35,7 +35,7 @@
               <mat-form-field class="form-field" subscriptSizing="dynamic" appearance="outline">
                 <input type="text" matInput class="input" id="cep" formControlName="cep" mask="00000-000" (focusout)="procurarEndereco($event)">
                 <!-- <mat-error *ngIf="loginForm.get('email')?.errors?.['required']">Campo obrigatório</mat-error> -->
-                <mat-error *ngIf="cepExiste === false">CEP não encontrado</mat-error>
+                <!-- <mat-error *ngIf="cepExiste === false">CEP não encontrado</mat-error> -->
               </mat-form-field>
             </div>
             <div class="input-wrapper">

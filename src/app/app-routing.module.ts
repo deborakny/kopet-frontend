@@ -46,12 +46,12 @@ const routes: Routes = [
     canActivate: [authGuard]
   },
   {
-    path: 'agendamento/selecionar-servico-colaborador',
+    path: 'estabelecimento/:id/agendamento/selecionar-servico-colaborador',
     component: SelecionarServicoColaboradorComponent,
     canActivate: [authGuard]
   },
   {
-    path: 'agendamento/selecionar-data-hora',
+    path: 'estabelecimento/:id/agendamento/selecionar-data-hora',
     component: SelecionarDataHoraComponent,
     canActivate: [authGuard]
   },

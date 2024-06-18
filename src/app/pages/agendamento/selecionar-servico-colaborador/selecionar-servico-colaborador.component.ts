@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FormAgendamentoService } from 'src/app/core/services/form-agendamento.service';
 import { FuncionarioService } from 'src/app/core/services/funcionario.service';
 import { ServicoService } from 'src/app/core/services/servico.service';
@@ -23,23 +23,28 @@ export class SelecionarServicoColaboradorComponent implements OnInit {
   funcionarios: Funcionario[] = [];
 
   selectedValue?: string;
+  estabelecimentoId?: number;
 
   constructor(
     private formAgendamentoService: FormAgendamentoService,
     private router: Router,
     private snackbar: MatSnackBar,
     private servicoService: ServicoService,
-    private funcionarioService: FuncionarioService
+    private funcionarioService: FuncionarioService,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
-    const estabelecimentoId =
-      this.formAgendamentoService.getControl('estabelecimentoId').value;
-    this.servicoControl = this.formAgendamentoService.getControl('servicoId');
-    this.colaboradorControl =
-      this.formAgendamentoService.getControl('funcionarioId');
+    //const estabelecimentoId = this.formAgendamentoService.getControl('estabelecimentoId').value;
+    // const estabelecimentoId = this.route.snapshot.paramMap.get('id');
+    // this.estabelecimentoId = parseInt(estabelecimentoId!)
 
-    this.getServicos(parseInt(estabelecimentoId));
+    this.estabelecimentoId = parseInt(this.route.snapshot.paramMap.get('id')!);
+
+    this.servicoControl = this.formAgendamentoService.getControl('servicoId');
+    this.colaboradorControl = this.formAgendamentoService.getControl('funcionarioId');
+
+    this.getServicos(this.estabelecimentoId);
   }
 
   getServicos(id: number) {
@@ -54,11 +59,16 @@ export class SelecionarServicoColaboradorComponent implements OnInit {
     this.funcionarioService.getFuncionariosByServico(id).subscribe((res) => {
       const servicoComFuncionarios = this.servicos.filter((servico) => {
         return servico.disponibilidades?.find((disp) => {
-          return res.find((func) => func.id === disp.id);
+          console.log('servico', servico)
+          console.log('disponibilidade', disp)
+          console.log('resr: ',res)
+          return res.find((func) => func.id === disp.funcionarioId);
         });
       });
+      console.log('servicoComFuncionario', servicoComFuncionarios)
       if (servicoComFuncionarios.length > 0) {
         if (this.colaboradorControl.valid)
+          console.log('colaborador', res)
           res.find((func) => func.id === this.colaboradorControl.value)
             ? ''
             : this.colaboradorControl.patchValue('');
@@ -75,7 +85,7 @@ export class SelecionarServicoColaboradorComponent implements OnInit {
 
   onClick() {
     if (this.colaboradorControl.valid && this.servicoControl.valid) {
-      this.router.navigate(['agendamento/selecionar-data-hora']);
+      this.router.navigate([`estabelecimento/${this.estabelecimentoId}/agendamento/selecionar-data-hora`]);
     } else {
       this.snackbar.open('Selecione as opções', '', {
         horizontalPosition: 'center',

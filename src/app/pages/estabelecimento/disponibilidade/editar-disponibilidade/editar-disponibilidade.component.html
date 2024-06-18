@@ -86,6 +86,7 @@
                           formControlName="horarioInicio"
                           (input)="updateHorario(dia.value!)"
                           mask="00:00"
+                          [dropSpecialCharacters]="false"
                         />
                       </mat-form-field>
                       <mat-form-field class="example-full-width">
@@ -95,6 +96,7 @@
                           formControlName="horarioFim"
                           (input)="updateHorario(dia.value!)"
                           mask="00:00"
+                          [dropSpecialCharacters]="false"
                         />
                       </mat-form-field>
                       <app-primary-button
@@ -113,6 +115,7 @@
                         formControlName="pausaInicio"
                         (input)="updateHorario(dia.value!)"
                         mask="00:00"
+                        [dropSpecialCharacters]="false"
                       />
                     </mat-form-field>
                     <mat-form-field class="example-full-width">
@@ -122,6 +125,7 @@
                         formControlName="pausaFim"
                         (input)="updateHorario(dia.value!)"
                         mask="00:00"
+                        [dropSpecialCharacters]="false"
                       />
                     </mat-form-field>
                     <app-primary-button

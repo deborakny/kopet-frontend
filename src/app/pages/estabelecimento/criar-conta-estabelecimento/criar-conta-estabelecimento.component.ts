@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { FormEstabelecimentoService } from 'src/app/core/services/form-estabelecimento.service';
@@ -17,10 +17,12 @@ export class CriarContaEstabelecimentoComponent implements OnInit{
   // senhaControl = new FormControl();
 
   formGroup = this.formEstabelecimentoService.getFormGroup();
+  phoneMask: string = '(00) 0000-00009';
 
   constructor(
     private formEstabelecimentoService: FormEstabelecimentoService,
-    private router: Router
+    private router: Router,
+    private cdRef: ChangeDetectorRef
   ) { }
 
   ngOnInit(): void {
@@ -29,6 +31,15 @@ export class CriarContaEstabelecimentoComponent implements OnInit{
     // this.telefoneControl = this.formEstabelecimentoService.getControl('telefone');
     // this.emailControl = this.formEstabelecimentoService.getControl('email');
     // this.senhaControl = this.formEstabelecimentoService.getControl('senha');
+    this.formGroup.get('telefone')?.valueChanges.subscribe(value => {
+      if (value) {
+        const newMask = value.length > 10 ? '(00) 00000-0000' : '(00) 0000-00009';
+        if (this.phoneMask !== newMask) {
+          this.phoneMask = newMask;
+          this.cdRef.detectChanges();  // Marca para verificação de mudanças
+        }
+      }
+    });
 
   }
 

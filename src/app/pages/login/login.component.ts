@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
       const senha = this.loginForm.value.senha;
       this.autenticacaoInterceptor.autenticar(email, senha).subscribe({
         next: (res) => {
-          this.snackbar.open('Usuário logado', '', {
+          this.snackbar.open('Usuário logado', 'x', {
             horizontalPosition: 'center',
             verticalPosition: 'bottom',
             duration: 3000,

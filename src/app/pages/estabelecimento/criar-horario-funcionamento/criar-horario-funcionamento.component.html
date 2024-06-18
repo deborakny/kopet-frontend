@@ -26,7 +26,7 @@
               <mat-checkbox
                 [(ngModel)]="dia.completed"
                 [ngModelOptions]="{ standalone: true }"
-                value= {{dia.value}}
+                value={{dia.value}}
                 (ngModelChange)="toggleDia(dia)"
               >
                 {{ dia.nome }}
@@ -34,11 +34,21 @@
               <div class="horas" [formGroup]="getHorarioFuncionamentoPorDia(dia.value!)" *ngIf="dia.completed">
                   <mat-form-field class="example-full-width">
                     <mat-label>Hora Inicial</mat-label>
-                    <input matInput formControlName="horaInicial" (input)="updateHorario(dia.value!)"/>
+                    <input matInput
+                    formControlName="horaInicial"
+                    (input)="updateHorario(dia.value!)"
+                    mask="00:00"
+                    [dropSpecialCharacters]="false"
+                  />
                   </mat-form-field>
                   <mat-form-field class="example-full-width">
                     <mat-label>Hora Final</mat-label>
-                    <input matInput formControlName="horaFinal" (input)="updateHorario(dia.value!)"/>
+                    <input matInput
+                    formControlName="horaFinal"
+                    (input)="updateHorario(dia.value!)"
+                    mask="00:00"
+                    [dropSpecialCharacters]="false"
+                  />
                   </mat-form-field>
                   <app-primary-button text="Aplicar para todos os dias" class="button button__aplicar-para-todos" (click)="applyToAllDays(dia.value!)"></app-primary-button>
               </div>

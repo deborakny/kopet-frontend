@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
@@ -13,13 +13,15 @@ import { ClienteService } from 'src/app/core/services/cliente.service';
 export class CriarContaClienteComponent implements OnInit{
 
   formGroup!: FormGroup;
+  phoneMask: string = '(00) 0000-00009';
 
   constructor(
     private clienteService: ClienteService,
     private router: Router,
     private fb: FormBuilder,
     private snackbar: MatSnackBar,
-    private autenticacaoInterceptor: AutenticacaoInterceptor
+    private autenticacaoInterceptor: AutenticacaoInterceptor,
+    private cdRef: ChangeDetectorRef
   ){}
 
   ngOnInit(): void {
@@ -27,12 +29,22 @@ export class CriarContaClienteComponent implements OnInit{
       nome: ['', Validators.required],
       sobrenome: ['', Validators.required],
       telefone: ['', Validators.required],
-      conta: this.fb.group ({
+      conta: this.fb.group({
         email: [null, Validators.compose([Validators.required, Validators.email])],
         senha: [null, Validators.compose([Validators.required, Validators.minLength(6)])],
         tipoEstabelecimento: [false]
       })
-    })
+    });
+
+    this.formGroup.get('telefone')?.valueChanges.subscribe(value => {
+      if (value) {
+        const newMask = value.length > 10 ? '(00) 00000-0000' : '(00) 0000-00009';
+        if (this.phoneMask !== newMask) {
+          this.phoneMask = newMask;
+          this.cdRef.detectChanges();  // Marca para verificação de mudanças
+        }
+      }
+    });
   }
 
   onSubmitHandler() {

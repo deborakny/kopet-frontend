@@ -19,6 +19,7 @@ export class SelecionarPetComponent implements OnInit{
   petControl = new FormControl();
   pets?: Pet[];
   estabelecimentoId!: string | null;
+  isLoading = true;
 
   constructor(
     private formAgendamentoService: FormAgendamentoService,
@@ -42,14 +43,17 @@ export class SelecionarPetComponent implements OnInit{
   getPets(clienteId: number) {
     this.petService.getPetsByCliente(clienteId).subscribe(
       res => {
-        this.pets = res
+        setTimeout(() => {
+          this.pets = res;
+          this.isLoading = false;
+        }, 1000)
       }
     )
   }
 
   onClick() {
     if (this.petControl.valid) {
-      this.router.navigate(['agendamento/selecionar-servico-colaborador'])
+      this.router.navigate([`estabelecimento/${this.estabelecimentoId}/agendamento/selecionar-servico-colaborador`])
     }
     else {
 

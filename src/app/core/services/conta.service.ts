@@ -55,7 +55,7 @@ export class ContaService {
   logOut() {
     this.contaSubject.next(null);
     this.storageConta();
-    this.snackbar.open('Usuário deslogado', '', {
+    this.snackbar.open('Usuário deslogado', 'x', {
       horizontalPosition: "center", verticalPosition: "bottom", duration: 3000
     });
     this.router.navigate(['/'])

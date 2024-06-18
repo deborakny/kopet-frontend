@@ -1,5 +1,5 @@
 import { FormEstabelecimentoService } from 'src/app/core/services/form-estabelecimento.service';
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { CepService } from 'src/app/core/services/cep.service';
 import { Router } from '@angular/router';
 import { FormGroup } from '@angular/forms';
@@ -24,7 +24,8 @@ export class CriarEnderecoEstabelecimentoComponent implements OnInit{
     private estabelecimentoService: EstabelecimentoService,
     private router: Router,
     private autenticacaoInterceptor: AutenticacaoInterceptor,
-    private snackbar: MatSnackBar
+    private snackbar: MatSnackBar,
+    private cdRef: ChangeDetectorRef
   ) { }
 
   ngOnInit(): void {
@@ -60,6 +61,30 @@ export class CriarEnderecoEstabelecimentoComponent implements OnInit{
       this.autenticacaoInterceptor.autenticar(email, senha).subscribe(() => {
         this.router.navigate([`perfil-estabelecimento/${id}`])
       })
+    }
+  }
+
+  procurarEndereco(ev: any) {
+    console.log(ev);
+    const cep = this.formGroup.get('endereco.cep')?.value;
+    if (cep && cep.length === 8) {
+      this.cepService.getAddress(cep).subscribe((res) => {
+        if (res.erro === true) {
+          this.cepExiste = false;
+          this.snackbar.open('CEP não encontrado', '', {
+            horizontalPosition: "center", verticalPosition: "bottom", duration: 3000
+          });
+        } else {
+          this.cepExiste = true;
+          this.formGroup.get('endereco')?.patchValue({
+            logradouro: res.logradouro,
+            bairro: res.bairro,
+            cidade: res.localidade,
+            estado: res.uf,
+          });
+        }
+        this.cdRef.detectChanges();
+      });
     }
   }
 

@@ -27,6 +27,8 @@ export class EstabelecimentoPerfilComponent implements OnInit {
 
   panelOpenState = false
 
+  isLoading = true;
+
   constructor(
     private estabelecimentoService: EstabelecimentoService,
     private router: Router,
@@ -46,23 +48,26 @@ export class EstabelecimentoPerfilComponent implements OnInit {
   getEstabelecimento(id: string) {
     this.estabelecimentoService.getEstabelecimentoById(parseInt(id)).subscribe(
       res => {
-        this.estabelecimento = res;
-        if (this.estabelecimento!.endereco.complemento) {
-          this.enderecoString = `${this.estabelecimento!.endereco.logradouro},
-          ${this.estabelecimento!.endereco.numero},
-          ${this.estabelecimento!.endereco.complemento},
-          ${this.estabelecimento!.endereco.bairro},
-          ${this.estabelecimento!.endereco.cidade},
-          ${this.estabelecimento!.endereco.estado}`
-        } else {
-          this.enderecoString = `${this.estabelecimento!.endereco.logradouro},
-          ${this.estabelecimento!.endereco.numero},
-          ${this.estabelecimento!.endereco.bairro},
-          ${this.estabelecimento!.endereco.cidade},
-          ${this.estabelecimento!.endereco.estado}`
-        }
+        setTimeout(() => {
+          this.estabelecimento = res;
+          if (this.estabelecimento!.endereco.complemento) {
+            this.enderecoString = `${this.estabelecimento!.endereco.logradouro},
+            ${this.estabelecimento!.endereco.numero},
+            ${this.estabelecimento!.endereco.complemento},
+            ${this.estabelecimento!.endereco.bairro},
+            ${this.estabelecimento!.endereco.cidade},
+            ${this.estabelecimento!.endereco.estado}`
+          } else {
+            this.enderecoString = `${this.estabelecimento!.endereco.logradouro},
+            ${this.estabelecimento!.endereco.numero},
+            ${this.estabelecimento!.endereco.bairro},
+            ${this.estabelecimento!.endereco.cidade},
+            ${this.estabelecimento!.endereco.estado}`
+          }
+          this.isLoading = false;
+        }, 1000)
       }
-    )
+    );
   }
 
   getServicos(id: string) {

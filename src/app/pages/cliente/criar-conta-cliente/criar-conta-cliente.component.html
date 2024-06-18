@@ -21,7 +21,7 @@
         <div class="input-wrapper">
           <label for="telefone" class="label">Telefone</label>
           <mat-form-field class="form-field" subscriptSizing="dynamic" appearance="outline">
-            <input type="text" matInput class="input" id="telefone" formControlName="telefone">
+            <input type="text" matInput class="input" id="telefone" formControlName="telefone" [mask]="phoneMask">
             <!-- <mat-error *ngIf="loginForm.get('email')?.errors?.['required']">Campo obrigatório</mat-error> -->
           </mat-form-field>
         </div>

@@ -1,6 +1,6 @@
 import { ServicoService } from 'src/app/core/services/servico.service';
 import { Servico } from './../../../../core/types/servico';
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ContaService } from 'src/app/core/services/conta.service';
 import { MatSelectChange } from '@angular/material/select';
@@ -20,6 +20,7 @@ export class CriarFuncionarioComponent implements OnInit{
 
   formGroup!: FormGroup;
   estabelecimentoId?: number;
+  phoneMask: string = '(00) 0000-00009';
 
   constructor(
     private contaService: ContaService,
@@ -27,7 +28,8 @@ export class CriarFuncionarioComponent implements OnInit{
     private fb: FormBuilder,
     private snackbar: MatSnackBar,
     private funcionarioService: FuncionarioService,
-    private router: Router
+    private router: Router,
+    private cdRef: ChangeDetectorRef
   ) { }
 
   ngOnInit(): void {
@@ -49,6 +51,16 @@ export class CriarFuncionarioComponent implements OnInit{
         id: [this.estabelecimentoId]
       }),
       servicos: this.fb.array([])
+    });
+
+    this.formGroup.get('telefone')?.valueChanges.subscribe(value => {
+      if (value) {
+        const newMask = value.length > 10 ? '(00) 00000-0000' : '(00) 0000-00009';
+        if (this.phoneMask !== newMask) {
+          this.phoneMask = newMask;
+          this.cdRef.detectChanges();  // Marca para verificação de mudanças
+        }
+      }
     });
   }
 
