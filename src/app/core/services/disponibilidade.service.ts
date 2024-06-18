@@ -30,4 +30,8 @@ export class DisponibilidadeService {
   editar(id: number, disponibilidade: Disponibilidade): Observable<Disponibilidade> {
     return this.http.patch<Disponibilidade>(`${this.apiUrl}/disponibilidades/${id}`, disponibilidade)
   }
+
+  excluir(id: number): Observable<Disponibilidade> {
+    return this.http.delete<Disponibilidade>(`${this.apiUrl}/disponibilidades/${id}`)
+  }
 }
