@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ContaService } from 'src/app/core/services/conta.service';
@@ -70,6 +70,14 @@ export class SelecionarPetComponent implements OnInit{
   voltar() {
     if (this.estabelecimentoId) {
       this.router.navigate([`/estabelecimento/${parseInt(this.estabelecimentoId)}`]);
+    }
+  }
+
+  habilitarBotao(): string {
+    if (this.petControl.valid) {
+      return 'botao'; //se o formulário for válido, retorne a classe botao
+    } else {
+      return 'botao__desabilitado' //senão, retorne a classe botao desabilitado
     }
   }
 }
