@@ -33,7 +33,7 @@ export class EditarPerfilEstabelecimentoComponent implements OnInit {
 
     this.formGroup = this.fb.group({
       nome: ['', Validators.required],
-      telefone: ['', Validators.required],
+      telefone: [''],
       endereco: this.fb.group({
         cep: ['', Validators.required],
         logradouro: ['', Validators.required],
@@ -103,6 +103,12 @@ export class EditarPerfilEstabelecimentoComponent implements OnInit {
             });
           },
         });
+    } else {
+      this.snackbar.open('Preencha corretamente os campos obrigatórios', '', {
+        horizontalPosition: 'center',
+        verticalPosition: 'bottom',
+        duration: 3000,
+      });
     }
   }
 
@@ -112,6 +118,11 @@ export class EditarPerfilEstabelecimentoComponent implements OnInit {
       this.cepService.getAddress(cep).subscribe((res) => {
         if (res.erro === true) {
           this.cepExiste = false;
+          this.snackbar.open('CEP não encontrado', '', {
+            horizontalPosition: 'center',
+            verticalPosition: 'bottom',
+            duration: 3000,
+          });
         } else {
           this.cepExiste = true;
           this.formGroup.get('endereco')?.patchValue({

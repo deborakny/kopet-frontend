@@ -14,7 +14,7 @@
             <label for="nome" class="label">Nome fantasia</label>
             <mat-form-field class="form-field" subscriptSizing="dynamic" appearance="outline">
               <input type="text" matInput class="input" id="nome" formControlName="nome">
-              <!-- <mat-error *ngIf="loginForm.get('email')?.errors?.['required']">Campo obrigatório</mat-error> -->
+              <mat-error *ngIf="formGroup.get('nome')?.errors?.['required'] && formGroup.get('nome')?.touched">Campo obrigatório</mat-error>
             </mat-form-field>
           </div>
 
@@ -23,7 +23,6 @@
             <label for="telefone" class="label">Telefone</label>
             <mat-form-field class="form-field" subscriptSizing="dynamic" appearance="outline">
               <input type="text" matInput class="input" id="telefone" formControlName="telefone" [mask]="phoneMask">
-              <!-- <mat-error *ngIf="loginForm.get('email')?.errors?.['required']">Campo obrigatório</mat-error> -->
             </mat-form-field>
           </div>
 
@@ -34,50 +33,48 @@
               <label for="cep" class="label">CEP</label>
               <mat-form-field class="form-field" subscriptSizing="dynamic" appearance="outline">
                 <input type="text" matInput class="input" id="cep" formControlName="cep" mask="00000-000" (focusout)="procurarEndereco($event)">
-                <!-- <mat-error *ngIf="loginForm.get('email')?.errors?.['required']">Campo obrigatório</mat-error> -->
-                <!-- <mat-error *ngIf="cepExiste === false">CEP não encontrado</mat-error> -->
+                <mat-error *ngIf="formGroup.get('endereco.cep')?.errors?.['required'] && formGroup.get('endereco.cep')?.touched">Campo obrigatório</mat-error>
               </mat-form-field>
             </div>
             <div class="input-wrapper">
               <label for="logradouro" class="label">Logradouro</label>
               <mat-form-field class="form-field" subscriptSizing="dynamic" appearance="outline">
                 <input type="text" matInput class="input" id="logradouro" formControlName="logradouro">
-                <!-- <mat-error *ngIf="loginForm.get('email')?.errors?.['required']">Campo obrigatório</mat-error> -->
+                <mat-error *ngIf="formGroup.get('endereco.logradouro')?.errors?.['required'] && formGroup.get('endereco.logradouro')?.touched">Campo obrigatório</mat-error>
               </mat-form-field>
             </div>
             <div class="input-wrapper">
               <label for="numero" class="label">Numero</label>
               <mat-form-field class="form-field" subscriptSizing="dynamic" appearance="outline">
                 <input type="text" matInput class="input" id="numero" formControlName="numero">
-                <!-- <mat-error *ngIf="loginForm.get('email')?.errors?.['required']">Campo obrigatório</mat-error> -->
+                <mat-error *ngIf="formGroup.get('endereco.numero')?.errors?.['required'] && formGroup.get('endereco.numero')?.touched">Campo obrigatório</mat-error>
               </mat-form-field>
             </div>
             <div class="input-wrapper">
               <label for="complemento" class="label">Complemento</label>
               <mat-form-field class="form-field" subscriptSizing="dynamic" appearance="outline">
                 <input type="text" matInput class="input" id="complemento" formControlName="complemento">
-                <!-- <mat-error *ngIf="loginForm.get('email')?.errors?.['required']">Campo obrigatório</mat-error> -->
               </mat-form-field>
             </div>
             <div class="input-wrapper">
               <label for="bairro" class="label">Bairro</label>
               <mat-form-field class="form-field" subscriptSizing="dynamic" appearance="outline">
                 <input type="text" matInput class="input" id="bairro" formControlName="bairro">
-                <!-- <mat-error *ngIf="loginForm.get('email')?.errors?.['required']">Campo obrigatório</mat-error> -->
+                <mat-error *ngIf="formGroup.get('endereco.bairro')?.errors?.['required'] && formGroup.get('endereco.bairro')?.touched">Campo obrigatório</mat-error>
               </mat-form-field>
             </div>
             <div class="input-wrapper">
               <label for="cidade" class="label">Cidade</label>
               <mat-form-field class="form-field" subscriptSizing="dynamic" appearance="outline">
                 <input type="text" matInput class="input" id="cidade" formControlName="cidade">
-                <!-- <mat-error *ngIf="loginForm.get('email')?.errors?.['required']">Campo obrigatório</mat-error> -->
+                <mat-error *ngIf="formGroup.get('endereco.cidade')?.errors?.['required'] && formGroup.get('endereco.cidade')?.touched">Campo obrigatório</mat-error>
               </mat-form-field>
             </div>
             <div class="input-wrapper">
               <label for="estado" class="label">Estado</label>
               <mat-form-field class="form-field" subscriptSizing="dynamic" appearance="outline">
                 <input type="text" matInput class="input" id="estado" formControlName="estado">
-                <!-- <mat-error *ngIf="loginForm.get('email')?.errors?.['required']">Campo obrigatório</mat-error> -->
+                <mat-error *ngIf="formGroup.get('endereco.estado')?.errors?.['required'] && formGroup.get('endereco.estado')?.touched">Campo obrigatório</mat-error>
               </mat-form-field>
             </div>
           </form>

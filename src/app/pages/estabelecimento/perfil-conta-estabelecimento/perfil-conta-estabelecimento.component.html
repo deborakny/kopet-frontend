@@ -19,7 +19,7 @@
 
       <div class="info telefone">
         <h2 class="titulo">Telefone:</h2>
-        <span>{{ ( estabelecimento!.telefone )  | telefone }}</span>
+        <span>{{ estabelecimento?.telefone ? (( estabelecimento!.telefone )  | telefone) : 'Não fornecido'}}</span>
       </div>
 
       <div class="info horario-mobile">
