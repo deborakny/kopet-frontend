@@ -81,11 +81,13 @@ const routes: Routes = [
   },
   {
     path: 'perfil/:id/listar-pets',
-    component: ListarPetsComponent
+    component: ListarPetsComponent,
+    canActivate: [authGuard]
   },
   {
     path: 'perfil/cadastrar-pet',
-    component: CriarPetComponent
+    component: CriarPetComponent,
+    canActivate: [authGuard]
   },
   {
     path: 'perfil-estabelecimento/:id',
@@ -133,7 +135,8 @@ const routes: Routes = [
   },
   {
     path: 'perfil-cliente/:id/editar-pet/:petId',
-    component: EditarPetComponent
+    component: EditarPetComponent,
+    canActivate: [authGuard]
   },
 ];
 

@@ -13,7 +13,8 @@ export const authGuard = () => {
   }
   const snackbarRef = snackbar.open('Faça log in para realizar essa ação', 'Log in', {
     horizontalPosition: "center", verticalPosition: "bottom",
-   });
+  });
+  router.navigate(['/']);
   snackbarRef.onAction().subscribe(() => {
     router.navigate(['login']);
   })

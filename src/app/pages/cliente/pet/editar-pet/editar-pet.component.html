@@ -11,14 +11,14 @@
           <label for="nome" class="label">Nome</label>
           <mat-form-field class="form-field" subscriptSizing="dynamic" appearance="outline">
             <input type="text" matInput class="input" id="nome" formControlName="nome">
-            <!-- <mat-error *ngIf="loginForm.get('email')?.errors?.['required']">Campo obrigatório</mat-error> -->
+            <mat-error *ngIf="formGroup.get('nome')?.errors?.['required'] && formGroup.get('nome')?.touched">Campo obrigatório</mat-error>
           </mat-form-field>
         </div>
         <div class="input-wrapper">
           <label for="especie" class="label">Espécie</label>
           <mat-form-field class="form-field" subscriptSizing="dynamic" appearance="outline">
             <input type="text" matInput class="input" id="especie" formControlName="especie">
-            <!-- <mat-error *ngIf="loginForm.get('email')?.errors?.['required']">Campo obrigatório</mat-error> -->
+            <mat-error *ngIf="formGroup.get('especie')?.errors?.['required'] && formGroup.get('especie')?.touched">Campo obrigatório</mat-error>
             <mat-hint class="hint">Ex.: cão, gato...</mat-hint>
           </mat-form-field>
         </div>
@@ -26,7 +26,7 @@
           <label for="raca" class="label">Raça</label>
           <mat-form-field class="form-field" subscriptSizing="dynamic" appearance="outline">
             <input type="text" matInput class="input" id="raca" formControlName="raca">
-            <!-- <mat-error *ngIf="loginForm.get('email')?.errors?.['required']">Campo obrigatório</mat-error> -->
+            <mat-error *ngIf="formGroup.get('raca')?.errors?.['required'] && formGroup.get('raca')?.touched">Campo obrigatório</mat-error>
           </mat-form-field>
         </div>
         <div class="input-wrapper">
@@ -41,6 +41,7 @@
                 value="M"
               >Macho</mat-option>
             </mat-select>
+            <mat-error *ngIf="formGroup.get('sexo')?.errors?.['required'] && formGroup.get('sexo')?.touched">Campo obrigatório</mat-error>
           </mat-form-field>
         </div>
         <div class="input-wrapper">
@@ -58,13 +59,13 @@
                 value="G"
               >Grande</mat-option>
             </mat-select>
+            <mat-error *ngIf="formGroup.get('porte')?.errors?.['required'] && formGroup.get('porte')?.touched">Campo obrigatório</mat-error>
           </mat-form-field>
         </div>
         <div class="input-wrapper">
           <label for="dadosAdicionais" class="label">Dados adicionais</label>
           <mat-form-field class="form-field" subscriptSizing="dynamic" appearance="outline">
             <input type="text" matInput class="input dados-adicionais" id="dadosAdicionais" formControlName="dadosAdicionais">
-            <!-- <mat-error *ngIf="loginForm.get('email')?.errors?.['required']">Campo obrigatório</mat-error> -->
           </mat-form-field>
         </div>
       </form>
