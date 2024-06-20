@@ -63,6 +63,10 @@ export class CriarContaClienteComponent implements OnInit{
            });
         }
       })
+    } else {
+      this.snackbar.open('Preencha corretamente os campos obrigatórios', '', {
+        horizontalPosition: "center", verticalPosition: "bottom", duration: 3000
+       });
     }
   }
 
