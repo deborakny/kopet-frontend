@@ -12,21 +12,20 @@
           <label for="nome" class="label">Nome do serviço</label>
           <mat-form-field class="form-field" subscriptSizing="dynamic" appearance="outline">
             <input type="text" matInput class="input" id="nome" formControlName="nome">
-            <!-- <mat-error *ngIf="loginForm.get('email')?.errors?.['required']">Campo obrigatório</mat-error> -->
+            <mat-error *ngIf="formGroup.get('nome')?.errors?.['required'] && formGroup.get('nome')?.touched">Campo obrigatório</mat-error>
           </mat-form-field>
         </div>
         <div class="input-wrapper">
           <label for="valor" class="label">Valor</label>
           <mat-form-field class="form-field" subscriptSizing="dynamic" appearance="outline">
             <input type="number" matInput class="input" id="valor" formControlName="valor">
-            <!-- <mat-error *ngIf="loginForm.get('email')?.errors?.['required']">Campo obrigatório</mat-error> -->
           </mat-form-field>
         </div>
         <div class="input-wrapper">
           <label for="duracao" class="label">Duração</label>
           <mat-form-field class="form-field" subscriptSizing="dynamic" appearance="outline">
             <input type="number" matInput class="input" id="duracao" formControlName="duracao">
-            <!-- <mat-error *ngIf="loginForm.get('email')?.errors?.['required']">Campo obrigatório</mat-error> -->
+            <mat-error *ngIf="formGroup.get('duracao')?.errors?.['required'] && formGroup.get('duracao')?.touched">Campo obrigatório</mat-error>
             <mat-hint class="hint">(Em minutos)</mat-hint>
           </mat-form-field>
         </div>
@@ -34,7 +33,6 @@
           <label for="informacoesAdicionais" class="label">Informações Adicionais</label>
           <mat-form-field class="form-field" subscriptSizing="dynamic" appearance="outline">
             <input type="text" matInput class="input informacoes-adicionais" id="informacoesAdicionais" formControlName="informacoesAdicionais">
-            <!-- <mat-error *ngIf="loginForm.get('email')?.errors?.['required']">Campo obrigatório</mat-error> -->
           </mat-form-field>
         </div>
       </form>
