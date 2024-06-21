@@ -72,6 +72,7 @@ export class SelecionarDataHoraComponent implements OnInit{
             this.snackbar.open('Agendamento realizado com sucesso', '', {
               horizontalPosition: "center", verticalPosition: "bottom", duration: 3000
             });
+            this.formAgendamentoService.clearForm()
             this.router.navigate(['/'])
           },
           error: (e) => {

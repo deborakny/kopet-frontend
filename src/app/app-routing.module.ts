@@ -69,15 +69,18 @@ const routes: Routes = [
   },
   {
     path: 'perfil-estabelecimento/:id/cadastrar-horario',
-    component: CriarHorarioFuncionamentoComponent
+    component: CriarHorarioFuncionamentoComponent,
+    canActivate: [authGuard]
   },
   {
     path: 'perfil-estabelecimento/:id/listar-disponibilidade',
-    component: ListarDisponibilidadeComponent
+    component: ListarDisponibilidadeComponent,
+    canActivate: [authGuard]
   },
   {
     path: 'perfil-estabelecimento/:estabelecimentoId/editar-disponibilidade/:disponibilidadeId',
-    component: EditarDisponibilidadeComponent
+    component: EditarDisponibilidadeComponent,
+    canActivate: [authGuard]
   },
   {
     path: 'perfil/:id/listar-pets',
@@ -111,27 +114,33 @@ const routes: Routes = [
   },
   {
     path: 'perfil-estabelecimento/:id/cadastrar-servico',
-    component: CriarServicoComponent
+    component: CriarServicoComponent,
+    canActivate: [authGuard]
   },
   {
     path: 'perfil-estabelecimento/:id/cadastrar-funcionario',
-    component: CriarFuncionarioComponent
+    component: CriarFuncionarioComponent,
+    canActivate: [authGuard]
   },
   {
     path: 'perfil-estabelecimento/:id/cadastrar-disponibilidade',
-    component: DisponibilidadeComponent
+    component: DisponibilidadeComponent,
+    canActivate: [authGuard]
   },
   {
     path: 'perfil/:id/lista-agendamentos',
-    component: ListarAgendamentoComponent
+    component: ListarAgendamentoComponent,
+    canActivate: [authGuard]
   },
   {
     path: 'perfil-cliente/:id',
-    component: PerfilClienteComponent
+    component: PerfilClienteComponent,
+    canActivate: [authGuard]
   },
   {
     path: 'perfil-cliente/:id/editar-perfil',
-    component: EditarPerfilClienteComponent
+    component: EditarPerfilClienteComponent,
+    canActivate: [authGuard]
   },
   {
     path: 'perfil-cliente/:id/editar-pet/:petId',

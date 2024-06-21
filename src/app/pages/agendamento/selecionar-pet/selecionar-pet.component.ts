@@ -69,7 +69,10 @@ export class SelecionarPetComponent implements OnInit{
 
   voltar() {
     if (this.estabelecimentoId) {
+      this.formAgendamentoService.clearForm();
       this.router.navigate([`/estabelecimento/${parseInt(this.estabelecimentoId)}`]);
+    } else {
+      this.router.navigate(['']);
     }
   }
 

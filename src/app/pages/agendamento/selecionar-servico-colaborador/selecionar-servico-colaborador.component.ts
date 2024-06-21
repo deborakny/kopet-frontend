@@ -42,7 +42,8 @@ export class SelecionarServicoColaboradorComponent implements OnInit {
     this.estabelecimentoId = parseInt(this.route.snapshot.paramMap.get('id')!);
 
     this.servicoControl = this.formAgendamentoService.getControl('servicoId');
-    this.colaboradorControl = this.formAgendamentoService.getControl('funcionarioId');
+    this.colaboradorControl =
+      this.formAgendamentoService.getControl('funcionarioId');
 
     this.getServicos(this.estabelecimentoId);
   }
@@ -59,22 +60,30 @@ export class SelecionarServicoColaboradorComponent implements OnInit {
     this.funcionarioService.getFuncionariosByServico(id).subscribe((res) => {
       const servicoComFuncionarios = this.servicos.filter((servico) => {
         return servico.disponibilidades?.find((disp) => {
-          console.log('servico', servico)
-          console.log('disponibilidade', disp)
-          console.log('resr: ',res)
+          console.log('servico', servico);
+          console.log('disponibilidade', disp);
+          console.log('resr: ', res);
           return res.find((func) => func.id === disp.funcionarioId);
         });
       });
-      console.log('servicoComFuncionario', servicoComFuncionarios)
+      console.log('servicoComFuncionario', servicoComFuncionarios);
       if (servicoComFuncionarios.length > 0) {
-        if (this.colaboradorControl.valid)
-          console.log('colaborador', res)
+        if (this.colaboradorControl.valid) {
+          console.log('colaborador', res);
           res.find((func) => func.id === this.colaboradorControl.value)
             ? ''
             : this.colaboradorControl.patchValue('');
+        }
         // console.log('func', selecionadoNaLista);
         // if (selecionadoNaLista) {
-        this.funcionarios = res;
+        this.funcionarios = res.filter(
+          (funcionario) => {
+            return servicoComFuncionarios.map(s => {
+              return s.funcionarios?.filter(f => f.id === funcionario.id)
+            });
+          }
+        );
+        console.log('funcfunc:', this.funcionarios)
         return;
         // }
       }
@@ -85,7 +94,9 @@ export class SelecionarServicoColaboradorComponent implements OnInit {
 
   onClick() {
     if (this.colaboradorControl.valid && this.servicoControl.valid) {
-      this.router.navigate([`estabelecimento/${this.estabelecimentoId}/agendamento/selecionar-data-hora`]);
+      this.router.navigate([
+        `/estabelecimento/${this.estabelecimentoId}/agendamento/selecionar-data-hora`,
+      ]);
     } else {
       this.snackbar.open('Selecione as opções', '', {
         horizontalPosition: 'center',

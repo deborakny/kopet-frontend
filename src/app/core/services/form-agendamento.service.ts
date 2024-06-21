@@ -45,4 +45,8 @@ export class FormAgendamentoService {
       this.formGroup = JSON.parse(formGroup);
     }
   }
+
+  clearForm() {
+    this.formGroup.reset();
+  }
 }
