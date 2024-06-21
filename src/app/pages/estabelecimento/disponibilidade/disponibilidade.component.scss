@@ -79,6 +79,14 @@
   align-items: center;
 }
 
+.campo-obrigatorio {
+  font-size: .75rem;
+}
+
+.titulo-dia-hora {
+  font-size: .9rem;
+}
+
 @media screen and (min-width: 769px){
   .container {
     margin-top: 0;

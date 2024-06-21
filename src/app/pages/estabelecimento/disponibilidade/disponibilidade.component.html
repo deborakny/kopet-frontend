@@ -8,7 +8,7 @@
     <h2 class="titulo">Cadastro de disponibilidade</h2>
     <form class="form" [formGroup]="formGroup">
       <div class="input-wrapper">
-        <label for="servicos" class="label">Serviço</label>
+        <label for="servicos" class="label">Serviço <span class="campo-obrigatorio">(campo obrigatório)</span></label>
         <mat-form-field>
           <mat-label>Selecione um serviço</mat-label>
           <mat-select
@@ -25,7 +25,7 @@
       </div>
 
       <div class="input-wrapper" *ngIf="servicoId">
-        <label for="funcionarios" class="label">Funcionário</label>
+        <label for="funcionarios" class="label">Funcionário <span class="campo-obrigatorio">(campo obrigatório)</span></label>
         <mat-form-field>
           <mat-label>Selecione um funcionário</mat-label>
           <mat-select
@@ -44,6 +44,7 @@
       <!-- Datas disponibilidade -->
 
       <div class="datas-disponibilidade" *ngIf="funcionarioId">
+        <h3 class="titulo-dia-hora">Selecione os dias e horários <span class="campo-obrigatorio">(obrigatório)</span></h3>
         <form class="form" formGroupName="datasDisponibilidade">
           <div class="dias-horas">
             <div class="seleciona-tudo">

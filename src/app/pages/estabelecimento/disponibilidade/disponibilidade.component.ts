@@ -129,14 +129,6 @@ export class DisponibilidadeComponent implements OnInit{
     return dia.value!;
   }
 
-  // getDataDisponibilidade(index: number): FormGroup {
-  //   return this.datasDisponibilidade.at(index) as FormGroup;
-  // }
-
-  // getDisponibilidadePorDia(dia: number): FormGroup | null {
-  //   const dataDisponibilidade = this.datasDisponibilidade.controls.find(control => control.get('dia')?.value === dia);
-  //   return dataDisponibilidade ? dataDisponibilidade as FormGroup : null;
-  // }
 
   getHorarioDisponibilidadePorDia(dia: number): FormGroup {
     const horarioDisponibilidade = this.datasDisponibilidade.controls.find(control => control.get('dia')?.value === dia);
@@ -195,12 +187,6 @@ export class DisponibilidadeComponent implements OnInit{
     console.log('Hora inicial:', horarioInicio);
     console.log('Hora final:', horarioFim);
 
-    // const horarioInicio = this.formGroup.get('datasDisponibilidade')?.value[i]?.horarioInicio || '';
-    // const horarioFim = this.formGroup.get('datasDisponibilidade')?.value[i]?.horarioFim || '';
-
-    // console.log('Hora inicial:', horarioInicio);
-    // console.log('Hora final:', horarioFim);
-
 
     if (horarioInicio !== '' && horarioFim !== '') {
       selectedDays.forEach(dia => {
@@ -212,10 +198,7 @@ export class DisponibilidadeComponent implements OnInit{
         } else {
           console.log('Não consegui para o dia: ', dia.nome);
         }
-        // const dataDisponibilidade = this.getHorarioDisponibilidadePorDia(dia.value!);
-        // dataDisponibilidade ? dataDisponibilidade.get('horarioInicio')?.setValue(horarioInicio) : '';
-        // dataDisponibilidade ? dataDisponibilidade.get('horarioFim')?.setValue(horarioFim) : console.log('Não consegui para o dia: ', dia.nome);
-        // dataDisponibilidade ? console.log('FormGroup:', dataDisponibilidade.getRawValue()) : '';
+
       });
     }
 
@@ -248,25 +231,6 @@ export class DisponibilidadeComponent implements OnInit{
 
     console.log('Estado atual do FormArray:', this.datasDisponibilidade.value);
 
-    // const selectedDays = this.dia.dias!.filter(dia => dia.completed); // Obter todos os dias selecionados
-    // console.log('Dias selecionados:', selectedDays);
-
-    // const pausaInicio = this.formGroup.get('datasDisponibilidade')?.value[i]?.pausaInicio || '';
-    // const pausaFim = this.formGroup.get('datasDisponibilidade')?.value[i]?.pausaFim || '';
-
-    // console.log('Pausa inicial:', pausaInicio);
-    // console.log('Pausa final:', pausaFim);
-
-    // if (pausaInicio !== '' && pausaFim !== '') {
-    //   selectedDays.forEach(dia => {
-    //     const dataDisponibilidade = this.getHorarioDisponibilidadePorDia(dia.value!);
-    //     dataDisponibilidade ? dataDisponibilidade.get('pausaInicio')?.setValue(pausaInicio) : '';
-    //     dataDisponibilidade ? dataDisponibilidade.get('pausaFim')?.setValue(pausaFim) : console.log('Não consegui para o dia: ', dia.nome);
-    //     dataDisponibilidade ? console.log('FormGroup:', dataDisponibilidade.getRawValue()) : '';
-    //   });
-    // }
-
-    // console.log('Estado atual do FormArray:', this.datasDisponibilidade.value);
   }
 
   getServicos(estabelecimentoId: number) {
@@ -316,6 +280,9 @@ export class DisponibilidadeComponent implements OnInit{
         }
       })
     }
+    this.snackbar.open('Preencha os campos obrigatórios', '', {
+      horizontalPosition: "center", verticalPosition: "bottom", duration: 3000
+    });
     console.log('Valores do FormGroup:', this.formGroup.value);
   }
 
