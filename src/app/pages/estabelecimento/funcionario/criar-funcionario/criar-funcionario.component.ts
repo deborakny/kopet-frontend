@@ -45,7 +45,7 @@ export class CriarFuncionarioComponent implements OnInit{
       sobrenome: ['', Validators.required],
       cpf: ['', Validators.required],
       email: [null],
-      telefone: ['', Validators.required],
+      telefone: [''],
       informacoesAdicionais: [''],
       estabelecimento: this.fb.group({
         id: [this.estabelecimentoId]
@@ -109,9 +109,7 @@ export class CriarFuncionarioComponent implements OnInit{
   }
 
   onSubmitHandler() {
-    console.log('entrou')
     if (this.formGroup.valid) {
-      console.log('valido')
       this.funcionarioService.criar(this.formGroup.value).subscribe({
         next: (value) => {
           this.snackbar.open('Cadastro realizado com sucesso', '', {
@@ -128,6 +126,11 @@ export class CriarFuncionarioComponent implements OnInit{
            });
         }
       })
+    } else {
+      this.formGroup.markAllAsTouched();
+      this.snackbar.open('Preencha corretamente os campos obrigatórios', '', {
+        horizontalPosition: "center", verticalPosition: "bottom", duration: 3000
+      });
     }
   }
 
