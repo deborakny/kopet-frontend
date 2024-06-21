@@ -1,5 +1,6 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { FormEstabelecimentoService } from 'src/app/core/services/form-estabelecimento.service';
 
@@ -22,7 +23,8 @@ export class CriarContaEstabelecimentoComponent implements OnInit{
   constructor(
     private formEstabelecimentoService: FormEstabelecimentoService,
     private router: Router,
-    private cdRef: ChangeDetectorRef
+    private cdRef: ChangeDetectorRef,
+    private snackbar: MatSnackBar
   ) { }
 
   ngOnInit(): void {
@@ -49,6 +51,9 @@ export class CriarContaEstabelecimentoComponent implements OnInit{
       this.router.navigate(['cadastrar/conta-estabelecimento/endereco'])
     } else {
       console.log('erro ao navegar para a página seguinte')
+      this.snackbar.open('Preencha corretamente os campos obrigatórios', '', {
+        horizontalPosition: "center", verticalPosition: "bottom", duration: 3000
+      });
     }
   }
 
