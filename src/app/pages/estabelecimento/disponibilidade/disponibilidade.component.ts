@@ -279,10 +279,11 @@ export class DisponibilidadeComponent implements OnInit{
            });
         }
       })
+    } else {
+      this.snackbar.open('Preencha os campos obrigatórios', '', {
+        horizontalPosition: "center", verticalPosition: "bottom", duration: 3000
+      });
     }
-    this.snackbar.open('Preencha os campos obrigatórios', '', {
-      horizontalPosition: "center", verticalPosition: "bottom", duration: 3000
-    });
     console.log('Valores do FormGroup:', this.formGroup.value);
   }
 
