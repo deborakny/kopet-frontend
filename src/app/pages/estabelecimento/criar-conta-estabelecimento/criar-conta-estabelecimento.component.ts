@@ -2,7 +2,9 @@ import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { ContaService } from 'src/app/core/services/conta.service';
 import { FormEstabelecimentoService } from 'src/app/core/services/form-estabelecimento.service';
+import { Conta } from 'src/app/core/types/conta';
 
 @Component({
   selector: 'app-criar-conta-estabelecimento',
@@ -19,20 +21,18 @@ export class CriarContaEstabelecimentoComponent implements OnInit{
 
   formGroup = this.formEstabelecimentoService.getFormGroup();
   phoneMask: string = '(00) 0000-00009';
+  contas: Conta[] = [];
+  emailExiste: boolean = false;
 
   constructor(
     private formEstabelecimentoService: FormEstabelecimentoService,
     private router: Router,
     private cdRef: ChangeDetectorRef,
-    private snackbar: MatSnackBar
+    private snackbar: MatSnackBar,
+    private contaService: ContaService
   ) { }
 
   ngOnInit(): void {
-    // this.nomeControl = this.formEstabelecimentoService.getControl('nome');
-    // this.cnpjControl = this.formEstabelecimentoService.getControl('cnpj');
-    // this.telefoneControl = this.formEstabelecimentoService.getControl('telefone');
-    // this.emailControl = this.formEstabelecimentoService.getControl('email');
-    // this.senhaControl = this.formEstabelecimentoService.getControl('senha');
     this.formGroup.get('telefone')?.valueChanges.subscribe(value => {
       if (value) {
         const newMask = value.length > 10 ? '(00) 00000-0000' : '(00) 0000-00009';
@@ -46,15 +46,25 @@ export class CriarContaEstabelecimentoComponent implements OnInit{
   }
 
   onNext() {
-    if (this.isFirstPageValid()) {
-      console.log('Form Data:', this.formGroup.value);
-      this.router.navigate(['cadastrar/conta-estabelecimento/endereco'])
-    } else {
-      console.log('erro ao navegar para a página seguinte')
+    if (!this.isFirstPageValid()) {
+      this.formGroup.markAllAsTouched();
       this.snackbar.open('Preencha corretamente os campos obrigatórios', '', {
         horizontalPosition: "center", verticalPosition: "bottom", duration: 3000
       });
+    } else if (this.emailExiste) {
+      this.snackbar.open('Este e-mail já foi cadastrado', '', {
+        horizontalPosition: "center", verticalPosition: "bottom", duration: 3000
+      });
+    } else {
+      this.router.navigate(['cadastrar/conta-estabelecimento/endereco']);
     }
+    // if (this.isFirstPageValid()) {
+    //   this.router.navigate(['cadastrar/conta-estabelecimento/endereco'])
+    // } else {
+      // this.snackbar.open('Preencha corretamente os campos obrigatórios', '', {
+      //   horizontalPosition: "center", verticalPosition: "bottom", duration: 3000
+      // });
+    // }
   }
 
   private isFirstPageValid(): boolean {
@@ -66,6 +76,24 @@ export class CriarContaEstabelecimentoComponent implements OnInit{
       }
     }
     return true;
+  }
+
+  verificaEmail() {
+    const email = this.formGroup.get('conta.email')?.value;
+    console.log(email)
+    if (email) {
+      this.contaService.listar().subscribe(
+        contas => {
+          this.emailExiste = contas.some(conta => conta.email === email);
+          console.log(this.emailExiste)
+          if (this.emailExiste) {
+            this.snackbar.open('Este e-mail já foi cadastrado', '', {
+              horizontalPosition: "center", verticalPosition: "bottom", duration: 3000
+            });
+          }
+        }
+      )
+    }
   }
 
 }

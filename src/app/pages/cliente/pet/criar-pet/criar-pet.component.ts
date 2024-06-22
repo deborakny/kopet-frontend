@@ -62,6 +62,7 @@ export class CriarPetComponent implements OnInit{
         });
       }
     } else {
+      this.formGroup.markAllAsTouched();
       this.snackbar.open('Preencha corretamente os campos obrigatórios', '', {
         horizontalPosition: "center", verticalPosition: "bottom", duration: 3000
       })

@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { Payload } from '../types/payload';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
@@ -71,6 +71,10 @@ export class ContaService {
     if (session && !this.logado()) {
       this.contaSubject.next(JSON.parse(session));
     }
+  }
+
+  listar(): Observable<Conta[]> {
+    return this.http.get<Conta[]>(`${this.apiUrl}/contas`);
   }
 
 }
