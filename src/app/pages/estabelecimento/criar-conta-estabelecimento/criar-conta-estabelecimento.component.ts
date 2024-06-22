@@ -52,10 +52,10 @@ export class CriarContaEstabelecimentoComponent implements OnInit{
         horizontalPosition: "center", verticalPosition: "bottom", duration: 3000
       });
     } else if (this.emailExiste) {
-      this.snackbar.open('Este e-mail já foi cadastrado', '', {
+      this.snackbar.open('E-mail já cadastrado', '', {
         horizontalPosition: "center", verticalPosition: "bottom", duration: 3000
       });
-    } else {
+    } else if (this.isFirstPageValid() && !this.emailExiste){
       this.router.navigate(['cadastrar/conta-estabelecimento/endereco']);
     }
     // if (this.isFirstPageValid()) {
@@ -87,7 +87,7 @@ export class CriarContaEstabelecimentoComponent implements OnInit{
           this.emailExiste = contas.some(conta => conta.email === email);
           console.log(this.emailExiste)
           if (this.emailExiste) {
-            this.snackbar.open('Este e-mail já foi cadastrado', '', {
+            this.snackbar.open('E-mail já cadastrado', '', {
               horizontalPosition: "center", verticalPosition: "bottom", duration: 3000
             });
           }

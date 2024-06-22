@@ -4,6 +4,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { AutenticacaoInterceptor } from 'src/app/core/interceptors/autenticacao.interceptor';
 import { ClienteService } from 'src/app/core/services/cliente.service';
+import { ContaService } from 'src/app/core/services/conta.service';
 
 @Component({
   selector: 'app-criar-conta-cliente',
@@ -14,6 +15,7 @@ export class CriarContaClienteComponent implements OnInit{
 
   formGroup!: FormGroup;
   phoneMask: string = '(00) 0000-00009';
+  emailExiste: boolean = false;
 
   constructor(
     private clienteService: ClienteService,
@@ -21,7 +23,8 @@ export class CriarContaClienteComponent implements OnInit{
     private fb: FormBuilder,
     private snackbar: MatSnackBar,
     private autenticacaoInterceptor: AutenticacaoInterceptor,
-    private cdRef: ChangeDetectorRef
+    private cdRef: ChangeDetectorRef,
+    private contaService: ContaService
   ){}
 
   ngOnInit(): void {
@@ -48,7 +51,16 @@ export class CriarContaClienteComponent implements OnInit{
   }
 
   onSubmitHandler() {
-    if (this.formGroup.valid) {
+    if (!this.formGroup.valid) {
+      this.formGroup.markAllAsTouched();
+      this.snackbar.open('Preencha corretamente os campos obrigatórios', '', {
+        horizontalPosition: "center", verticalPosition: "bottom", duration: 3000
+      });
+    } else if (this.emailExiste) {
+      this.snackbar.open('E-mail já cadastrado', '', {
+        horizontalPosition: "center", verticalPosition: "bottom", duration: 3000
+      });
+    } else if (this.formGroup.valid && !this.emailExiste){
       this.clienteService.criar(this.formGroup.value).subscribe({
         next: (value) => {
           this.snackbar.open('Cadastro realizado com sucesso', '', {
@@ -60,14 +72,30 @@ export class CriarContaClienteComponent implements OnInit{
         error: (e) => {
           this.snackbar.open('Não foi possível realizar o cadastro', '', {
             horizontalPosition: "center", verticalPosition: "bottom", duration: 3000
-           });
+          })
         }
-      })
-    } else {
-      this.snackbar.open('Preencha corretamente os campos obrigatórios', '', {
-        horizontalPosition: "center", verticalPosition: "bottom", duration: 3000
-       });
+      });
     }
+    // if (this.formGroup.valid) {
+      // this.clienteService.criar(this.formGroup.value).subscribe({
+      //   next: (value) => {
+      //     this.snackbar.open('Cadastro realizado com sucesso', '', {
+      //       horizontalPosition: "center", verticalPosition: "bottom", duration: 3000
+      //     });
+      //     this.login();
+
+      //   },
+      //   error: (e) => {
+      //     this.snackbar.open('Não foi possível realizar o cadastro', '', {
+      //       horizontalPosition: "center", verticalPosition: "bottom", duration: 3000
+      //      });
+      //   }
+      // })
+    // } else {
+      // this.snackbar.open('Preencha corretamente os campos obrigatórios', '', {
+      //   horizontalPosition: "center", verticalPosition: "bottom", duration: 3000
+      //  });
+    // }
   }
 
   login() {
@@ -78,6 +106,24 @@ export class CriarContaClienteComponent implements OnInit{
       this.autenticacaoInterceptor.autenticar(email, senha).subscribe(() => {
         this.router.navigate(['/'])
       })
+    }
+  }
+
+  verificaEmail() {
+    const email = this.formGroup.get('conta.email')?.value;
+    console.log(email)
+    if (email) {
+      this.contaService.listar().subscribe(
+        contas => {
+          this.emailExiste = contas.some(conta => conta.email === email);
+          console.log(this.emailExiste)
+          if (this.emailExiste) {
+            this.snackbar.open('E-mail já cadastrado', '', {
+              horizontalPosition: "center", verticalPosition: "bottom", duration: 3000
+            });
+          }
+        }
+      )
     }
   }
 

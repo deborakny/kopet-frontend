@@ -29,7 +29,7 @@
           <div class="input-wrapper">
             <label for="email" class="label">E-mail</label>
             <mat-form-field class="form-field" subscriptSizing="dynamic" appearance="outline">
-              <input type="email" matInput class="input" id="email" formControlName="email">
+              <input type="email" matInput class="input" id="email" formControlName="email" (blur)="verificaEmail()">
               <mat-error *ngIf="formGroup.get('conta.email')?.errors?.['required'] && formGroup.get('conta.email')?.touched">Campo obrigatório</mat-error>
             </mat-form-field>
           </div>
