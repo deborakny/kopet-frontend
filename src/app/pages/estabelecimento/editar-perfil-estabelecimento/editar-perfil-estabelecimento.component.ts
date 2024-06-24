@@ -33,7 +33,7 @@ export class EditarPerfilEstabelecimentoComponent implements OnInit {
 
     this.formGroup = this.fb.group({
       nome: ['', Validators.required],
-      telefone: [''],
+      telefone: ['', Validators.required],
       endereco: this.fb.group({
         cep: ['', Validators.required],
         logradouro: ['', Validators.required],

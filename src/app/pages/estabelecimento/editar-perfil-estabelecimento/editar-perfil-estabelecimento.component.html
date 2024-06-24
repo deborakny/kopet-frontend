@@ -23,6 +23,7 @@
             <label for="telefone" class="label">Telefone</label>
             <mat-form-field class="form-field" subscriptSizing="dynamic" appearance="outline">
               <input type="text" matInput class="input" id="telefone" formControlName="telefone" [mask]="phoneMask">
+              <mat-error *ngIf="formGroup.get('telefone')?.errors?.['required'] && formGroup.get('telefone')?.touched">Campo obrigatório</mat-error>
             </mat-form-field>
           </div>
 
