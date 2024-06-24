@@ -48,8 +48,13 @@ export class CriarEnderecoEstabelecimentoComponent implements OnInit{
         }
       });
     } else {
-      console.log('Formulário inválido', this.formGroup.getRawValue());
-      this.formGroup.markAllAsTouched();
+      //this.formGroup.markAllAsTouched();
+      this.formGroup.get('endereco.cep')?.markAsTouched();
+      this.formGroup.get('endereco.logradouro')?.markAsTouched();
+      this.formGroup.get('endereco.numero')?.markAsTouched();
+      this.formGroup.get('endereco.bairro')?.markAsTouched();
+      this.formGroup.get('endereco.cidade')?.markAsTouched();
+      this.formGroup.get('endereco.estado')?.markAsTouched();
       this.snackbar.open('Preencha corretamente os campos obrigatórios', '', {
         horizontalPosition: "center", verticalPosition: "bottom", duration: 3000
       });
