@@ -54,4 +54,8 @@ export class FormEstabelecimentoService {
       }
     })
   }
+
+  clearForm() {
+    this.formGroup.reset();
+  }
 }

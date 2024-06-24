@@ -13,6 +13,7 @@ export class ListarAgendamentoComponent implements OnInit{
   usuarioLogado?: boolean;
   tipoEstabelecimento?: boolean;
   agendamentos: Agendamento[] = [];
+  isLoading = true;
 
   constructor(
     private contaService: ContaService,
@@ -24,17 +25,23 @@ export class ListarAgendamentoComponent implements OnInit{
     this.tipoEstabelecimento = this.contaService.getTipoEstabelecimento();
     this.usuarioLogado = this.contaService.logado();
 
-    if (this.tipoEstabelecimento) {
-      this.getAgendamentosEstabelecimento(contaId!!)
-    } else {
-      this.getAgendamentosCliente(contaId!)
+    if (contaId) {
+      console.log('tem id', contaId)
+      if (this.tipoEstabelecimento) {
+        this.getAgendamentosEstabelecimento(contaId)
+      } else {
+        this.getAgendamentosCliente(contaId)
+      }
     }
   }
 
   getAgendamentosCliente(id: number) {
     this.agendamentoService.listarPorClienteId(id).subscribe(
       res => {
-        this.agendamentos = res
+        setTimeout(() => {
+          this.agendamentos = res;
+          this.isLoading = false;
+        }, 1000)
       }
     )
   }
@@ -42,7 +49,10 @@ export class ListarAgendamentoComponent implements OnInit{
   getAgendamentosEstabelecimento(id: number) {
     this.agendamentoService.listarPorEstabelecimentoId(id).subscribe(
       res => {
-        this.agendamentos = res
+        setTimeout(() => {
+          this.agendamentos = res;
+          this.isLoading = false;
+        }, 1000)
       }
     )
   }

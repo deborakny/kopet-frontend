@@ -13,6 +13,7 @@ export class ListarPetsComponent implements OnInit{
 
   pets: Pet[] = [];
   usuarioLogado?: boolean;
+  isLoading = true;
 
   constructor(
     private router: Router,
@@ -29,9 +30,12 @@ export class ListarPetsComponent implements OnInit{
   getPets(clienteId: number) {
     this.petService.getPetsByCliente(clienteId).subscribe(
       res => {
-        this.pets = res
+        setTimeout(() => {
+          this.pets = res;
+          this.isLoading = false;
+        }, 1000)
       }
-    )
+    );
   }
 
 }

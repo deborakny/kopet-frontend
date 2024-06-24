@@ -22,6 +22,7 @@ export class SelecionarDataHoraComponent implements OnInit{
   horaControl = new FormControl();
   dataControl = new FormControl();
   estabelecimentoId!: number;
+  isLoading = true;
 
   constructor(
     private opcaoDisponibilidadeService: OpcaoDisponibilidadeService,
@@ -42,8 +43,13 @@ export class SelecionarDataHoraComponent implements OnInit{
     const idFuncionario = this.formAgendamentoService.getControl('funcionarioId').value;
 
     this.opcaoDisponibilidadeService.listar(idServico, idFuncionario).subscribe(res => {
-      this.opcoesDisponibilidade = res
-      this.atualizarHorario(moment().toDate())
+      setTimeout(() => {
+        this.opcoesDisponibilidade = res;
+        this.atualizarHorario(moment().toDate());
+        console.log('res: ', res)
+        console.log('opcoes: ', this.opcoesDisponibilidade)
+        this.isLoading = false;
+      }, 1000)
     });
   }
 

@@ -1,23 +1,29 @@
-<div class="header-banner">
-  <app-header></app-header>
-  <app-banner [logo]='false' class="banner"></app-banner>
+<div *ngIf="!isLoading">
+  <div class="header-banner">
+    <app-header></app-header>
+    <app-banner [logo]='false' class="banner"></app-banner>
+  </div>
+  <div class="lista-pets">
+    <app-container class="container">
+      <div class="titulo-botao">
+        <h2 class="titulo">Pets</h2>
+        <app-primary-button text="Cadastrar pet" class="button" routerLink="/perfil/cadastrar-pet"></app-primary-button>
+      </div>
+      <mat-divider></mat-divider>
+      <div class="card-wrapper">
+        <app-card-pet
+          *ngFor="let pet of pets"
+          [pet]="pet"
+        ></app-card-pet>
+      </div>
+      <span *ngIf="pets.length <= 0" class="sem_pet">Nenhum pet cadastrado</span>
+    </app-container>
+  </div>
+  <app-footer [usuarioLogado]="usuarioLogado"></app-footer>
 </div>
-<div class="lista-pets">
-  <app-container class="container">
-    <div class="titulo-botao">
-      <h2 class="titulo">Pets</h2>
-      <app-primary-button text="Cadastrar pet" class="button" routerLink="/perfil/cadastrar-pet"></app-primary-button>
-    </div>
-    <mat-divider></mat-divider>
-    <div class="card-wrapper">
-      <app-card-pet
-        *ngFor="let pet of pets"
-        [pet]="pet"
-      ></app-card-pet>
-    </div>
-    <span *ngIf="pets.length <= 0" class="sem_pet">Nenhum pet cadastrado</span>
-  </app-container>
+
+<div class="spinner-container" *ngIf="isLoading">
+  <mat-spinner></mat-spinner>
 </div>
-<app-footer [usuarioLogado]="usuarioLogado"></app-footer>
 
 

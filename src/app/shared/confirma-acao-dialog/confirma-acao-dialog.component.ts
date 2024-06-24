@@ -1,5 +1,6 @@
 import { Component, Inject, inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AgendamentoService } from 'src/app/core/services/agendamento.service';
 import { Agendamento } from 'src/app/core/types/agendamento';
@@ -16,6 +17,7 @@ export class ConfirmaAcaoDialogComponent {
     public dialogRef: MatDialogRef<ConfirmaAcaoDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public id: number,
     private agendamentoService: AgendamentoService,
+    private snackbar: MatSnackBar
   ) { }
 
   confirmar() {
@@ -25,11 +27,14 @@ export class ConfirmaAcaoDialogComponent {
     } as Agendamento
     this.agendamentoService.atualizar(this.id, agendamento).subscribe(
       {
-        next(value) {
+        next: (value) => {
           console.log(value);
+          this.snackbar.open('Agendamento cancelado', '', {
+            horizontalPosition: "center", verticalPosition: "bottom", duration: 3000
+          });
           window.location.reload();
         },
-        error(e) {
+        error: (e) => {
           console.log(e)
         }
       }

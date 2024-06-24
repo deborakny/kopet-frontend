@@ -57,39 +57,65 @@ export class SelecionarServicoColaboradorComponent implements OnInit {
   }
 
   getFuncionarios(id: number) {
-    this.funcionarioService.getFuncionariosByServico(id).subscribe((res) => {
-      const servicoComFuncionarios = this.servicos.filter((servico) => {
-        return servico.disponibilidades?.find((disp) => {
-          console.log('servico', servico);
-          console.log('disponibilidade', disp);
-          console.log('resr: ', res);
-          return res.find((func) => func.id === disp.funcionarioId);
-        });
-      });
-      console.log('servicoComFuncionario', servicoComFuncionarios);
-      if (servicoComFuncionarios.length > 0) {
-        if (this.colaboradorControl.valid) {
-          console.log('colaborador', res);
-          res.find((func) => func.id === this.colaboradorControl.value)
-            ? ''
-            : this.colaboradorControl.patchValue('');
-        }
-        // console.log('func', selecionadoNaLista);
-        // if (selecionadoNaLista) {
-        this.funcionarios = res.filter(
-          (funcionario) => {
-            return servicoComFuncionarios.map(s => {
-              return s.funcionarios?.filter(f => f.id === funcionario.id)
-            });
-          }
-        );
-        console.log('funcfunc:', this.funcionarios)
-        return;
-        // }
+    const funcionarios = this.servicos.find((s) => {
+      return s.id === this.servicoControl.value;
+    })?.funcionarios;
+
+    const disponibilidades = this.servicos.find((s) => {
+      return s.id === this.servicoControl.value;
+    })?.disponibilidades;
+
+    const funcionariosDisponiveis = funcionarios!.filter((f) =>
+      disponibilidades?.find((d) => d.funcionarioId === f.id)
+    );
+
+    if (funcionariosDisponiveis?.length > 0) {
+      if (this.colaboradorControl.valid) {
+        funcionariosDisponiveis.find(
+          (func) => func.id === this.colaboradorControl.value
+        )
+          ? ''
+          : this.colaboradorControl.patchValue('');
       }
-      this.colaboradorControl.patchValue('');
-      this.funcionarios = [];
-    });
+      this.funcionarios = funcionariosDisponiveis;
+      return;
+    }
+    this.funcionarios = [];
+    this.colaboradorControl.patchValue('');
+
+    // this.funcionarioService.getFuncionariosByServico(id).subscribe((res) => {
+    //   const servicoComFuncionarios = this.servicos.filter((servico) => {
+    //     return servico.disponibilidades?.find((disp) => {
+    //       console.log('servico', servico);
+    //       console.log('disponibilidade', disp);
+    //       console.log('resr: ', res);
+    //       return res.find((func) => func.id === disp.funcionarioId);
+    //     });
+    //   });
+    //   console.log('servicoComFuncionario', servicoComFuncionarios);
+    //   if (servicoComFuncionarios.length > 0) {
+    //     if (this.colaboradorControl.valid) {
+    //       console.log('colaborador', res);
+    //       res.find((func) => func.id === this.colaboradorControl.value)
+    //         ? ''
+    //         : this.colaboradorControl.patchValue('');
+    //     }
+    //     // console.log('func', selecionadoNaLista);
+    //     // if (selecionadoNaLista) {
+    //     this.funcionarios = res.filter(
+    //       (funcionario) => {
+    //         return servicoComFuncionarios.map(s => {
+    //           return s.funcionarios?.filter(f => f.id === funcionario.id)
+    //         });
+    //       }
+    //     );
+    //     console.log('funcfunc:', this.funcionarios)
+    //     return;
+    //     // }
+    //   }
+    //   this.colaboradorControl.patchValue('');
+    //   this.funcionarios = [];
+    // });
   }
 
   onClick() {

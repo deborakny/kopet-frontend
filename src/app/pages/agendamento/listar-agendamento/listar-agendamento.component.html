@@ -1,21 +1,27 @@
-<div class="header-banner">
-  <app-header></app-header>
-  <app-banner [logo]='false' class="banner"></app-banner>
+<div *ngIf="!isLoading">
+  <div class="header-banner">
+    <app-header></app-header>
+    <app-banner [logo]='false' class="banner"></app-banner>
+  </div>
+  <div class="lista-agendamentos">
+    <app-container class="container">
+      <h2 class="titulo">Agendamentos</h2>
+      <mat-divider></mat-divider>
+      <div class="card-wrapper">
+        <app-card-agendamento
+          *ngFor="let agendamento of agendamentos"
+          [agendamento]="agendamento"
+          [tipoEstabelecimento]="tipoEstabelecimento!"
+        >
+        </app-card-agendamento>
+      </div>
+      <span *ngIf="agendamentos!.length <= 0" class="sem_agendamento">Não há agendamentos</span>
+    </app-container>
+  </div>
+  <app-footer [usuarioLogado]="usuarioLogado"></app-footer>
 </div>
-<div class="lista-agendamentos">
-  <app-container class="container">
-    <h2 class="titulo">Agendamentos</h2>
-    <mat-divider></mat-divider>
-    <div class="card-wrapper">
-      <app-card-agendamento
-        *ngFor="let agendamento of agendamentos"
-        [agendamento]="agendamento"
-        [tipoEstabelecimento]="tipoEstabelecimento!"
-      >
-      </app-card-agendamento>
-    </div>
-    <span *ngIf="agendamentos!.length <= 0" class="sem_agendamento">Não há agendamentos</span>
-  </app-container>
+
+<div class="spinner-container" *ngIf="isLoading">
+  <mat-spinner></mat-spinner>
 </div>
-<app-footer [usuarioLogado]="usuarioLogado"></app-footer>
 
