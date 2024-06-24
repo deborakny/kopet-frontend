@@ -47,7 +47,12 @@ export class CriarContaEstabelecimentoComponent implements OnInit{
 
   onNext() {
     if (!this.isFirstPageValid()) {
-      this.formGroup.markAllAsTouched();
+      //this.formGroup.markAllAsTouched();
+      this.formGroup.get('nome')?.markAsTouched();
+      this.formGroup.get('cnpj')?.markAsTouched();
+      this.formGroup.get('telefone')?.markAsTouched();
+      this.formGroup.get('conta.email')?.markAsTouched();
+      this.formGroup.get('conta.senha')?.markAsTouched();
       this.snackbar.open('Preencha corretamente os campos obrigatórios', '', {
         horizontalPosition: "center", verticalPosition: "bottom", duration: 3000
       });
