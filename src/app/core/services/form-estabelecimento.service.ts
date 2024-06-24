@@ -16,7 +16,7 @@ export class FormEstabelecimentoService {
     this.formGroup = this.fb.group({
       nome: ['', Validators.required],
       cnpj: ['', Validators.required],
-      telefone: [''],
+      telefone: ['', Validators.required],
       conta: this.fb.group({
         email: [null, Validators.compose([Validators.required, Validators.email])],
         senha: [null, Validators.compose([Validators.required, Validators.minLength(6)])],
