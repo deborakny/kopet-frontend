@@ -9,6 +9,7 @@ import { Agendamento } from 'src/app/core/types/agendamento';
 import { AgendamentoService } from 'src/app/core/services/agendamento.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ContaService } from 'src/app/core/services/conta.service';
 
 @Component({
   selector: 'app-selecionar-data-hora',
@@ -30,7 +31,8 @@ export class SelecionarDataHoraComponent implements OnInit{
     private agendamentoService: AgendamentoService,
     private snackbar: MatSnackBar,
     private router: Router,
-    private route:ActivatedRoute
+    private route: ActivatedRoute,
+    private contaService: ContaService
   ){}
 
   ngOnInit(): void {
@@ -78,8 +80,9 @@ export class SelecionarDataHoraComponent implements OnInit{
             this.snackbar.open('Agendamento realizado com sucesso', '', {
               horizontalPosition: "center", verticalPosition: "bottom", duration: 3000
             });
-            this.formAgendamentoService.clearForm()
-            this.router.navigate(['/'])
+            this.formAgendamentoService.clearForm();
+            const id = this.contaService.getId();
+            this.router.navigate([`/perfil/${id}/lista-agendamentos`]);
           },
           error: (e) => {
             this.snackbar.open('Não foi possível realizar o agendamento', '', {
