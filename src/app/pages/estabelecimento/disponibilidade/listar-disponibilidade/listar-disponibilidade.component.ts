@@ -12,6 +12,7 @@ export class ListarDisponibilidadeComponent implements OnInit{
 
   estabelecimentoId?: number;
   disponibilidades: Disponibilidade[] = [];
+  isLoading = true;
 
   constructor(
     private contaService: ContaService,
@@ -29,7 +30,10 @@ export class ListarDisponibilidadeComponent implements OnInit{
   getDisponibilidade(id: number) {
     this.disponibilidadeService.getDisponibilidadesByEstabelecimento(id).subscribe(
       res => {
-        this.disponibilidades = res
+        setTimeout(() => {
+          this.disponibilidades = res;
+          this.isLoading = false;
+        }, 1000)
       }
     );
   }
