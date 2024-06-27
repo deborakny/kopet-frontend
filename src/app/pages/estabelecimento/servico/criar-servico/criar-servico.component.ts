@@ -35,7 +35,7 @@ export class CriarServicoComponent implements OnInit{
     this.formGroup = this.fb.group({
       nome: ['', Validators.required],
       valor: [null],
-      duracao: [15, Validators.compose([Validators.required, Validators.max(120)])],
+      duracao: [15, Validators.compose([Validators.required, Validators.max(90), Validators.min(15)])],
       informacoesAdicionais: [''],
       estabelecimento: this.fb.group({
         id: [this.estabelecimentoId]

@@ -24,6 +24,8 @@
         <mat-form-field class="form-field" subscriptSizing="dynamic" appearance="outline">
           <input type="number" matInput class="input" id="duracao" formControlName="duracao">
           <mat-error *ngIf="formGroup.get('duracao')?.errors?.['required'] && formGroup.get('duracao')?.touched">Campo obrigatório</mat-error>
+          <mat-error *ngIf="formGroup.get('duracao')?.errors?.['max'] && formGroup.get('duracao')?.touched">Duração máxima de 90min</mat-error>
+          <mat-error *ngIf="formGroup.get('duracao')?.errors?.['min'] && formGroup.get('duracao')?.touched">Duração mínima de 15min</mat-error>
           <mat-hint class="hint">(Em minutos)</mat-hint>
         </mat-form-field>
       </div>

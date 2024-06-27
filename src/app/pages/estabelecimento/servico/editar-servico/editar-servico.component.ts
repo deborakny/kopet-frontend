@@ -32,7 +32,7 @@ export class EditarServicoComponent implements OnInit{
     this.formGroup = this.fb.group({
       nome: ['', Validators.required],
       valor: [''],
-      duracao: ['', Validators.required],
+      duracao: ['', Validators.compose([Validators.required, Validators.max(90), Validators.min(15)])],
       informacoesAdicionais: ['']
     });
 
