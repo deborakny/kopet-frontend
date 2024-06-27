@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ContaService } from 'src/app/core/services/conta.service';
 import { FormAgendamentoService } from 'src/app/core/services/form-agendamento.service';
 import { FuncionarioService } from 'src/app/core/services/funcionario.service';
 import { ServicoService } from 'src/app/core/services/servico.service';
@@ -31,21 +32,58 @@ export class SelecionarServicoColaboradorComponent implements OnInit {
     private snackbar: MatSnackBar,
     private servicoService: ServicoService,
     private funcionarioService: FuncionarioService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private contaService: ContaService
   ) {}
 
   ngOnInit(): void {
-    //const estabelecimentoId = this.formAgendamentoService.getControl('estabelecimentoId').value;
-    // const estabelecimentoId = this.route.snapshot.paramMap.get('id');
-    // this.estabelecimentoId = parseInt(estabelecimentoId!)
-
     this.estabelecimentoId = parseInt(this.route.snapshot.paramMap.get('id')!);
+    console.log('id do estabelecimento ao carregar a página',
+      this.formAgendamentoService.getControl('estabelecimentoId').value
+    );
+
+    if (!this.formAgendamentoService.getControl('estabelecimentoId').value) {
+      console.log('não tinha id');
+      this.formAgendamentoService.setControlNumber('estabelecimentoId', this.estabelecimentoId);
+      console.log('id do estabelecimento agora',
+        this.formAgendamentoService.getControl('estabelecimentoId').value
+      );
+    }
+
+    if (!this.formAgendamentoService.getControl('clienteId').value) {
+      console.log('não tinha id de cliente')
+      const clienteId = this.contaService.getId();
+      this.formAgendamentoService.setControlNumber('clienteId', clienteId!);
+      console.log(this.formAgendamentoService.getControl('clienteId').value)
+    }
+
+    if (!this.formAgendamentoService.getControl('clienteId').value) {
+      console.log('não tinha id de cliente')
+      const clienteId = this.contaService.getId();
+      this.formAgendamentoService.setControlNumber('clienteId', clienteId!);
+      console.log(this.formAgendamentoService.getControl('clienteId').value)
+    }
+
+    if (!this.formAgendamentoService.getControl('petId').value) {
+      this.snackbar.open('Algo deu errado, selecione as opções novamente', '', {
+        horizontalPosition: 'center',
+        verticalPosition: 'bottom',
+        duration: 3000,
+        panelClass: ['custom-snackbar'],
+      });
+      this.router.navigate([
+        `/estabelecimento/${this.estabelecimentoId}/agendamento/selecionar-pet`,
+      ]);
+    }
 
     this.servicoControl = this.formAgendamentoService.getControl('servicoId');
     this.colaboradorControl =
       this.formAgendamentoService.getControl('funcionarioId');
 
     this.getServicos(this.estabelecimentoId);
+
+    const formAgendamentoGroup = this.formAgendamentoService.getForm()
+    console.log('e', formAgendamentoGroup?.getRawValue());
   }
 
   getServicos(id: number) {

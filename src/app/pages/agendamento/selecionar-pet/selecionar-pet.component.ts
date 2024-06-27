@@ -18,7 +18,7 @@ export class SelecionarPetComponent implements OnInit{
   usuarioLogado: boolean = true;
   petControl = new FormControl();
   pets?: Pet[];
-  estabelecimentoId!: string | null;
+  estabelecimentoId?: number;
   isLoading = true;
 
   constructor(
@@ -31,13 +31,23 @@ export class SelecionarPetComponent implements OnInit{
   ) { }
 
   ngOnInit(): void {
-    this.estabelecimentoId = this.route.snapshot.paramMap.get('id');
+    const estabelecimentoId = this.route.snapshot.paramMap.get('id');
+    this.estabelecimentoId = parseInt(estabelecimentoId!);
     this.petControl = this.formAgendamentoService.getControl('petId');
 
     const clienteId = this.contaService.getId();
     this.formAgendamentoService.setControlNumber('clienteId', clienteId!)
+    console.log(this.formAgendamentoService.getControl('estabelecimentoId').value);
+
+    if (!this.formAgendamentoService.getControl('estabelecimentoId').value) {
+      console.log('não tinha id');
+      this.formAgendamentoService.setControlNumber('estabelecimentoId', this.estabelecimentoId);
+      console.log(this.formAgendamentoService.getControl('estabelecimentoId').value);
+    }
 
     this.getPets(clienteId!);
+    const formAgendamentoGroup = this.formAgendamentoService.getForm()
+    console.log('e', formAgendamentoGroup?.getRawValue());
   }
 
   getPets(clienteId: number) {
@@ -70,7 +80,7 @@ export class SelecionarPetComponent implements OnInit{
   voltar() {
     if (this.estabelecimentoId) {
       this.formAgendamentoService.clearForm();
-      this.router.navigate([`/estabelecimento/${parseInt(this.estabelecimentoId)}`]);
+      this.router.navigate([`/estabelecimento/${this.estabelecimentoId}`]);
     } else {
       this.router.navigate(['']);
     }

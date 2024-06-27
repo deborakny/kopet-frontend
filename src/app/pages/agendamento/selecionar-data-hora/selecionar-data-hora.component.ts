@@ -37,22 +37,40 @@ export class SelecionarDataHoraComponent implements OnInit{
 
   ngOnInit(): void {
     this.estabelecimentoId = parseInt(this.route.snapshot.paramMap.get('id')!);
+
+    console.log(this.formAgendamentoService.getControl('estabelecimentoId').value);
+
+    if (!this.formAgendamentoService.getControl('estabelecimentoId').value) {
+      this.formAgendamentoService.setControlNumber('estabelecimentoId', this.estabelecimentoId);
+      console.log(this.formAgendamentoService.getControl('estabelecimentoId').value);
+    }
+
     this.horaControl = this.formAgendamentoService.getControl('hora');
 
     this.dataControl = this.formAgendamentoService.getControl('dia');
 
     const idServico = this.formAgendamentoService.getControl('servicoId').value;
     const idFuncionario = this.formAgendamentoService.getControl('funcionarioId').value;
+    console.log('idServico ', idServico, 'idFuncionario ', idFuncionario)
 
-    this.opcaoDisponibilidadeService.listar(idServico, idFuncionario).subscribe(res => {
-      setTimeout(() => {
-        this.opcoesDisponibilidade = res;
-        this.atualizarHorario(moment().toDate());
-        console.log('res: ', res)
-        console.log('opcoes: ', this.opcoesDisponibilidade)
-        this.isLoading = false;
-      }, 1000)
-    });
+    if (idServico && idFuncionario) {
+      this.opcaoDisponibilidadeService.listar(idServico, idFuncionario).subscribe(res => {
+        setTimeout(() => {
+          this.opcoesDisponibilidade = res;
+          this.atualizarHorario(moment().toDate());
+          console.log('res: ', res)
+          console.log('opcoes: ', this.opcoesDisponibilidade)
+          this.isLoading = false;
+        }, 1000)
+      });
+    } else {
+      this.router.navigate([
+        `/estabelecimento/${this.estabelecimentoId}/agendamento/selecionar-servico-colaborador`,
+      ]);
+    }
+
+    const formAgendamentoGroup = this.formAgendamentoService.getForm()
+    console.log('e', formAgendamentoGroup?.getRawValue());
   }
 
   atualizarHorario(data: Date | null) {
