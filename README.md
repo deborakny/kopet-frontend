@@ -1,5 +1,18 @@
-# Frontend
+# Frontend KOPET
 
+## Instruções
+
+### GITHUB
+  Baixe do GitHub como arquivo zipado ou através do git pull fornecido.Lembrando que é necessário ter o backend para inicalizar propriamente o front (https://github.com/deborakny/kopet-backend).
+
+### Instalar e Inicializar
+  É necessário ter o Angular instalado em sua máquina (https://angular.dev/installation), assim como o NodeJS (https://nodejs.org).
+  Utilize o comando "npm i" no diretório do projeto (através do terminal) para instalar as dependências do projeto. Configure conforme necessário os arquivos "environment.development.ts" e "environment.ts" para as endpoints do backend deste projeto - ambos já devem estar previamente configurados para http://localhost:3000/.
+  Utilize o comando "ng serve" para inicializar a aplicação - normalmente o angular utiliza o endereço "http://localhost:4200/", embora ele informe no terminal.
+
+
+
+# Angular
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.13.
 
 ## Development server
